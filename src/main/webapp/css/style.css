@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0px; padding:0px; font-size:16px; font-family:"微软雅黑"}
+a{ color:#FFFl; text-decoration:none}
+ul{ list-style:none;}
+.top{ width:100%; height:90px; background:#9a0e14;min-width:1200px}
+.top-inner{ width:1200px; margin-left:auto; margin-right:auto; height:90px;}
+.logo{ width:315px; height:71px; margin-top:10px; float:left}
+.nav{ float:left; width:758px; margin-left:115px; height:90px;}
+.nav ul li{ color:#fff; float:left; width:110px; text-align:center; line-height:90px; border-left:#bb6f6f 1px solid;}
+
+/**
+ * jQuer Phoenix Slider
+ * Custom Style for jQuery Phoenix Slider
+ *
+ * @author Felix Ayala <felix1262@gmail.com>
+ * @url http:/cafecapitan.com
+ */
+
+
+/* Slider */
+
+.phoenix-slider {
+  overflow: hidden;
+  width: 100%;
+  height: 384px;
+  position: relative;
+  background: #f5f5f5;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden; 
+  min-width:1200px;
+}
+
+.phoenix-slider .phoenix-feather {
+  background: transparent none scroll no-repeat center top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 384px;
+  overflow: hidden;
+  display: table;
+  min-width:1200px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.phoenix-slider .reborn { z-index: 4; }
+
+.phoenix-slider .phoenix-feather > img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  overflow: hidden;
+  display: none;
+  min-width:1200px;
+}
+
+/* Slider Dots */
+
+.container-dots-wrapper {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  height: 100%;
+  z-index: 9;
+}
+
+.container-dots-inner {
+  display: table;
+  height: 100%;
+}
+
+.dots {
+  display: table-cell;
+  position:relative;
+ left:-100px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  top:350px;
+}
+
+.dots li {
+	 float:left;
+	 
+	 margin-left:15px;
+  width: 35px;
+  height: 15px;
+  background:#f2980e;
+  margin: 0 4px 7px 4px;
+  text-indent: -999em;
+ 
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+
+}
+
+.dots li.active {
+	 float:left;
+	 
+	 margin-left:15px;
+  width: 35px;
+  height: 15px;
+  background:#fff;
+  margin: 0 4px 7px 4px;
+  text-indent: -999em;
+ 
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+.contain{ height:1530px; padding-top:35px;}
+.contain-inner{ width:1200px; height:1530px; margin-left:auto; margin-right:auto}
+.contain-inner-left{ width:678px; height:1220px; float:left}
+.tittle{ background:url(../img/hengtiao_12.png); width:294px; height:43px; color:#FFF; text-indent:40px; line-height:43px; font-size:26px; float:left}
+.right{ float:right; height:42px; line-height:83px;}
+#banner { position: relative; width: 678px; height: 387px; border: 1px solid #666; overflow: hidden; margin-top:35px;}
+#banner_list img { border: 0px; }
+#banner_bg { position: absolute; bottom: 0; background-color: #000; height: 30px; filter: Alpha(Opacity=30); opacity: 0.3; z-index: 1000; cursor: pointer; width: 678px;line-height:30px }
+#banner_info { position: absolute; bottom: 0; left: 5px; height: 30px; color: #fff; z-index: 1001; cursor: pointer;line-height:30px }
+#banner_text { position: absolute; width: 120px; z-index: 1002; right: 3px; bottom: 3px; }
+#banner ul { position: absolute; list-style-type: none; filter: Alpha(Opacity=80); opacity: 0.8; z-index: 1002; margin: 0; padding: 0; bottom: 3px; right: 5px; }
+#banner ul li { padding: 0px 8px; float: left; display: block; color: #FFF; background: #6f4f67; cursor: pointer; border: 1px solid #333; }
+#banner ul li.on { background-color: #000; }
+#banner_list a { position: absolute; }
+.shetuanyaowen li{ margin-top:20px; }
+.shetuanyaowen{margin-top:20px}
+.shetuanyaowen a { color:#000}
+.shetuanyaowen a :hover{ color:#9a0e14}
+.margintop{ margin-top:35px;}
+.tittle-right{ background:url(../img/right_19.png);  width:470px; height:43px; color:#FFF; text-indent:40px; line-height:43px; font-size:26px; }
+.contain-inner-right{width:470px; height:1220px; float:right}
+.tittle-right span{ float:right; color:#FFF; margin-right:15px;}
+.pad{ padding-left:40px;}
+.right a { color:#000; font-size:18px;}
+.shetuan li{ margin-top:25px; height:80px;}
+.shetuan a { color:#000}
+.shetuan{ float:left; margin-top:20px; width:336px;}
+
+.shetuan h1{ text-align:right; margin:0px; font-size:22px; text-decoration:none; font-weight:normal;}
+
+ol{ list-style:none;}
+.shetuanicon{ float:left; margin-left:10px; margin-top:20px; display:inline-block}
+.shetuanicon li{ margin-top:25px; height:80px;}
+.book{ width:80px; height:80px; background:url(../img/lilun.jpg)}
+.people{ background:url(../img/shehuifuwu.jpg); width:80px; height:80px;}
+.global{ background:url(../img/xueshu.jpg); width:80px; height:80px;}
+.huaban{ background:url(../img/wenhua.png) ; width:80px; height:80px;}
+.pingpang{ width:80px; height:80px; background:url(../img/tiyun.jpg)}
+.shizhanqingchun{ background:url(../img/hengtiao_28.png); width:1196px; height:45px;text-indent:40px;  line-height:45px;  color:#FFF; font-size:26px;}
+.shizhanqingchun span{ float:right; margin-right:20px}
+.shipintu li { float:left; width:283px; height:152px; margin-left:5px;  }
+.shipintu{margin-left:20px;}
+.bottom { background:#222; width:100%; height:253px; margin-top:20px;min-width:1200px;}
+.bottom-inner{ width:1160px; margin-right:auto; margin-left:auto;  padding-top:40px; }
+.youqinglianjie ul{ width:800px; margin-left:auto; margin-right:auto; }
+.youqinglianjie ul li { float:left; width:80px; color:#FFF;  margin-left:20px; }
+.bottom-logo{  float:left; margin-top:25px;}
+.telphone{ float:left; margin-top:45px; margin-left:40px;}
+.telphone ul li{ color:#FFF; }
+.shutiao{ float:left; width:1px; height:83px; background:#fff; margin-top:40px; margin-left:40px;}
+.weizhi{ background:#e3e3e0; height:60px; width:100%;min-width:1200px}
+.weizhi-inner{ width:1200px; margin-left:auto; margin-right:auto; height:60px; line-height:60px;}
+.list-contain{ width:100%; background:#fff; height:auto;}
+.list-contain-inner{ width:1200px; margin-left:auto; margin-right:auto; height:auto}
+.slide-guideline{ width:300px; float:left}
+.slide-guideline li { height:60px; font-size:20px; text-indent:20px; border-bottom:#000 1px solid; line-height:60px;}
+.slide-guideline li a { color:#000}
+.slide-guideline li a:hover { color:#9a0e14}
+.slide-list{ float:left; margin-left:35px; width:865px; height:auto;min-height:550px;}
+.slide-list h1{ font-size:24px; color:#9a0e14; margin-top:40px;}
+.slide-list hr{ color:#000; margin-top:20px;}
+.slide-list ul li{ margin-top:22px;}
+.slide-list ul li a{ color:#000}
+.slide-list ul li a:hover{ color:#9a0e14}
+.slide-list ul li span{ float:right}
+.yema{ text-align:center; margin-top:30px;}
+.neirong{ height:auto; width:865px;min-height:550px;}
+.neirong h2{ text-align:center}
+.liuyan{ background:url(../images/mohu.png)}
+.liuyanban{ background:url(../images/liuyan_03.png); width:859px; height:489px; margin-left:auto; margin-right:auto; margin-top:20px; padding-top:50px;}
+.fabiao{ margin-left:450px; font-size:20px;}
+.mingchen{ width:174px;}
+.mingchengming{ font-size:20px; margin-left:298px;}
+.name{ width:130px;}
+.content{ margin-left:300px; margin-top:10px;}
+.tijiao{ margin-left:300px; margin-top:10px; background:}
+.nav ul li a{ color:#fff; }
+.nav ol { background:url(../img/xiala_03.png); width:270px; height:175px; z-index:9999; position:absolute; margin-left:-5px;);
+
+
+
+}
+.nav ol li { border:none; color:#000; font-size:16px; clear:both; height:40px; line-height:40px; width:128px;margin-left:5px}
+.nav ul li:hover{ background-color:#FFF; color:#000}
+.nav ol li:hover{ border:none; color:#000; font-size:16px; clear:both; height:40px; line-height:40px; background:}
+.sousuo { margin-top:30px; position:absolute; z-index:9999; margin-left:-180px; display:none;
+background:url(../img/sousuokuang_03.png); width:283px; height:58px; border:none;
+ }
+.shurukuang {     
+ margin-left:10px;
+    margin-top:18px; 
+
+    width: 193px;
+    height: 32px;
+    border:none;   
+	float:left;
+border-right:1px solid #9a0e14;
+}
+.submit{ float:left; margin-left:213px;  background:#fff;color:#9a0e14;border:none; width:50px; height:30px; line-height:30px;}
+.youqinglianjie li a{ color:#FFF}
+span a { color:#FFF}
+.zhezhao{ bottom: 0; background:rgba(0,0,0,0.5); height: 40px;  z-index: 1000; cursor: pointer; width:100%; position:relative ;top:-40px; display:none;line-height:40px;text-indent:10px;color:#fff}
+.tishi{ margin-left:340px; margin-top:10px;}
+.erjidaohang  { width:220px; height:60px; font-size:20px; text-indent:20px; border-bottom:#000 1px solid; line-height:60px; margin-left:80px}
+.erjidaohang  a { color:#000}
+.erjidaohang  a:hover { color:#9a0e14}
+.active{color:#9a0e14};
+.slide-list ul{height:550px;}
+.nav ol a li:hover{color:#9a0e14}
