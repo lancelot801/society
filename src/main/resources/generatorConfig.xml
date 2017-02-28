@@ -39,53 +39,54 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 
-	    <!--  
-	    <table tableName="activity_actor" domainObjectName="ActivityActor">
-		</table>  
-		 <table tableName="activity_apply" domainObjectName="ActivityApply">
-		</table> 
-       <table tableName="classes" domainObjectName="Classes"></table>
+	    
+	    <!-- <table tableName="activity_actor" domainObjectName="ActivityActor">
+		</table> -->  
+		<!-- <table tableName="activity_apply" domainObjectName="ActivityApply">
+		</table> --> 
+        <!-- <table tableName="classes" domainObjectName="Classes">
+        </table> -->
         
-		<table tableName="comment" domainObjectName="Comment">
-		</table> 
+		<!-- <table tableName="comment" domainObjectName="Comment">
+		</table> --> 
 
-		<table tableName="feedback" domainObjectName="Feedback">
-		</table> 
+		<!-- <table tableName="feedback" domainObjectName="Feedback">
+		</table> --> 
 
-		 <table tableName="identity_card" domainObjectName="IdentityCard">
-		</table>
+		<!-- <table tableName="identity_card" domainObjectName="IdentityCard">
+		</table> -->
 
-		<table tableName="institute" domainObjectName="Institute">
-		</table>
+		<!-- <table tableName="institute" domainObjectName="Institute">
+		</table> -->
 
-		<table tableName="member_apply" domainObjectName="MemberApply">
-		</table>
+		<!-- <table tableName="member_apply" domainObjectName="MemberApply">
+		</table> -->
 
-		<table tableName="opinion" domainObjectName="Opinion">
-		</table>
+		<!-- <table tableName="opinion" domainObjectName="Opinion">
+		</table> -->
 
-		<table tableName="society_apply" domainObjectName="SocietyApply">
-		</table>
+		<!-- <table tableName="society_apply" domainObjectName="SocietyApply">
+		</table> -->
 
-		<table tableName="society_info" domainObjectName="SocietyInfo">
-		</table> 
+		<!-- <table tableName="society_info" domainObjectName="SocietyInfo">
+		</table> -->
 		
-		<table tableName="society_member" domainObjectName="SocietyMember">
-		</table> 
+		<!-- <table tableName="society_member" domainObjectName="SocietyMember">
+		</table> --> 
 		
-		<table tableName="society_notice" domainObjectName="SocietyNotice">
-		</table> 
+		<!-- <table tableName="society_notice" domainObjectName="SocietyNotice">
+		</table> -->
 		
-		<table tableName="society_type" domainObjectName="SocietyType">
-		</table> 
+		<!-- <table tableName="society_type" domainObjectName="SocietyType">
+		</table> -->
 		
-		<table tableName="student_info" domainObjectName="StudentInfo">
-		</table> 
+		<!-- <table tableName="student_info" domainObjectName="StudentInfo">
+		</table>  -->
 		
-		<table tableName="user_login" domainObjectName="UserLogin">
-		</table> 
-		-->
-		<table tableName=""></table>
+		<!-- <table tableName="user_login" domainObjectName="UserLogin">
+		</table>  -->
+		
+		<table tableName=""></table>  
 
 	</context>
 </generatorConfiguration>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.joongky.society.dao.SocietyNoticeMapper" >
+  <resultMap id="BaseResultMap" type="cn.joongky.society.pojo.SocietyNotice" >
+    <id column="notice_id" property="noticeId" jdbcType="VARCHAR" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="published_time" property="publishedTime" jdbcType="TIMESTAMP" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    notice_id, theme, content, published_time, publisher
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from society_notice
+    where notice_id = #{noticeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from society_notice
+    where notice_id = #{noticeId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" >
+    delete from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.joongky.society.pojo.SocietyNotice" >
+    insert into society_notice (notice_id, theme, content, 
+      published_time, publisher)
+    values (#{noticeId,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{publishedTime,jdbcType=TIMESTAMP}, #{publisher,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.joongky.society.pojo.SocietyNotice" >
+    insert into society_notice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noticeId != null" >
+        notice_id,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="publishedTime != null" >
+        published_time,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noticeId != null" >
+        #{noticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedTime != null" >
+        #{publishedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" resultType="java.lang.Integer" >
+    select count(*) from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update society_notice
+    <set >
+      <if test="record.noticeId != null" >
+        notice_id = #{record.noticeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.theme != null" >
+        theme = #{record.theme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publishedTime != null" >
+        published_time = #{record.publishedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publisher != null" >
+        publisher = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update society_notice
+    set notice_id = #{record.noticeId,jdbcType=VARCHAR},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      published_time = #{record.publishedTime,jdbcType=TIMESTAMP},
+      publisher = #{record.publisher,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.joongky.society.pojo.SocietyNotice" >
+    update society_notice
+    <set >
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedTime != null" >
+        published_time = #{publishedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where notice_id = #{noticeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.joongky.society.pojo.SocietyNotice" >
+    update society_notice
+    set theme = #{theme,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      published_time = #{publishedTime,jdbcType=TIMESTAMP},
+      publisher = #{publisher,jdbcType=VARCHAR}
+    where notice_id = #{noticeId,jdbcType=VARCHAR}
+  </update>
+  <select resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" id="selectByExampleWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
