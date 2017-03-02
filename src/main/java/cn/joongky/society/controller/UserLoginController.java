@@ -34,7 +34,7 @@ public class UserLoginController {
 	 
 	 @RequestMapping("/register")
 	 public JsonResult register (@RequestParam String studentId,@RequestParam String password){
-			int result = userLoginService.register(studentId, password);
+		 	int result = userLoginService.register(studentId, password);
 			JsonResult jr = new JsonResult();
 			if (result ==1) {
 				jr.setResultCode(0);

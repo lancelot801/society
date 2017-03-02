@@ -55,7 +55,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 		ul.setSalt(salt);
 		ul.setCreatedTime(now);
 		ul.setUpdatedTime(now);
-		return 0;
+		return userLoginMapper.insertSelective(ul);
 	}
 
 }

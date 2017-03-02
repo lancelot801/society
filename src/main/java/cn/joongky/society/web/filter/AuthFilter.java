@@ -27,8 +27,8 @@ public class AuthFilter extends AbstractSociety implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpResp = (HttpServletResponse) response;
-		httpResp.setHeader("Access-Control-Allow-Origin", PropertyContext.getInstance().getOriginUrl());
-		httpResp.setHeader("Access-Control-Allow-Credentials", "true");
+//		httpResp.setHeader("Access-Control-Allow-Origin", PropertyContext.getInstance().getOriginUrl());
+//		httpResp.setHeader("Access-Control-Allow-Credentials", "true");
 
 		String agent = httpReq.getHeader("User-Agent");
 		Boolean isWechatAgent = null;

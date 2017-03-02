@@ -104,7 +104,24 @@ $(function() {
 	// 注册按钮
 	$("#registerBtn").click(function() {
 		$('#registerForm').bootstrapValidator('validate');
-		
+		$.ajax({
+			url : "http://localhost:8080/society_server/user/register",
+			type : "post",
+			data:  $('#registerForm').serialize(),
+			success : function(data) {
+				if(data.resultCode == 0){
+					alert("注册成功!");
+				}else{
+					alert("注册失败!");
+				}
+				window.location.href=window.location.href; 
+				window.location.reload; 
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		}); 
 		
 	});
 
