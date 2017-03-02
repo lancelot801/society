@@ -453,23 +453,23 @@
 					<div class="modal-body">
 						<br />
 						<br />
-						<form role="form" class="form-horizontal">
+						<form role="form" class="form-horizontal" id="loginForm">
 							<div class="form-group">
-								<label for="exampleInputEmail3" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户</label>
+								<label for="loginToken" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control" id="exampleInputEmail3" placeholder="请输入您的账户号码">
+									<input type="text" class="form-control" id="loginToken" name="loginToken" placeholder="请输入您的账户号码/邮箱/手机">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="exampleInputPassWord3" class="col-sm-2 control-label"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
+								<label for="loginPassword" class="col-sm-2 control-label"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="exampleInputPassWord3" placeholder="请输入您的密码">
+									<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="请输入您的密码">
 								</div>
 							</div>
 
 							<div style="text-align: center;">
-								<button class="btn btn-primary" style="width:350px;background-color: #9a0e14;border-color: #9a0e14;"><span class=" glyphicon glyphicon-ok-sign"></span>&nbsp;登录</button>
+								<button id="loginBtn" class="btn btn-primary" style="width:350px;background-color: #9a0e14;border-color: #9a0e14;margin-left:65px;"><span class=" glyphicon glyphicon-ok-sign"></span>&nbsp;登录</button>
 							</div>
 						</form>
 					</div>
@@ -490,8 +490,7 @@
 		<!-- 注册模态框  -->
 		<div class="modal  fade" id="registerModal">
 		<div class="modal-dialog">
-			<form id="registerForm" action="" method=""
-				enctype="multipart/form-data">
+			<form id="registerForm" action="" method="" enctype="multipart/form-data">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>
@@ -566,9 +565,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="btnClose" class="btn btn-default"
-							data-dismiss="modal">关闭</button>
-						<button id="registerBtn" type="submit" class="btn btn-primary">提交</button>
+						<button id="registerBtn" type="submit"  style="background-color: #9a0e14;border-color: #9a0e14;" class="btn btn-primary">提交</button>
+						<button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
 			</form>

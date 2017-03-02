@@ -58,4 +58,11 @@ public class UserLoginServiceImpl implements UserLoginService{
 		return userLoginMapper.insertSelective(ul);
 	}
 
+	@Override
+	public int existStudentId(String studentId) {
+		UserLoginExample example= new UserLoginExample();
+		example.or().andStudentIdEqualTo(studentId);
+		return userLoginMapper.countByExample(example);
+	}
+
 }

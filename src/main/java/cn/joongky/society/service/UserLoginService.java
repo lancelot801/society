@@ -9,4 +9,7 @@ public interface UserLoginService {
 	
 	//注册用户
 	int register(String studentId, String password);
+	
+	//判断学号是否存在
+	int existStudentId(String studentId);
 }
