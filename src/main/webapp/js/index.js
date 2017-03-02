@@ -118,14 +118,14 @@ $(function() {
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields : {
-			loginToken : {
+			token : {
 				validators : {
 					notEmpty : {
 						message : '学号不能为空'
 					},
 				}
 			},
-			loginPassword : {
+			password : {
 				validators : {
 					notEmpty : {
 						message : '密码不能为空'
@@ -151,7 +151,7 @@ $(function() {
 				if (data.resultCode == 0) {
 					alert("注册成功!");
 				} else {
-					alert("注册失败cc!");
+					alert("注册失败!");
 				}
 				window.location.href = window.location.href;
 				window.location.reload;
@@ -161,7 +161,28 @@ $(function() {
 			},
 			async : false
 		});
-
 	});
 
+	/*
+	//登录按钮
+	$("#loginBtn").click(function() {
+		var Validator = $('#loginForm').data('bootstrapValidator');
+		Validator.validate();
+		if (!Validator.isValid()) {
+			return;
+		} 
+		//debugger;
+		$.ajax({
+			url : "http://localhost:8080/society_server/user/login",
+			type : "get",
+			data : $('#loginForm').serialize(),
+			success : function(data) {
+				alert(data.responseText);
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
+	});  */
 });

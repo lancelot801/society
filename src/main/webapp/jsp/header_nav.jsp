@@ -1,4 +1,4 @@
-<%@page import="cn.joongky.society.UserLogin"%>
+<%@page import="cn.joongky.society.pojo.UserLogin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">

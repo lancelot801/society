@@ -453,23 +453,23 @@
 					<div class="modal-body">
 						<br />
 						<br />
-						<form role="form" class="form-horizontal" id="loginForm">
+						<form role="form" class="form-horizontal" id="loginForm" action="/society_server/user/login" method="GET">
 							<div class="form-group">
 								<label for="loginToken" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="loginToken" name="loginToken" placeholder="请输入您的账户号码/邮箱/手机">
+									<input type="text" class="form-control" id="loginToken" name="token" placeholder="请输入您的账户号码/邮箱/手机">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="loginPassword" class="col-sm-2 control-label"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="请输入您的密码">
+									<input type="password" class="form-control" id="loginPassword" name="password" placeholder="请输入您的密码">
 								</div>
 							</div>
 
 							<div style="text-align: center;">
-								<button id="loginBtn" class="btn btn-primary" style="width:350px;background-color: #9a0e14;border-color: #9a0e14;margin-left:65px;"><span class=" glyphicon glyphicon-ok-sign"></span>&nbsp;登录</button>
+								<button type="submit" id="loginBtn" class="btn btn-primary" style="width:350px;background-color: #9a0e14;border-color: #9a0e14;margin-left:65px;"><span class=" glyphicon glyphicon-ok-sign"></span>&nbsp;登录</button>
 							</div>
 						</form>
 					</div>

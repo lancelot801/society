@@ -23,7 +23,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 	@Override
 	public UserLogin login(String token, String password) {
 		UserLoginExample example = new UserLoginExample();
-		example.or().andNicknameEqualTo(token);
+		example.or().andStudentIdEqualTo(token);
 		example.or().andEmailEqualTo(token);
 		example.or().andMobileEqualTo(token);
 		List<UserLogin> userlist = userLoginMapper.selectByExample(example);
@@ -50,8 +50,8 @@ public class UserLoginServiceImpl implements UserLoginService{
 		ul.setUserLoginId(BasicSysUtil.getUUID());
 		//随机盐
 		String salt = BasicSysUtil.getUUID();
-		//MD5加密
-		ul.setCurrentPassword(EncryptUtil.encodeByMD5(salt+password));
+		//MD5加密 盐和密码的顺序不能乱
+		ul.setCurrentPassword(EncryptUtil.encodeByMD5(password + salt));
 		ul.setSalt(salt);
 		ul.setCreatedTime(now);
 		ul.setUpdatedTime(now);
