@@ -453,7 +453,7 @@
 					<div class="modal-body">
 						<br />
 						<br />
-						<form role="form" class="form-horizontal" id="loginForm" action="/society_server/user/login" method="GET">
+						<form role="form" class="form-horizontal" id="loginForm" action="/society_server/user/login" method="post">
 							<div class="form-group">
 								<label for="loginToken" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户</label>
 								<div class="col-sm-10">

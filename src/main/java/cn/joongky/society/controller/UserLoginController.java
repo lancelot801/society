@@ -17,7 +17,7 @@ public class UserLoginController {
 	 @Inject
 	 private UserLoginService userLoginService;
 	 
-	 @RequestMapping(value="/login",method = RequestMethod.GET)
+	 @RequestMapping(value="/login",method = RequestMethod.POST)
 	 public String login (@RequestParam String token,@RequestParam String password){	
 		 	 userLoginService.login(token, password);
 			return "admin/activities";
