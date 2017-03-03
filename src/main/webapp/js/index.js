@@ -147,7 +147,6 @@ $(function() {
 			type : "post",
 			data : $('#registerForm').serialize(),
 			success : function(data) {
-				debugger;
 				if (data.resultCode == 0) {
 					alert("注册成功!");
 				} else {

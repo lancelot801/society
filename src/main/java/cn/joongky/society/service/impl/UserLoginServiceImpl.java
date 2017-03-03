@@ -38,7 +38,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 				throw new AdminException("用户名或密码错误,拒绝登录");
 			}
 		} else {
-			throw new AdminException("存在重名用户或用户不存在,拒绝登录");
+			throw new AdminException("用户不存在,拒绝登录");
 		}
 	}
 
@@ -55,6 +55,8 @@ public class UserLoginServiceImpl implements UserLoginService{
 		ul.setSalt(salt);
 		ul.setCreatedTime(now);
 		ul.setUpdatedTime(now);
+		//新注册用户角色为新人
+		ul.setRole("newBee");
 		return userLoginMapper.insertSelective(ul);
 	}
 

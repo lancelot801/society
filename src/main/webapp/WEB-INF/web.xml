@@ -65,4 +65,19 @@
 		<extension>manifest</extension>
 		<mime-type>text/cache-manifest</mime-type>
 	</mime-mapping>
+	
+	  <!-- 出错页面定义 -->
+    <error-page>
+        <exception-type>cn.joongky.exception.AdminException</exception-type>
+        <location>/error/authority</location>
+    </error-page> 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404</location>
+    </error-page>
+	
 </web-app>

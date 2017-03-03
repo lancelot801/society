@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<link rel="shortcut icon" href="../img/my_ico.ico">
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/img/my_ico.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style type="text/css">
 .tb960x90 {display:none!important;display:none}</style>
-<link href="../css/pintuer.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/pintuer.css" rel="stylesheet">
 <title>嗨呀,出错啦！</title>
 </head>
 <body>
@@ -18,14 +18,18 @@
    <div class="panel margin-big-top">
       <div class="text-center">
          <br>
-         <h2 class="padding-top"> <stong>${exception.message}</stong> </h2>
+         <h2 class="padding-top"> 
+         <stong>404 Not Found</stong> 
+         <br/>
+         <stong>您所访问的页面不存在</stong> 
+         </h2>
          <div class=""> 
             <div class="float-left">
-                <img src="../img/ds-1.gif">
+                <img src="<%=request.getContextPath()%>/img/ds-1.gif">
                 <div class="alert"> 卧槽！页面不见了！ </div>
             </div>
             <div class="float-right">
-               <img src="../img/ds-2.png" width="260"> 
+               <img src="<%=request.getContextPath()%>/img/ds-2.png" width="260"> 
             </div>
           </div>
           <div class="padding-big">

@@ -11,7 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.joongky.exception.AdminException;
 import cn.joongky.society.AbstractSociety;
+import cn.joongky.society.pojo.UserLogin;
 
 public class AuthFilter extends AbstractSociety implements Filter {
 
@@ -36,30 +38,35 @@ public class AuthFilter extends AbstractSociety implements Filter {
 		} else {
 			isWechatAgent = false;
 		}
-		//Person p = (Person) httpReq.getSession().getAttribute("person");
-		// 拦截1
-		if (!isWechatAgent) {
-//			if (url.indexOf("/wx") >= 0 && !(url.indexOf("/wx/wget") >= 0)) {
-//				return;
-//			}
-//			// 拦截3
-//			if (url.indexOf("/api") >= 0 && !(url.indexOf("/wx") >= 0)) {
-//				if (p == null) {
-//					System.out.println("session中没有person, 返回code-101，前端跳转");
-//					httpResp.getWriter().write("{\"resultCode\":-101,\"reason\":\"No session\"}");
-//					return;
-//				}
-//			}
-		} else if (isWechatAgent ) {
-			// TODO 临时后台测试登录
-//			PersonService personService = (PersonService) BeanFactoryContext.getService("personService");
-//			p = personService.getPersonByOpenid("o_ZEjwMBW4cPp72Sn4ONzFa-7BAk");
-//			httpReq.getSession().setAttribute("person", p);
-//			System.out.println( 
-//			(WechatUtil.replaceAccessToken(WechatFinalValue.QUERY_USER).
-//			replace("OPENID","o_ZEjwMBW4cPp72Sn4ONzFa-7BAk" )));
+		UserLogin ul = (UserLogin) httpReq.getSession().getAttribute("userLogin");
+		logger.info("用户请求的URL: " + httpReq.getRequestURI());
+		if(httpReq.getRequestURI().contains("/admin"))
+		{
+			if(ul!=null && ul.getRole().equals("admin")){
+				
+			}else if(ul!=null){
+				throw new AdminException("您不是管理员,无访问该接口权限");
+			}else{
+				throw new AdminException("尚未登录,无访问权限");
+			}
+		}else if(isWechatAgent)
+		{
+			
 		}
-
+		/*
+		else if (httpReq.getRequestURI().contains("/admin")) {
+			if(ul!=null && ul.getRole().equals("admin")){
+				
+			}else if(ul!=null){
+				throw new AdminException("您不是管理员,无访问该接口权限");
+			}else{
+				throw new AdminException("尚未登录,无访问权限");
+			}
+	               
+		}else if(isWechatAgent)
+		{
+			
+		}*/
 		chain.doFilter(httpReq, httpResp);
 	}
 

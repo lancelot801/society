@@ -18,7 +18,11 @@
    <div class="panel margin-big-top">
       <div class="text-center">
          <br>
-         <h2 class="padding-top"> <stong>${exception.message}</stong> </h2>
+         <h2 class="padding-top"> 
+         <stong>Authority Not Enough</stong> 
+         <br/>
+         <stong>抱歉,权限不足或者尚未登录</stong> 
+         </h2>
          <div class=""> 
             <div class="float-left">
                 <img src="../img/ds-1.gif">
