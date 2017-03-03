@@ -105,7 +105,7 @@
 		</property> -->
 		<property name="exceptionMappings">
 			<props>
-				<prop key="cn.joongky.society.exception.AdminException">error</prop>
+				<prop key="cn.joongky.exception.AdminException">error</prop>
 			</props>
 		</property>
 	</bean>

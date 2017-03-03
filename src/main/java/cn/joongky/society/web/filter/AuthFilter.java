@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.joongky.society.AbstractSociety;
-import cn.joongky.society.web.PropertyContext;
 
 public class AuthFilter extends AbstractSociety implements Filter {
 
