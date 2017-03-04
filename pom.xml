@@ -250,6 +250,12 @@
 			<artifactId>gson</artifactId>
 			<version>${gson.version}</version>
 		</dependency>
+		<!-- JavaMail -->
+		 <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.5.0</version>
+        </dependency>
   </dependencies>
   
  <build>

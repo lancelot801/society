@@ -24,8 +24,14 @@ public class UserLoginController {
 	 private StudentInfoService sInfoService;
 	 
 	 @RequestMapping(value="/login",method = RequestMethod.POST)
-	 public String login (@RequestParam String token,@RequestParam String password,HttpSession session){	
+	 public String login (@RequestParam String token,@RequestParam String password,HttpSession session) throws Exception{	
 		 	UserLogin ul =  userLoginService.login(token, password);
+		 	/*
+		 	String userEmail =  ConfigUtil.getValue("admin_mail");
+            String title     = "用户登录通知";
+            String text      = "<div style='font-family:Microsoft YaHei'>亲爱的用户，您好！<br/>欢迎使用校园社团管理系统,你的用户审核<i style='color:red;font-size:20px;'>失败</i>，请重新申请！</div>";
+            MailUtil.sendMail(title, text, userEmail);
+            */
 		 	session.setAttribute("userLogin", ul);
 			return "admin/activities";
 	 }
