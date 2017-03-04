@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServlet;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import cn.joongky.society.util.PropertiesUtil;
-
-
 public class InitServlet extends HttpServlet {
 	/**
 	 * 
@@ -26,7 +23,7 @@ public class InitServlet extends HttpServlet {
 		realpath = config.getServletContext().getRealPath("");
 		BeanFactoryContext.setWac(wac);
 		// 读取settings.properties里面的值
-		PropertiesUtil.setPropertyContext();
+		//PropertiesUtil.setPropertyContext();
 	}
 
 	public static WebApplicationContext getWac() {
