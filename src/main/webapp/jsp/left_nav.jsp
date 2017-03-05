@@ -4,7 +4,9 @@
 	<ul class="nav nav-sidebar">
 	<li>
 		<dl>
+			<c:if test="${!(userLogin.role  eq 'admin'">
 			<dt>语种管理</dt>
+			</c:if>
 			<dd>
 				<a id="viewCategory"
 					href="<%=request.getContextPath()%>/admin/category/findAll">所有语种</a>
