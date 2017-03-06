@@ -21,6 +21,8 @@
 			</a>
 				<ul id="systemSetting" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
+					<li><a href="#"><i class="glyphicon glyphicon-education"></i> 学院管理</a></li>
+					<li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> 菜单管理</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> 角色管理</a></li>
@@ -34,10 +36,8 @@
 			</a>
 				<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
-					<li><a href="#"><i class="glyphicon glyphicon-education"></i> 学院管理</a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> 社团类别管理</a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
+						<li><a href="<%=request.getContextPath()%>/student/showInfo"><i class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 日志查看</a></li>
 				</ul></li>
 			<li><a href="./grid.html"> <i

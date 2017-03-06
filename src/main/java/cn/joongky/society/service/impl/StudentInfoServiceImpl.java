@@ -26,4 +26,9 @@ public class StudentInfoServiceImpl implements StudentInfoService{
 			sinfoMapper.insertSelective(sinfo);
 			return sinfoMapper.selectByPrimaryKey(studentId);
 		}
+
+		@Override
+		public StudentInfo getInfo(String studentId) {
+			return sinfoMapper.selectByPrimaryKey(studentId);
+		}
 }
