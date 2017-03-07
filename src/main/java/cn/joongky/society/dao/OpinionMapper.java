@@ -7,27 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface OpinionMapper {
-    int countByExample(OpinionExample example);
+	int countByExample(OpinionExample example);
 
-    int deleteByExample(OpinionExample example);
+	int deleteByExample(OpinionExample example);
 
-    int deleteByPrimaryKey(String opinionId);
+	int deleteByPrimaryKey(String opinionId);
 
-    int insert(Opinion record);
+	int insert(Opinion record);
 
-    int insertSelective(Opinion record);
+	int insertSelective(Opinion record);
 
-    List<Opinion> selectByExampleWithRowbounds(OpinionExample example, RowBounds rowBounds);
+	List<Opinion> selectByExampleWithRowbounds(OpinionExample example, RowBounds rowBounds);
 
-    List<Opinion> selectByExample(OpinionExample example);
+	List<Opinion> selectByExample(OpinionExample example);
 
-    Opinion selectByPrimaryKey(String opinionId);
+	Opinion selectByPrimaryKey(String opinionId);
 
-    int updateByExampleSelective(@Param("record") Opinion record, @Param("example") OpinionExample example);
+	int updateByExampleSelective(@Param("record") Opinion record, @Param("example") OpinionExample example);
 
-    int updateByExample(@Param("record") Opinion record, @Param("example") OpinionExample example);
+	int updateByExample(@Param("record") Opinion record, @Param("example") OpinionExample example);
 
-    int updateByPrimaryKeySelective(Opinion record);
+	int updateByPrimaryKeySelective(Opinion record);
 
-    int updateByPrimaryKey(Opinion record);
+	int updateByPrimaryKey(Opinion record);
 }

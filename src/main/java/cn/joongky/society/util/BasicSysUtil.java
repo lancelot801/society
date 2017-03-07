@@ -22,8 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cn.joongky.exception.SysException;
 
-
-
 public class BasicSysUtil {
 
 	public static List<Integer> braceStr2List(String str) {

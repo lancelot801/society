@@ -3,43 +3,43 @@ package cn.joongky.society.pojo;
 import java.util.Date;
 
 public class ActivityActor {
-    private String activityActorId;
+	private String activityActorId;
 
-    private String activityId;
+	private String activityId;
 
-    private String actorId;
+	private String actorId;
 
-    private Date joinedTime;
+	private Date joinedTime;
 
-    public String getActivityActorId() {
-        return activityActorId;
-    }
+	public String getActivityActorId() {
+		return activityActorId;
+	}
 
-    public void setActivityActorId(String activityActorId) {
-        this.activityActorId = activityActorId == null ? null : activityActorId.trim();
-    }
+	public void setActivityActorId(String activityActorId) {
+		this.activityActorId = activityActorId == null ? null : activityActorId.trim();
+	}
 
-    public String getActivityId() {
-        return activityId;
-    }
+	public String getActivityId() {
+		return activityId;
+	}
 
-    public void setActivityId(String activityId) {
-        this.activityId = activityId == null ? null : activityId.trim();
-    }
+	public void setActivityId(String activityId) {
+		this.activityId = activityId == null ? null : activityId.trim();
+	}
 
-    public String getActorId() {
-        return actorId;
-    }
+	public String getActorId() {
+		return actorId;
+	}
 
-    public void setActorId(String actorId) {
-        this.actorId = actorId == null ? null : actorId.trim();
-    }
+	public void setActorId(String actorId) {
+		this.actorId = actorId == null ? null : actorId.trim();
+	}
 
-    public Date getJoinedTime() {
-        return joinedTime;
-    }
+	public Date getJoinedTime() {
+		return joinedTime;
+	}
 
-    public void setJoinedTime(Date joinedTime) {
-        this.joinedTime = joinedTime;
-    }
+	public void setJoinedTime(Date joinedTime) {
+		this.joinedTime = joinedTime;
+	}
 }

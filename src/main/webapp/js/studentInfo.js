@@ -1,8 +1,20 @@
 $(function() {
-
+	/*
 	$(document).ready(function() {
-		
-	});
+		var studentId = getParameter('studentId');
+		$.ajax({
+			url : "http://localhost:8080/society_server/student/showInfo?studentId"+ studentId,
+			type : "post",
+			success : function(result) {
+				totalPage = result.resultData.totalPage;
+				totalRecords = result.resultData.totalRecords;
+			},
+			error : function(error) {
+					alert(error.resultData);
+			},
+					async : false
+		});
+	}); */
 
 	$('#studentInfoForm').bootstrapValidator({
 		message : 'This value is not valid',
@@ -33,6 +45,13 @@ $(function() {
 						message : '请输入11位手机号'
 					},
 				}
+			},
+			nickname : {
+				validators : {
+					notEmpty : {
+						message : '昵称不能为空'
+					},
+				}
 			}
 		}
 	});
@@ -44,7 +63,6 @@ $(function() {
 		if (!Validator.isValid()) {
 			return;
 		} 
-		//debugger;
 		$.ajax({
 			url : "http://localhost:8080/society_server/student/updateStudentInfo",
 			type : "post",
@@ -53,7 +71,9 @@ $(function() {
 			processData: false,
 			contentType: false,
 			success : function(data) {
-				alert(data.resultData.nickname);
+				if(data.resultCode == 0){
+					alert("修改成功!");
+				}
 			},
 			error : function(error) {
 				alert(error.responseText);

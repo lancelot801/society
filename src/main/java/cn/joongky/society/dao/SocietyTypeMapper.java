@@ -7,27 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface SocietyTypeMapper {
-    int countByExample(SocietyTypeExample example);
+	int countByExample(SocietyTypeExample example);
 
-    int deleteByExample(SocietyTypeExample example);
+	int deleteByExample(SocietyTypeExample example);
 
-    int deleteByPrimaryKey(String typeId);
+	int deleteByPrimaryKey(String typeId);
 
-    int insert(SocietyType record);
+	int insert(SocietyType record);
 
-    int insertSelective(SocietyType record);
+	int insertSelective(SocietyType record);
 
-    List<SocietyType> selectByExampleWithRowbounds(SocietyTypeExample example, RowBounds rowBounds);
+	List<SocietyType> selectByExampleWithRowbounds(SocietyTypeExample example, RowBounds rowBounds);
 
-    List<SocietyType> selectByExample(SocietyTypeExample example);
+	List<SocietyType> selectByExample(SocietyTypeExample example);
 
-    SocietyType selectByPrimaryKey(String typeId);
+	SocietyType selectByPrimaryKey(String typeId);
 
-    int updateByExampleSelective(@Param("record") SocietyType record, @Param("example") SocietyTypeExample example);
+	int updateByExampleSelective(@Param("record") SocietyType record, @Param("example") SocietyTypeExample example);
 
-    int updateByExample(@Param("record") SocietyType record, @Param("example") SocietyTypeExample example);
+	int updateByExample(@Param("record") SocietyType record, @Param("example") SocietyTypeExample example);
 
-    int updateByPrimaryKeySelective(SocietyType record);
+	int updateByPrimaryKeySelective(SocietyType record);
 
-    int updateByPrimaryKey(SocietyType record);
+	int updateByPrimaryKey(SocietyType record);
 }

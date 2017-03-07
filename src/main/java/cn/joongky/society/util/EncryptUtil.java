@@ -5,9 +5,9 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class EncryptUtil {
-	
+
 	private static final Random RANDOM = new SecureRandom();
-	
+
 	/** * 把inputString加密 */
 	public static String generatePassword(String password, String salt) {
 		return encodeByMD5(password + salt);
@@ -54,6 +54,7 @@ public class EncryptUtil {
 
 	/**
 	 * 对originString进行sha1的加密
+	 * 
 	 * @param originString
 	 * @return
 	 */
@@ -77,11 +78,11 @@ public class EncryptUtil {
 		}
 		return null;
 	}
-	
+
 	public static byte[] getNextSalt() {
 		byte[] salt = new byte[16];
 		RANDOM.nextBytes(salt);
 		return salt;
 	}
-	
+
 }

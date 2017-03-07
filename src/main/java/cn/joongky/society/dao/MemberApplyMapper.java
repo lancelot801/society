@@ -7,27 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface MemberApplyMapper {
-    int countByExample(MemberApplyExample example);
+	int countByExample(MemberApplyExample example);
 
-    int deleteByExample(MemberApplyExample example);
+	int deleteByExample(MemberApplyExample example);
 
-    int deleteByPrimaryKey(String applyId);
+	int deleteByPrimaryKey(String applyId);
 
-    int insert(MemberApply record);
+	int insert(MemberApply record);
 
-    int insertSelective(MemberApply record);
+	int insertSelective(MemberApply record);
 
-    List<MemberApply> selectByExampleWithRowbounds(MemberApplyExample example, RowBounds rowBounds);
+	List<MemberApply> selectByExampleWithRowbounds(MemberApplyExample example, RowBounds rowBounds);
 
-    List<MemberApply> selectByExample(MemberApplyExample example);
+	List<MemberApply> selectByExample(MemberApplyExample example);
 
-    MemberApply selectByPrimaryKey(String applyId);
+	MemberApply selectByPrimaryKey(String applyId);
 
-    int updateByExampleSelective(@Param("record") MemberApply record, @Param("example") MemberApplyExample example);
+	int updateByExampleSelective(@Param("record") MemberApply record, @Param("example") MemberApplyExample example);
 
-    int updateByExample(@Param("record") MemberApply record, @Param("example") MemberApplyExample example);
+	int updateByExample(@Param("record") MemberApply record, @Param("example") MemberApplyExample example);
 
-    int updateByPrimaryKeySelective(MemberApply record);
+	int updateByPrimaryKeySelective(MemberApply record);
 
-    int updateByPrimaryKey(MemberApply record);
+	int updateByPrimaryKey(MemberApply record);
 }

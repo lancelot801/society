@@ -38,49 +38,47 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>个人信息管理</title>
+<title>基本信息</title>
 </head>
 <body>
-	<script type="text/javascript">
-		//init
-		$(function() {
-			$(document)
-					.ready(
-							function() {
-								$
-										.ajax({
-											url : "http://api.flyplus1.com/admin/course/queryToltalPageByCourseStatus?courseStatus="
-													+ courseStatus,
-											type : "get",
-											success : function(result) {
-												totalPage = result.resultData.totalPage;
-												totalRecords = result.resultData.totalRecords;
-											},
-											error : function(error) {
-												alert(error.resultData);
-											},
-											async : false
-										});
-							});
-		});
-	</script>
 	<div class="container-fluid">
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">个人信息管理</h1>
 				<div id="contain" class="row placeholders">
-					<form class="form-horizontal" id="studentInfoForm" enctype="multipart/form-data" action="#">
-						<table class="table table-hover table-bordered">
+					<form class="form-horizontal" id="studentInfoForm"
+						enctype="multipart/form-data" action="#">
+						<table class="table table-hover table-bordered" style="margin-left: auto;margin-right: auto;">
 							<tr>
-								<td>学号</td>
-								<td><input type="text" class="form-control"
-									value="${userLogin.studentId}" id="studentId" name="studentId"
-									readonly="readonly" /></td>
+								<td>
+								<div class="form-group">
+								<label for="studentId"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">学号</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="sname" style="width: 90%" value="${userLogin.studentId}"
+										name="sname" readonly="readonly"/>
+									</div>
+									</div>
+								</td>
+								<td>
+								<div class="form-group">
+								<label for="sname"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">姓名</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="sname" style="width: 90%" value="${studentInfo.sname}"
+										name="sname" placeholder="请输入真实姓名" />
+									</div>
+									</div>
+									</td>
 							</tr>
 							<tr>
-								<td>学院</td>
-								<td><select class="form-control " id="institueId"
+								<td>
+									<div class="form-group">
+									<label for="institueId"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">学院</label>
+									<div class="col-sm-10">
+									<select class="form-control " id="institueId" style="width: 90%"
 									name="institueId">
 										<!--   <c:forEach var="category" items="${categories}">
     								<option value="${category.categoryId}">
@@ -92,11 +90,15 @@
 										<option value="3">经济学院</option>
 										<option value="4">艺术学院</option>
 										<option value="5">体育学院</option>
-								</select></td>
-							</tr>
-							<tr>
-								<td>班级</td>
-								<td><select class="form-control " id="classId"
+									</select>
+									</div>
+									</div>
+								</td>
+								<td><div class="form-group">
+									<label for="classId"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">班级</label>
+									<div class="col-sm-10">
+									<select class="form-control " id="classId" style="width: 90%"
 									name="classId">
 										<!--   <c:forEach var="category" items="${categories}">
     								<option value="${category.categoryId}">
@@ -108,33 +110,60 @@
 										<option value="3">13计2</option>
 										<option value="4">13网单1</option>
 										<option value="5">13网单2</option>
-								</select></td>
+								</select>
+									</div>
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<td>昵称</td>
-								<td><input type="text" class="form-control" id="nickname"
-								  	name="nickname" placeholder="请输入昵称" /></td>
+							<td>
+								<div class="form-group">
+								<label for="nickname"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">昵称</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="nickname" style="width:90%" value="${studentInfo.nickname}"
+										name="nickname" placeholder="请输入昵称" />
+									</div>
+									</div>
+								</td>
+							<td>
+							<div class="form-group">
+							<label for="sex"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">性别</label>
+										<div class="col-sm-10">
+									<select class="form-control " id="sex" style="width: 90%"
+									name="sex">
+								
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+									</div>
+									</div>
+									</td>
 							</tr>
+	
 							<tr>
-								<td>姓名</td>
-								<td><input type="text" class="form-control" id="sname"
-									name="sname" placeholder="请输入真实姓名" /></td>
-							</tr>
-							<tr>
-								<td>性别</td>
-								<td><input type="radio" name="sex" value="男"
-									checked="checked" />男 &nbsp; <input type="radio" name="sex"
-									value="女" />女</td>
-							</tr>
-							<tr>
-								<td>电子邮箱</td>
-								<td><input type="text" class="form-control" id="email"
-									name="email" placeholder="请输入电子邮箱" /></td>
-							</tr>
-							<tr>
-								<td>手机号</td>
-								<td><input type="text" class="form-control" id="mobile"
-									name="mobile" placeholder="请输入手机号" /></td>
+							<td>
+							<div class="form-group">
+								<label for="email"  
+										class="col-sm-2 control-label mylabStyle">邮箱</label>
+									<div class="col-sm-10">
+										<input type="email" style="width:90%" id="email" name="email"
+											class="form-control" placeholder="请输入邮箱" />
+									</div>
+									</div>
+								<!--  <input type="text" class="form-control" id="email"  value="${studentInfo.email}"
+									name="email" placeholder="请输入电子邮箱" /> -->
+							</td>
+								<td><div class="form-group">
+								<label for="mobile"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">手机</label>
+										<div class="col-sm-10">
+								<input type="text" class="form-control" id="mobile" value="${studentInfo.mobile}"
+								    style="width: 90%"
+									name="mobile" placeholder="请输入手机号" />
+									</div>
+									</div></td>
 							</tr>
 							<tr>
 								<td>学生证封面</td>
@@ -147,6 +176,9 @@
 								</td>
 							</tr>
 						</table>
+
+				
+								
 						<button id="updateBtn"
 							class="btn btn-info btn-sm glyphicon glyphicon-plus ">修改信息</button>
 					</form>

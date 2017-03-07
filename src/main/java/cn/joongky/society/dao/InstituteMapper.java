@@ -7,27 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface InstituteMapper {
-    int countByExample(InstituteExample example);
+	int countByExample(InstituteExample example);
 
-    int deleteByExample(InstituteExample example);
+	int deleteByExample(InstituteExample example);
 
-    int deleteByPrimaryKey(String instituteId);
+	int deleteByPrimaryKey(String instituteId);
 
-    int insert(Institute record);
+	int insert(Institute record);
 
-    int insertSelective(Institute record);
+	int insertSelective(Institute record);
 
-    List<Institute> selectByExampleWithRowbounds(InstituteExample example, RowBounds rowBounds);
+	List<Institute> selectByExampleWithRowbounds(InstituteExample example, RowBounds rowBounds);
 
-    List<Institute> selectByExample(InstituteExample example);
+	List<Institute> selectByExample(InstituteExample example);
 
-    Institute selectByPrimaryKey(String instituteId);
+	Institute selectByPrimaryKey(String instituteId);
 
-    int updateByExampleSelective(@Param("record") Institute record, @Param("example") InstituteExample example);
+	int updateByExampleSelective(@Param("record") Institute record, @Param("example") InstituteExample example);
 
-    int updateByExample(@Param("record") Institute record, @Param("example") InstituteExample example);
+	int updateByExample(@Param("record") Institute record, @Param("example") InstituteExample example);
 
-    int updateByPrimaryKeySelective(Institute record);
+	int updateByPrimaryKeySelective(Institute record);
 
-    int updateByPrimaryKey(Institute record);
+	int updateByPrimaryKey(Institute record);
 }

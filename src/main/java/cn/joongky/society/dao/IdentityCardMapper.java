@@ -7,27 +7,27 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 public interface IdentityCardMapper {
-    int countByExample(IdentityCardExample example);
+	int countByExample(IdentityCardExample example);
 
-    int deleteByExample(IdentityCardExample example);
+	int deleteByExample(IdentityCardExample example);
 
-    int deleteByPrimaryKey(String identityCardId);
+	int deleteByPrimaryKey(String identityCardId);
 
-    int insert(IdentityCard record);
+	int insert(IdentityCard record);
 
-    int insertSelective(IdentityCard record);
+	int insertSelective(IdentityCard record);
 
-    List<IdentityCard> selectByExampleWithRowbounds(IdentityCardExample example, RowBounds rowBounds);
+	List<IdentityCard> selectByExampleWithRowbounds(IdentityCardExample example, RowBounds rowBounds);
 
-    List<IdentityCard> selectByExample(IdentityCardExample example);
+	List<IdentityCard> selectByExample(IdentityCardExample example);
 
-    IdentityCard selectByPrimaryKey(String identityCardId);
+	IdentityCard selectByPrimaryKey(String identityCardId);
 
-    int updateByExampleSelective(@Param("record") IdentityCard record, @Param("example") IdentityCardExample example);
+	int updateByExampleSelective(@Param("record") IdentityCard record, @Param("example") IdentityCardExample example);
 
-    int updateByExample(@Param("record") IdentityCard record, @Param("example") IdentityCardExample example);
+	int updateByExample(@Param("record") IdentityCard record, @Param("example") IdentityCardExample example);
 
-    int updateByPrimaryKeySelective(IdentityCard record);
+	int updateByPrimaryKeySelective(IdentityCard record);
 
-    int updateByPrimaryKey(IdentityCard record);
+	int updateByPrimaryKey(IdentityCard record);
 }

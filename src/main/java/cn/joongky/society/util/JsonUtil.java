@@ -41,7 +41,7 @@ public class JsonUtil {
 		}
 		return null;
 	}
-	
+
 	public static Date[] getJsonToDateArray(String jsonString) {
 		JSONArray jsonArray = JSONArray.fromObject(jsonString);
 		Date[] dateArray = new Date[jsonArray.size()];

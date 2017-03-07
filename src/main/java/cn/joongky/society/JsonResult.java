@@ -3,7 +3,7 @@ package cn.joongky.society;
 public class JsonResult {
 	private Integer resultCode;
 	private Object resultData;
-	
+
 	public JsonResult() {
 		super();
 	}

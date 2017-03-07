@@ -28,8 +28,9 @@ public class AuthFilter extends AbstractSociety implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpResp = (HttpServletResponse) response;
-//		httpResp.setHeader("Access-Control-Allow-Origin", PropertyContext.getInstance().getOriginUrl());
-//		httpResp.setHeader("Access-Control-Allow-Credentials", "true");
+		// httpResp.setHeader("Access-Control-Allow-Origin",
+		// PropertyContext.getInstance().getOriginUrl());
+		// httpResp.setHeader("Access-Control-Allow-Credentials", "true");
 
 		String agent = httpReq.getHeader("User-Agent");
 		Boolean isWechatAgent = null;
@@ -40,39 +41,32 @@ public class AuthFilter extends AbstractSociety implements Filter {
 		}
 		UserLogin ul = (UserLogin) httpReq.getSession().getAttribute("userLogin");
 		logger.info("用户请求的URL: " + httpReq.getRequestURI());
-		if(httpReq.getRequestURI().contains("/admin"))
-		{
-			if(ul!=null && ul.getRole().equals("admin")){
-				
-			}else if(ul!=null){
+		if (httpReq.getRequestURI().contains("/admin")) {
+			if (ul != null && ul.getRole().equals("admin")) {
+
+			} else if (ul != null) {
 				throw new AdminException("您不是管理员,无访问该接口权限");
-			}else{
+			} else {
 				throw new AdminException("尚未登录,无访问权限");
 			}
-		}else if(isWechatAgent)
-		{
-			
-		}else if(httpReq.getRequestURI().contains("/student"))
-		{
-			if(ul==null)
-			{
+		} else if (isWechatAgent) {
+
+		} else if (httpReq.getRequestURI().contains("/student")) {
+			if (ul == null) {
 				throw new AdminException("尚未登录,无访问权限");
 			}
 		}
 		/*
-		else if (httpReq.getRequestURI().contains("/admin")) {
-			if(ul!=null && ul.getRole().equals("admin")){
-				
-			}else if(ul!=null){
-				throw new AdminException("您不是管理员,无访问该接口权限");
-			}else{
-				throw new AdminException("尚未登录,无访问权限");
-			}
-	               
-		}else if(isWechatAgent)
-		{
-			
-		}*/
+		 * else if (httpReq.getRequestURI().contains("/admin")) { if(ul!=null &&
+		 * ul.getRole().equals("admin")){
+		 * 
+		 * }else if(ul!=null){ throw new AdminException("您不是管理员,无访问该接口权限");
+		 * }else{ throw new AdminException("尚未登录,无访问权限"); }
+		 * 
+		 * }else if(isWechatAgent) {
+		 * 
+		 * }
+		 */
 		chain.doFilter(httpReq, httpResp);
 	}
 

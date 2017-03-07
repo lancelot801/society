@@ -18,10 +18,9 @@ public class ErrorController {
 	public String error2(ModelMap model) {
 		return "error/500";
 	}
-	
+
 	@RequestMapping(value = "/authority", method = RequestMethod.GET)
 	public String adminException(ModelMap model) {
 		return "error/authority";
 	}
 }
-

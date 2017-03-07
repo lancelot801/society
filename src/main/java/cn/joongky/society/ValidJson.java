@@ -10,5 +10,5 @@ public class ValidJson {
 	public void setValid(Object valid) {
 		this.valid = valid;
 	}
-	
+
 }

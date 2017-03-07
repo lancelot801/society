@@ -87,11 +87,11 @@ public class UserLoginServiceImpl implements UserLoginService {
 		UserLoginExample example = new UserLoginExample();
 		example.or().andStudentIdEqualTo(studentId);
 		UserLogin ul = userLoginMapper.selectByExample(example).get(0);
-	    ul.setEmail(email);
-	    ul.setMobile(mobile);
-	    ul.setNickname(nickname);
-	    ul.setUpdatedTime(now);
-	    userLoginMapper.updateByPrimaryKeySelective(ul);
-	    return userLoginMapper.selectByExample(example).get(0);
+		ul.setEmail(email);
+		ul.setMobile(mobile);
+		ul.setNickname(nickname);
+		ul.setUpdatedTime(now);
+		userLoginMapper.updateByPrimaryKeySelective(ul);
+		return userLoginMapper.selectByExample(example).get(0);
 	}
 }
