@@ -5,6 +5,8 @@
     <id column="identity_card_id" property="identityCardId" jdbcType="VARCHAR" />
     <result column="student_id" property="studentId" jdbcType="VARCHAR" />
     <result column="card_url" property="cardUrl" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    identity_card_id, student_id, card_url
+    identity_card_id, student_id, card_url, created_time, updated_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.IdentityCardExample" >
     select
@@ -98,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.joongky.society.pojo.IdentityCard" >
-    insert into identity_card (identity_card_id, student_id, card_url
-      )
-    values (#{identityCardId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, #{cardUrl,jdbcType=VARCHAR}
-      )
+    insert into identity_card (identity_card_id, student_id, card_url, 
+      created_time, updated_time)
+    values (#{identityCardId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, #{cardUrl,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.joongky.society.pojo.IdentityCard" >
     insert into identity_card
@@ -115,6 +117,12 @@
       <if test="cardUrl != null" >
         card_url,
       </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="identityCardId != null" >
@@ -125,6 +133,12 @@
       </if>
       <if test="cardUrl != null" >
         #{cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -146,6 +160,12 @@
       <if test="record.cardUrl != null" >
         card_url = #{record.cardUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +175,9 @@
     update identity_card
     set identity_card_id = #{record.identityCardId,jdbcType=VARCHAR},
       student_id = #{record.studentId,jdbcType=VARCHAR},
-      card_url = #{record.cardUrl,jdbcType=VARCHAR}
+      card_url = #{record.cardUrl,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +191,21 @@
       <if test="cardUrl != null" >
         card_url = #{cardUrl,jdbcType=VARCHAR},
       </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where identity_card_id = #{identityCardId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.joongky.society.pojo.IdentityCard" >
     update identity_card
     set student_id = #{studentId,jdbcType=VARCHAR},
-      card_url = #{cardUrl,jdbcType=VARCHAR}
+      card_url = #{cardUrl,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where identity_card_id = #{identityCardId,jdbcType=VARCHAR}
   </update>
   <select resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.IdentityCardExample" id="selectByExampleWithRowbounds" >

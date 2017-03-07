@@ -40,21 +40,21 @@
 		</javaClientGenerator>
 
 	    
-	    <!-- <table tableName="activity_actor" domainObjectName="ActivityActor">
-		</table> -->  
+	     <table tableName="activity_actor" domainObjectName="ActivityActor">
+		</table> 
 		<!-- <table tableName="activity_apply" domainObjectName="ActivityApply">
 		</table> --> 
         <!-- <table tableName="classes" domainObjectName="Classes">
         </table> -->
         
-		<!-- <table tableName="comment" domainObjectName="Comment">
-		</table> --> 
+		<!--  <table tableName="comment" domainObjectName="Comment">
+		</table> -->
 
 		<!-- <table tableName="feedback" domainObjectName="Feedback">
 		</table> --> 
 
 		<!-- <table tableName="identity_card" domainObjectName="IdentityCard">
-		</table> -->
+		</table>  --> 
 
 		<!-- <table tableName="institute" domainObjectName="Institute">
 		</table> -->
@@ -80,13 +80,13 @@
 		<!-- <table tableName="society_type" domainObjectName="SocietyType">
 		</table> -->
 		
-		<!-- <table tableName="student_info" domainObjectName="StudentInfo">
-		</table>  -->
+		<!--  <table tableName="student_info" domainObjectName="StudentInfo">
+		</table> -->
 		
 		<!-- <table tableName="user_login" domainObjectName="UserLogin">
 		</table>  -->
 		
-		<table tableName=""></table>  
+		<!--  <table tableName=""></table> --> 
 
 	</context>
 </generatorConfiguration>

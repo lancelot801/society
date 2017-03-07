@@ -10,7 +10,6 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
-    <result column="identity_id" property="identityId" jdbcType="VARCHAR" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
@@ -74,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    student_id, institute_id, class_id, sname, sex, mobile, email, img_url, identity_id, 
-    created_time, updated_time, nickname
+    student_id, institute_id, class_id, sname, sex, mobile, email, img_url, created_time, 
+    updated_time, nickname
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.StudentInfoExample" >
     select
@@ -110,14 +109,12 @@
   <insert id="insert" parameterType="cn.joongky.society.pojo.StudentInfo" >
     insert into student_info (student_id, institute_id, class_id, 
       sname, sex, mobile, 
-      email, img_url, identity_id, 
-      created_time, updated_time, nickname
-      )
+      email, img_url, created_time, 
+      updated_time, nickname)
     values (#{studentId,jdbcType=VARCHAR}, #{instituteId,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
       #{sname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, #{identityId,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP}, #{nickname,jdbcType=VARCHAR}
-      )
+      #{email,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedTime,jdbcType=TIMESTAMP}, #{nickname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.joongky.society.pojo.StudentInfo" >
     insert into student_info
@@ -145,9 +142,6 @@
       </if>
       <if test="imgUrl != null" >
         img_url,
-      </if>
-      <if test="identityId != null" >
-        identity_id,
       </if>
       <if test="createdTime != null" >
         created_time,
@@ -183,9 +177,6 @@
       </if>
       <if test="imgUrl != null" >
         #{imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="identityId != null" >
-        #{identityId,jdbcType=VARCHAR},
       </if>
       <if test="createdTime != null" >
         #{createdTime,jdbcType=TIMESTAMP},
@@ -231,9 +222,6 @@
       <if test="record.imgUrl != null" >
         img_url = #{record.imgUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.identityId != null" >
-        identity_id = #{record.identityId,jdbcType=VARCHAR},
-      </if>
       <if test="record.createdTime != null" >
         created_time = #{record.createdTime,jdbcType=TIMESTAMP},
       </if>
@@ -258,7 +246,6 @@
       mobile = #{record.mobile,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       img_url = #{record.imgUrl,jdbcType=VARCHAR},
-      identity_id = #{record.identityId,jdbcType=VARCHAR},
       created_time = #{record.createdTime,jdbcType=TIMESTAMP},
       updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
       nickname = #{record.nickname,jdbcType=VARCHAR}
@@ -290,9 +277,6 @@
       <if test="imgUrl != null" >
         img_url = #{imgUrl,jdbcType=VARCHAR},
       </if>
-      <if test="identityId != null" >
-        identity_id = #{identityId,jdbcType=VARCHAR},
-      </if>
       <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
       </if>
@@ -314,7 +298,6 @@
       mobile = #{mobile,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       img_url = #{imgUrl,jdbcType=VARCHAR},
-      identity_id = #{identityId,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       updated_time = #{updatedTime,jdbcType=TIMESTAMP},
       nickname = #{nickname,jdbcType=VARCHAR}

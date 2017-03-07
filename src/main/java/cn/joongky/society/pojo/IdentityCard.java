@@ -1,33 +1,55 @@
 package cn.joongky.society.pojo;
 
+import java.util.Date;
+
 public class IdentityCard {
-	private String identityCardId;
+    private String identityCardId;
 
-	private String studentId;
+    private String studentId;
 
-	private String cardUrl;
+    private String cardUrl;
 
-	public String getIdentityCardId() {
-		return identityCardId;
-	}
+    private Date createdTime;
 
-	public void setIdentityCardId(String identityCardId) {
-		this.identityCardId = identityCardId == null ? null : identityCardId.trim();
-	}
+    private Date updatedTime;
 
-	public String getStudentId() {
-		return studentId;
-	}
+    public String getIdentityCardId() {
+        return identityCardId;
+    }
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId == null ? null : studentId.trim();
-	}
+    public void setIdentityCardId(String identityCardId) {
+        this.identityCardId = identityCardId == null ? null : identityCardId.trim();
+    }
 
-	public String getCardUrl() {
-		return cardUrl;
-	}
+    public String getStudentId() {
+        return studentId;
+    }
 
-	public void setCardUrl(String cardUrl) {
-		this.cardUrl = cardUrl == null ? null : cardUrl.trim();
-	}
+    public void setStudentId(String studentId) {
+        this.studentId = studentId == null ? null : studentId.trim();
+    }
+
+    public String getCardUrl() {
+        return cardUrl;
+    }
+
+    public void setCardUrl(String cardUrl) {
+        this.cardUrl = cardUrl == null ? null : cardUrl.trim();
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
+    }
 }
