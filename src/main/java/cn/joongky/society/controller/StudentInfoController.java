@@ -36,15 +36,26 @@ public class StudentInfoController {
 
 	@ResponseBody
 	@RequestMapping(value = "/updateStudentInfo", method = RequestMethod.POST)
-	public JsonResult updateStudentInfo(HttpSession session, @RequestParam String studentId, String institueId,
+	public JsonResult updateStudentInfo(HttpSession session, @RequestParam String studentId, String instituteId,
 			String classId, String sname, String sex, String nickname, String email, String mobile,
 			MultipartFile identityCard1, MultipartFile identityCard2) {
 		JsonResult jr = new JsonResult();
 		// String identityId = BasicSysUtil.getUUID();
 		// 修改个人信息提示补充userlogin
-		StudentInfo si = sInfoService.updateStudentInfo(studentId, institueId, classId, sname, sex, nickname, email,
+		StudentInfo si = sInfoService.updateStudentInfo(studentId, instituteId, classId, sname, sex, nickname, email,
 				mobile);
 		ulService.addOtherInfo(studentId, nickname, email, mobile);
+		jr.setResultCode(0);
+		jr.setResultData(si);
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getInfo", method = RequestMethod.POST)
+	public JsonResult getInfo(@RequestParam String studentId)
+	{
+		JsonResult jr = new JsonResult();
+		StudentInfo si = sInfoService.getInfo(studentId);
 		jr.setResultCode(0);
 		jr.setResultData(si);
 		return jr;

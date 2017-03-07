@@ -56,8 +56,8 @@
 								<label for="studentId"  style="padding-left:10px"
 										class="col-sm-2 control-label mylabStyle">学号</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="sname" style="width: 90%" value="${userLogin.studentId}"
-										name="sname" readonly="readonly"/>
+										<input type="text" class="form-control" id="studentId" style="width: 90%" value="${userLogin.studentId}"
+										name="studentId" readonly="readonly"/>
 									</div>
 									</div>
 								</td>
@@ -75,11 +75,11 @@
 							<tr>
 								<td>
 									<div class="form-group">
-									<label for="institueId"  style="padding-left:10px"
+									<label for="instituteId"  style="padding-left:10px"
 										class="col-sm-2 control-label mylabStyle">学院</label>
 									<div class="col-sm-10">
-									<select class="form-control " id="institueId" style="width: 90%"
-									name="institueId">
+									<select class="form-control " id="instituteId" style="width: 90%" value="${studentInfo.instituteId}"
+									name="instituteId">
 										<!--   <c:forEach var="category" items="${categories}">
     								<option value="${category.categoryId}">
     								${category.categoryName}</option>
@@ -132,8 +132,7 @@
 										class="col-sm-2 control-label mylabStyle">性别</label>
 										<div class="col-sm-10">
 									<select class="form-control " id="sex" style="width: 90%"
-									name="sex">
-								
+											name="sex" >
 										<option value="男">男</option>
 										<option value="女">女</option>
 									</select>
@@ -148,7 +147,7 @@
 								<label for="email"  
 										class="col-sm-2 control-label mylabStyle">邮箱</label>
 									<div class="col-sm-10">
-										<input type="email" style="width:90%" id="email" name="email"
+										<input type="email" style="width:90%" id="email" name="email" value="${studentInfo.email}"
 											class="form-control" placeholder="请输入邮箱" />
 									</div>
 									</div>
