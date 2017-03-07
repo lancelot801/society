@@ -26,9 +26,30 @@ public class StudentInfoServiceImpl implements StudentInfoService{
 			sinfoMapper.insertSelective(sinfo);
 			return sinfoMapper.selectByPrimaryKey(studentId);
 		}
-
+		
+		//根据学生编号获取学生基本信息
 		@Override
 		public StudentInfo getInfo(String studentId) {
+			return sinfoMapper.selectByPrimaryKey(studentId);
+		}
+		
+		//修改学生信息
+		public StudentInfo updateStudentInfo(String studentId,String institueId,String classId, 
+	 			String sname,String sex,String nickname,String email,String mobile){
+			StudentInfo si = sinfoMapper.selectByPrimaryKey(studentId);
+			Date now = new Date();
+			
+			si.setInstituteId(institueId);
+			si.setClassId(classId);
+			si.setSname(sname);
+			si.setSex(sex);
+			si.setNickname(nickname);
+			si.setEmail(email);
+			si.setMobile(mobile);
+			si.setUpdatedTime(now);
+			
+			sinfoMapper.updateByPrimaryKeySelective(si);
+			
 			return sinfoMapper.selectByPrimaryKey(studentId);
 		}
 }

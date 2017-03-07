@@ -37,7 +37,7 @@
 				<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
 						<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> 社团类别管理</a></li>
-						<li><a href="<%=request.getContextPath()%>/student/showInfo"><i class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
+						<li><a href="<%=request.getContextPath()%>/student/showInfo?studentId=${userLogin.studentId}"><i class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 日志查看</a></li>
 				</ul></li>
 			<li><a href="./grid.html"> <i

@@ -23,6 +23,8 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/studentInfo.js"></script>
 <script type="text/javascript"
+	src="<%=request.getContextPath()%>/bootstrap/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -34,6 +36,8 @@
 	src="<%=request.getContextPath()%>/js/kkpager.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
 <title>个人信息管理</title>
 </head>
 <body>
@@ -64,15 +68,9 @@
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">
-					<c:if test="${not empty courseStauts}">
-						${courseStauts}
-					</c:if>
-					个人信息管理
-				</h1>
+				<h1 class="page-header">个人信息管理</h1>
 				<div id="contain" class="row placeholders">
-					<form role="form" class="form-horizontal" id="studentInfoForm"
-						action="#">
+					<form class="form-horizontal" id="studentInfoForm" enctype="multipart/form-data" action="#">
 						<table class="table table-hover table-bordered">
 							<tr>
 								<td>学号</td>
@@ -82,24 +80,45 @@
 							</tr>
 							<tr>
 								<td>学院</td>
-								<td><select class="form-control " id="institue"
-									name="institue">
-									 <!--   <c:forEach var="category" items="${categories}">
+								<td><select class="form-control " id="institueId"
+									name="institueId">
+										<!--   <c:forEach var="category" items="${categories}">
     								<option value="${category.categoryId}">
     								${category.categoryName}</option>
     								</c:forEach>  -->
 										<option value="">--请选择学院--</option>
-										<option value="待审核">待审核</option>
-										<option value="待发布">待发布</option>
-										<option value="报名中">报名中</option>
-										<option value="开课中">开课中</option>
-										<option value="已结课">已结束</option>
+										<option value="1">信电学院</option>
+										<option value="2">人文学院</option>
+										<option value="3">经济学院</option>
+										<option value="4">艺术学院</option>
+										<option value="5">体育学院</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td>班级</td>
+								<td><select class="form-control " id="classId"
+									name="classId">
+										<!--   <c:forEach var="category" items="${categories}">
+    								<option value="${category.categoryId}">
+    								${category.categoryName}</option>
+    								</c:forEach>  -->
+										<option value="">--请选择班级--</option>
+										<option value="1">13计卓</option>
+										<option value="2">13计1</option>
+										<option value="3">13计2</option>
+										<option value="4">13网单1</option>
+										<option value="5">13网单2</option>
 								</select></td>
 							</tr>
 							<tr>
 								<td>昵称</td>
 								<td><input type="text" class="form-control" id="nickname"
-									name="nickname" placeholder="请输入昵称" /></td>
+								  	name="nickname" placeholder="请输入昵称" /></td>
+							</tr>
+							<tr>
+								<td>姓名</td>
+								<td><input type="text" class="form-control" id="sname"
+									name="sname" placeholder="请输入真实姓名" /></td>
 							</tr>
 							<tr>
 								<td>性别</td>
@@ -118,13 +137,18 @@
 									name="mobile" placeholder="请输入手机号" /></td>
 							</tr>
 							<tr>
-								<td>详细地址</td>
-								<td><textarea class="form-control" placeholder="请输入用户的详细地址"></textarea>
+								<td>学生证封面</td>
+								<td><input type="file" class="file" name="identityCard1">
+								</td>
+							</tr>
+							<tr>
+								<td>学生证内容</td>
+								<td><input type="file" class="file" name="identityCard2">
 								</td>
 							</tr>
 						</table>
-						<button
-							class="btn btn-info btn-sm glyphicon glyphicon-plus updateBtn">修改信息</button>
+						<button id="updateBtn"
+							class="btn btn-info btn-sm glyphicon glyphicon-plus ">修改信息</button>
 					</form>
 				</div>
 			</div>

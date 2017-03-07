@@ -173,7 +173,7 @@
 				"title": "城南校区",
 				"url": "http://www.xzit.edu.cn/"
 			}, {
-				"img": "img/student.jpg",
+				"img": "img/stu.jpg",
 				"title": "社团学生",
 				"url": "http://www.xzit.edu.cn//"
 			}, ]);
