@@ -1,5 +1,8 @@
 package cn.joongky.society.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -14,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.joongky.society.JsonResult;
 import cn.joongky.society.pojo.StudentInfo;
+import cn.joongky.society.service.IdentityCardService;
 import cn.joongky.society.service.StudentInfoService;
 import cn.joongky.society.service.UserLoginService;
+import cn.joongky.society.util.ConfigUtil;
 
 @Controller
 @RequestMapping("/student")
@@ -24,7 +29,8 @@ public class StudentInfoController {
 	private StudentInfoService sInfoService;
 	@Inject
 	private UserLoginService ulService;
-
+	@Inject
+	private IdentityCardService idCardService;
 	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
 	public ModelAndView showInfo(Model model, @RequestParam String studentId) {
 		StudentInfo si = sInfoService.getInfo(studentId);
@@ -45,6 +51,46 @@ public class StudentInfoController {
 		StudentInfo si = sInfoService.updateStudentInfo(studentId, instituteId, classId, sname, sex, nickname, email,
 				mobile);
 		ulService.addOtherInfo(studentId, nickname, email, mobile);
+		String ImageUrl1 = "";
+		String ImageUrl2 = "";
+		if (identityCard1 != null) {
+			// 图片存储路径
+			String filePath = ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard";
+			long timeStamp = System.currentTimeMillis();
+			File file = new File(filePath);
+			// 如果文件夹不存在创建文件夹
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			try {
+				// 存入文件
+				identityCard1.transferTo(
+						new File(filePath + "/" + timeStamp + identityCard1.getOriginalFilename()));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+			ImageUrl1 =  ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
+			idCardService.addCard(ImageUrl1, studentId);
+		}
+		if (identityCard2 != null) {
+			// 图片存储路径
+			String filePath = ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard";
+			long timeStamp = System.currentTimeMillis();
+			File file = new File(filePath);
+			// 如果文件夹不存在创建文件夹
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			try {
+				// 存入文件
+				identityCard2.transferTo(
+						new File(filePath + "/" + timeStamp + identityCard2.getOriginalFilename()));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+			ImageUrl2 =  ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
+			idCardService.addCard(ImageUrl2, studentId);
+		}
 		jr.setResultCode(0);
 		jr.setResultData(si);
 		return jr;
