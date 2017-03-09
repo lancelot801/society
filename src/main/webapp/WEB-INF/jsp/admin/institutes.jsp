@@ -19,7 +19,9 @@
 <script src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
 <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/activity.js"></script>
+	src="<%=request.getContextPath()%>/bootstrap/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/institutes.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
@@ -30,87 +32,11 @@
 	href="<%=request.getContextPath()%>/css/society.css">
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/kkpager.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
-<title>后台主页</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
+<title>学院管理</title>
 </head>
 <body>
-<script type="text/javascript">
-function getParameter(name) { 
-	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); 
-	var r = window.location.search.substr(1).match(reg); 
-	if (r!=null) return unescape(r[2]); return null;
-}
-
-function isContains(str, substr) {
-    return new RegExp(substr).test(str);
-}
-//init
-$(function(){
-	var totalPage ;
-	var totalRecords ;
-	//获取当前的请求链接
-	var url = window.location.href;
-	var uri ;
-	var courseStatus = getParameter('courseStauts');
-	//获取uri
-	if(url.indexOf("Status")>0){
-		if(url.indexOf("&")>0){
-			uri = url.substring(url.lastIndexOf("/")+1,url.indexOf("&"));
-		}else{
-			uri = url.substring(url.lastIndexOf("/")+1);
-		}	
-	}else{
-		if(url.indexOf("?")>0)
-		{
-		  uri = url.substring(url.lastIndexOf("/")+1,url.indexOf("?"));
-		}else{
-		  uri = url.substring(url.lastIndexOf("/")+1);	
-		}
-	}
-
-	$(document).ready(function() {
-		/*
-		$.ajax({
-			url : "http://api.flyplus1.com/admin/course/queryToltalPageByCourseStatus?courseStatus="+courseStatus,
-			type : "get",
-			success : function(result) {
-				totalPage = result.resultData.totalPage;
-				totalRecords = result.resultData.totalRecords;
-			},
-			error : function(error) {
-				alert(error.resultData);
-			},
-			async : false
-		});
-		var pageNo = getParameter('pNo');
-		if(!pageNo){
-			pageNo = 1;
-		}	
-		//生成分页
-		//有些参数是可选的，比如lang，若不传有默认值
-		kkpager.generPageHtml({
-			pno : pageNo,
-			//总页码
-			total : totalPage,
-			//总数据条数
-			totalRecords : totalRecords,
-			//链接前部
-			hrefFormer : uri,
-			//链接尾部
-			//hrefLatter : '.html',
-			getLink : function(n){
-				if(uri.indexOf("Status")>0)
-				{
-					return this.hrefFormer + this.hrefLatter + "&pNo="+n
-				}else{
-					return this.hrefFormer + this.hrefLatter + "?pNo="+n;
-				}
-			}
-		});
-		*/
-	});
-	
-});
-</script>
 	<div class="container-fluid">
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
@@ -119,36 +45,23 @@ $(function(){
 					<c:if test="${not empty courseStauts}">
 						${courseStauts}
 					</c:if>
-						校园活动
+						学院管理
 				</h1>
-				<button class="btn btn-info btn-sm glyphicon glyphicon-plus addBtn">添加活动</button>
+				<button class="btn btn-info btn-sm glyphicon glyphicon-plus addBtn">添加学院</button>
 				<div id="contain" class="row placeholders">
 					<table class='table table-responsive table-striped col-xs-12'>
 						<thead>
 							<tr>
-								<th>课程图片</th>
-								<th>课程名称</th>
-								<th>课程描述</th>
-								<th>价格</th>
-								<th>课程状态</th>
-								<th>开始时间</th>
-								<th>课程人员</th>
+								<th>学院名称</th>
 								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${courses}" var="course">
+							<c:forEach items="${institutes}" var="institute">
 								<tr>
-									<td style="display: none;">${course.courseId }</td>
-									<td><img style="width:50px" alt="课程图片" src="http://img.flyplus1.com/${course.imgUrl }"></td>
-									<td>${course.courseName }</td>
-									<td>${course.description}</td>
-									<td>${course.price}</td>
-									<td>${course.courseStatus }</td>
-									<td><fmt:formatDate value="${course.startTime}"
-											pattern="yyyy年MM月dd日" /></td>
-									<td><a href="<%=request.getContextPath()%>/admin/courseUser/queryStudent?courseId=${course.courseId}">课程学生</a>/
-									<a href="<%=request.getContextPath()%>/admin/courseTeacher/queryTeacher?courseId=${course.courseId}">课程老师</a></td>
+								
+									<td style="display: none;">${institute.instituteId }</td>
+									<td>${institute.instituteName}</td>
 									<td><label>
 											<button
 												class="btn btn-info btn-sm glyphicon glyphicon-search queryBtn">查看详情</button>
@@ -177,7 +90,7 @@ $(function(){
 										<label>
 											<a
 												class="btn btn-info btn-sm glyphicon glyphicon-leaf lessonBtn"
-												href="<%=request.getContextPath()%>/admin/lesson/listByCourseId?courseId=${course.courseId }">具体课堂</a>
+												href="<%=request.getContextPath()%>/admin/lesson/listByCourseId?courseId=${course.courseId }">目前班级</a>
 									</label>
 										</td>	
 								</tr>
