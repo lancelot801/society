@@ -13,6 +13,8 @@ public class IdentityCard {
 
     private Date updatedTime;
 
+    private String type;
+
     public String getIdentityCardId() {
         return identityCardId;
     }
@@ -51,5 +53,13 @@ public class IdentityCard {
 
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 }
