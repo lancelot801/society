@@ -40,10 +40,10 @@
 		</javaClientGenerator>
 
 	    
-	     <table tableName="activity_actor" domainObjectName="ActivityActor">
-		</table>  
-		<!-- <table tableName="activity_apply" domainObjectName="ActivityApply">
-		</table> --> 
+	   	<!--  <table tableName="activity_actor" domainObjectName="ActivityActor">
+		</table>  -->  
+		 <table tableName="activity_apply" domainObjectName="ActivityApply">
+		</table> 
         <!-- <table tableName="classes" domainObjectName="Classes">
         </table> -->
         
