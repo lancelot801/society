@@ -18,5 +18,13 @@ public interface InstituteService {
 	  //分页查找所有学院
 	  List<Institute> findWithRowBound(Integer page);
 	  
+	  //根据id删除课程
+	  int deleteById(String instituteId);
+	  
+	  //根据id查找学院信息
+	  Institute findById(String instituteId);
+	  
+	  //根据id修改学院信息
+	  Institute updateById(String instituteId,String instituteName);
 	  
 }

@@ -74,7 +74,7 @@ $(function() {
 	});
 });
 	
-	$('#studentInfoForm').bootstrapValidator({
+	$('#addInstituteForm').bootstrapValidator({
 		message : 'This value is not valid',
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
@@ -82,55 +82,55 @@ $(function() {
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields : {
-			email : {
+			instituteName : {
 				validators : {
 					notEmpty : {
-						message : '邮箱不能为空'
-					},
-				    emailAddress: {
-                        message: '邮箱地址格式有误'
-                    }
-				}
-			},
-			mobile : {
-				validators : {
-					notEmpty : {
-						message : '手机号不能为空'
-					},
-					stringLength : {
-						min : 11,
-						max : 11,
-						message : '请输入11位手机号'
-					},
-				}
-			},
-			nickname : {
-				validators : {
-					notEmpty : {
-						message : '昵称不能为空'
+						message : '学院名称不能为空'
 					},
 				}
 			}
 		}
 	});
 	
-	//修改按钮
-	$("#updateBtn").click(function() {
-		var Validator = $('#studentInfoForm').data('bootstrapValidator');
+	$('#updateInstitute').bootstrapValidator({
+		message : 'This value is not valid',
+		feedbackIcons : {
+			valid : 'glyphicon glyphicon-ok',
+			invalid : 'glyphicon glyphicon-remove',
+			validating : 'glyphicon glyphicon-refresh'
+		},
+		fields : {
+			instituteName : {
+				validators : {
+					notEmpty : {
+						message : '学院名称不能为空'
+					},
+				}
+			}
+		}
+	});
+	
+	$("button.addBtn").click(function() {
+		$("#addInstituteModal").modal().draggable({
+			handle : ".modal-header",
+			cursor : 'move',
+			refreshPositions : false
+		});
+	});
+	//添加学院信息
+	$("#addInstituteBtn").click(function() {
+		var Validator = $('#addInstituteForm').data('bootstrapValidator');
 		Validator.validate();
 		if (!Validator.isValid()) {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/student/updateStudentInfo",
+			url : "http://localhost:8080/society_server/admin/institute/add",
 			type : "post",
-			data:  new FormData($('#studentInfoForm')[0]),
-			cache: false,
-			processData: false,
-			contentType: false,
+			data:  $('#addInstituteForm').serialize(),
 			success : function(data) {
 				if(data.resultCode == 0){
-					alert("修改成功!");
+					alert("添加成功!");
 					window.location.href=window.location.href; 
 					window.location.reload; 
 				}
@@ -141,4 +141,73 @@ $(function() {
 			async : false
 		});
 	});  
+	
+	$("button.deleteBtn").click(function() {
+		if (confirm('确定要删除此信息吗？')) {
+			var id = $(this).parents("tr").find("td").eq(0).html();
+			$.ajax({
+				url : "http://localhost:8080/society_server/admin/institute/deleteById?instituteId=" + id,
+				type : "post",
+				success : function(result) {
+					if (result.resultCode == 0) {
+						alert("删除成功！");
+						window.location.href=window.location.href; 
+						window.location.reload; 
+					} else {
+						alert("非常抱歉 ," + result.resultData);
+					}
+				},
+				error : function(error) {
+					alert(error.resultData);
+				},
+				async : false
+			});
+			return true;
+		} else {
+			return false;
+		}
+	});
+	
+	$("button.queryBtn").click(function() {
+		$("#instituteModal").modal().draggable({
+			handle : ".modal-header",
+			cursor : 'move',
+			refreshPositions : false
+		});
+		var id = $(this).parents("tr").find("td").eq(0).html();
+		$.ajax({
+			url : "http://localhost:8080/society_server/admin/institute/findById?instituteId=" + id,
+			type : "get",
+			success : function(data) {
+				$("#instituteId").val(data.resultData.instituteId);
+				$("#instituteName2").val(data.resultData.instituteName);
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
+	});
+	//修改学院信息
+	$("#submitBtn").click(function() {
+		var Validator = $('#updateInstitute').data('bootstrapValidator');
+		Validator.validate();
+		if (!Validator.isValid()) {
+			return;
+		} 
+		$.ajax({
+			url : "http://localhost:8080/society_server/admin/institute/updateById",
+			type : "post",
+			data:  $('#updateInstitute').serialize(),
+			success : function(data) {
+				alert("修改成功!");
+				window.location.href=window.location.href; 
+				window.location.reload; 
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		}); 
+	});
 });

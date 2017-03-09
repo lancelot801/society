@@ -20,21 +20,20 @@ public class AdminInstituteController {
 	private InstituteService instituteService;
 
 	@RequestMapping(value = "/manage", method = RequestMethod.GET)
-	public ModelAndView manage(Model model,Integer pNo){
-		//List<Institute> categories = instituteService.findAll();
-		if(pNo!=null)
-		{
-			pNo = pNo -1;
-			if(pNo<0)
+	public ModelAndView manage(Model model, Integer pNo) {
+		// List<Institute> categories = instituteService.findAll();
+		if (pNo != null) {
+			pNo = pNo - 1;
+			if (pNo < 0)
 				pNo = 0;
 			model.addAttribute("institutes", instituteService.findWithRowBound(pNo));
-		}else{
+		} else {
 			model.addAttribute("institutes", instituteService.findWithRowBound(0));
 		}
-		//model.addAttribute("categories",categories);
+		// model.addAttribute("categories",categories);
 		return new ModelAndView("/admin/institutes");
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public JsonResult add(@RequestParam String instituteName) {
@@ -49,13 +48,40 @@ public class AdminInstituteController {
 		}
 		return jr;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/listToltalPage", method = RequestMethod.GET)
-	public JsonResult listToltalPage(){
+	public JsonResult listToltalPage() {
 		JsonResult jr = new JsonResult();
 		jr.setResultCode(0);
 		jr.setResultData(instituteService.listToltalPage());
-		return jr ;
+		return jr;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/deleteById", method = RequestMethod.POST)
+	public JsonResult deleteById(@RequestParam String instituteId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(instituteService.deleteById(instituteId));
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/findById", method = RequestMethod.GET)
+	public JsonResult findById(@RequestParam String instituteId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(instituteService.findById(instituteId));
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateById", method = RequestMethod.POST)
+	public JsonResult findById(@RequestParam String instituteId,@RequestParam String instituteName) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(instituteService.updateById(instituteId, instituteName));
+		return jr;
 	}
 }

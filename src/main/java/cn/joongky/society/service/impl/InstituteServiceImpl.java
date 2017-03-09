@@ -67,5 +67,20 @@ public class InstituteServiceImpl implements InstituteService {
 		List<Institute> inList = instituteMapper.selectByExampleWithRowbounds(example, rowBounds);
 		return inList;
 	}
+	@Override
+	public int deleteById(String instituteId) {
+		return instituteMapper.deleteByPrimaryKey(instituteId);
+	}
+	@Override
+	public Institute findById(String instituteId) {
+		return instituteMapper.selectByPrimaryKey(instituteId);
+	}
+	@Override
+	public Institute updateById(String instituteId, String instituteName) {
+		Institute ins  = instituteMapper.selectByPrimaryKey(instituteId);
+		ins.setInstituteName(instituteName);
+		instituteMapper.updateByPrimaryKeySelective(ins);
+		return instituteMapper.selectByPrimaryKey(instituteId);
+	}
 	
 }
