@@ -52,9 +52,9 @@ public class AuthFilter extends AbstractSociety implements Filter {
 		} else if (isWechatAgent) {
 
 		} else if (httpReq.getRequestURI().contains("/student")) {
-			if (ul == null) {
-				throw new AdminException("尚未登录,无访问权限");
-			}
+//			if (ul == null) {
+//				throw new AdminException("尚未登录,无访问权限");
+//			}
 		}
 		/*
 		 * else if (httpReq.getRequestURI().contains("/admin")) { if(ul!=null &&
