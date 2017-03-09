@@ -69,8 +69,8 @@ public class StudentInfoController {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			ImageUrl1 =  ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
-			idCardService.addCard(ImageUrl1, studentId);
+			ImageUrl1 = "/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
+			idCardService.addCard(ImageUrl1, studentId,"cover");
 		}
 		if (identityCard2 != null) {
 			// 图片存储路径
@@ -88,8 +88,8 @@ public class StudentInfoController {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			ImageUrl2 =  ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
-			idCardService.addCard(ImageUrl2, studentId);
+			ImageUrl2 = "/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
+			idCardService.addCard(ImageUrl2, studentId,"content");
 		}
 		jr.setResultCode(0);
 		jr.setResultData(si);

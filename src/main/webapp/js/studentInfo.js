@@ -42,6 +42,26 @@ $(function() {
 			},
 			async : false
 		});
+		
+		
+		$.ajax({
+			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+token,
+			type : "get",
+			success : function(data) {
+				if(data.resultCode == 0){
+					var dataRole = eval(data.resultData); 
+					for(var i= 0; i< dataRole.length;i++)
+					{
+					 $("#identityCard"+(i+1)).attr("src","/idCard"+dataRole[i].cardUrl);
+					}
+				}
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
+		
 	});
 	
 	$('#studentInfoForm').bootstrapValidator({

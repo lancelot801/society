@@ -166,12 +166,18 @@
 							</tr>
 							<tr>
 								<td>学生证封面</td>
-								<td><input type="file" class="file" name="identityCard1">
+								<td><div style="display: inline_block;">
+								<input type="file" style="display: inline;" class="file" name="identityCard1">
+								<img id="identityCard1" name="identityCard1" style="width:80px;height:80px" />
 								</td>
+								</div>
 							</tr>
 							<tr>
 								<td>学生证内容</td>
-								<td><input type="file" class="file" name="identityCard2">
+								<td>
+								<div style="display: inline;"><input style="display: inline;" type="file" class="file" name="identityCard2">
+								<img id="identityCard2" name="identityCard2" style="width:80px;height:80px" />
+								</div>
 								</td>
 							</tr>
 						</table>
