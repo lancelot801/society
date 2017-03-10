@@ -3,103 +3,103 @@ package cn.joongky.society.pojo;
 import java.util.Date;
 
 public class SocietyApply {
-	private String applyId;
+    private String applyId;
 
-	private String societyName;
+    private String societyName;
 
-	private String logoUrl;
+    private String logoUrl;
 
-	private String introduction;
+    private String introduction;
 
-	private String applyerId;
+    private String applyerId;
 
-	private String applyerIdentityId;
+    private Date appliedTime;
 
-	private Date appliedTime;
+    private Date checkedTime;
 
-	private Date checkedTime;
+    private String checkStatus;
 
-	private String checkStatus;
+    private String feedbackId;
 
-	private String feedbackId;
+    private String typeId;
 
-	public String getApplyId() {
-		return applyId;
-	}
+    public String getApplyId() {
+        return applyId;
+    }
 
-	public void setApplyId(String applyId) {
-		this.applyId = applyId == null ? null : applyId.trim();
-	}
+    public void setApplyId(String applyId) {
+        this.applyId = applyId == null ? null : applyId.trim();
+    }
 
-	public String getSocietyName() {
-		return societyName;
-	}
+    public String getSocietyName() {
+        return societyName;
+    }
 
-	public void setSocietyName(String societyName) {
-		this.societyName = societyName == null ? null : societyName.trim();
-	}
+    public void setSocietyName(String societyName) {
+        this.societyName = societyName == null ? null : societyName.trim();
+    }
 
-	public String getLogoUrl() {
-		return logoUrl;
-	}
+    public String getLogoUrl() {
+        return logoUrl;
+    }
 
-	public void setLogoUrl(String logoUrl) {
-		this.logoUrl = logoUrl == null ? null : logoUrl.trim();
-	}
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl == null ? null : logoUrl.trim();
+    }
 
-	public String getIntroduction() {
-		return introduction;
-	}
+    public String getIntroduction() {
+        return introduction;
+    }
 
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction == null ? null : introduction.trim();
-	}
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction == null ? null : introduction.trim();
+    }
 
-	public String getApplyerId() {
-		return applyerId;
-	}
+    public String getApplyerId() {
+        return applyerId;
+    }
 
-	public void setApplyerId(String applyerId) {
-		this.applyerId = applyerId == null ? null : applyerId.trim();
-	}
+    public void setApplyerId(String applyerId) {
+        this.applyerId = applyerId == null ? null : applyerId.trim();
+    }
 
-	public String getApplyerIdentityId() {
-		return applyerIdentityId;
-	}
+    public Date getAppliedTime() {
+        return appliedTime;
+    }
 
-	public void setApplyerIdentityId(String applyerIdentityId) {
-		this.applyerIdentityId = applyerIdentityId == null ? null : applyerIdentityId.trim();
-	}
+    public void setAppliedTime(Date appliedTime) {
+        this.appliedTime = appliedTime;
+    }
 
-	public Date getAppliedTime() {
-		return appliedTime;
-	}
+    public Date getCheckedTime() {
+        return checkedTime;
+    }
 
-	public void setAppliedTime(Date appliedTime) {
-		this.appliedTime = appliedTime;
-	}
+    public void setCheckedTime(Date checkedTime) {
+        this.checkedTime = checkedTime;
+    }
 
-	public Date getCheckedTime() {
-		return checkedTime;
-	}
+    public String getCheckStatus() {
+        return checkStatus;
+    }
 
-	public void setCheckedTime(Date checkedTime) {
-		this.checkedTime = checkedTime;
-	}
+    public void setCheckStatus(String checkStatus) {
+        this.checkStatus = checkStatus == null ? null : checkStatus.trim();
+    }
 
-	public String getCheckStatus() {
-		return checkStatus;
-	}
+    public String getFeedbackId() {
+        return feedbackId;
+    }
 
-	public void setCheckStatus(String checkStatus) {
-		this.checkStatus = checkStatus == null ? null : checkStatus.trim();
-	}
+    public void setFeedbackId(String feedbackId) {
+        this.feedbackId = feedbackId == null ? null : feedbackId.trim();
+    }
 
-	public String getFeedbackId() {
-		return feedbackId;
-	}
+    public String getTypeId() {
+        return typeId;
+    }
 
-	public void setFeedbackId(String feedbackId) {
-		this.feedbackId = feedbackId == null ? null : feedbackId.trim();
-	}
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
+    }
 }
