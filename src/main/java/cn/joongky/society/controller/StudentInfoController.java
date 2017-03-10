@@ -31,6 +31,7 @@ public class StudentInfoController {
 	private UserLoginService ulService;
 	@Inject
 	private IdentityCardService idCardService;
+
 	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
 	public ModelAndView showInfo(Model model, @RequestParam String studentId) {
 		StudentInfo si = sInfoService.getInfo(studentId);
@@ -53,9 +54,9 @@ public class StudentInfoController {
 		ulService.addOtherInfo(studentId, nickname, email, mobile);
 		String ImageUrl1 = "";
 		String ImageUrl2 = "";
-		if (identityCard1 != null) {
+		if (identityCard1 != null && identityCard1.getOriginalFilename()!="") {
 			// 图片存储路径
-			String filePath = ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard";
+			String filePath = ConfigUtil.getValue("img_url") + "/" + studentId + "/identityCard";
 			long timeStamp = System.currentTimeMillis();
 			File file = new File(filePath);
 			// 如果文件夹不存在创建文件夹
@@ -64,17 +65,21 @@ public class StudentInfoController {
 			}
 			try {
 				// 存入文件
-				identityCard1.transferTo(
-						new File(filePath + "/" + timeStamp + identityCard1.getOriginalFilename()));
+				identityCard1.transferTo(new File(filePath + "/" + timeStamp + identityCard1.getOriginalFilename()));
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			ImageUrl1 = "/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
-			idCardService.addCard(ImageUrl1, studentId,"cover");
+			ImageUrl1 = "/" + studentId + "/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
+			if (idCardService.getByTypeAndId(studentId, "cover") == null) {
+				idCardService.addCard(ImageUrl1, studentId, "cover");
+			} else {
+				idCardService.updateCard(ImageUrl1, studentId, "cover");
+			}
+
 		}
-		if (identityCard2 != null) {
+		if (identityCard2 != null && identityCard2.getOriginalFilename()!="") {
 			// 图片存储路径
-			String filePath = ConfigUtil.getValue("img_url") +"/" +studentId+"/identityCard";
+			String filePath = ConfigUtil.getValue("img_url") + "/" + studentId + "/identityCard";
 			long timeStamp = System.currentTimeMillis();
 			File file = new File(filePath);
 			// 如果文件夹不存在创建文件夹
@@ -83,27 +88,35 @@ public class StudentInfoController {
 			}
 			try {
 				// 存入文件
-				identityCard2.transferTo(
-						new File(filePath + "/" + timeStamp + identityCard2.getOriginalFilename()));
+				identityCard2.transferTo(new File(filePath + "/" + timeStamp + identityCard2.getOriginalFilename()));
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-			ImageUrl2 = "/" +studentId+"/identityCard" + "/" + timeStamp + identityCard1.getOriginalFilename();
-			idCardService.addCard(ImageUrl2, studentId,"content");
+			ImageUrl2 = "/" + studentId + "/identityCard" + "/" + timeStamp + identityCard2.getOriginalFilename();
+			if (idCardService.getByTypeAndId(studentId, "content") == null) {
+				idCardService.addCard(ImageUrl2, studentId, "content");
+			} else {
+				idCardService.updateCard(ImageUrl2, studentId, "content");
+			}
 		}
 		jr.setResultCode(0);
 		jr.setResultData(si);
 		return jr;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/getInfo", method = RequestMethod.POST)
-	public JsonResult getInfo(@RequestParam String studentId)
-	{
+	public JsonResult getInfo(@RequestParam String studentId) {
 		JsonResult jr = new JsonResult();
 		StudentInfo si = sInfoService.getInfo(studentId);
-		jr.setResultCode(0);
-		jr.setResultData(si);
+
+		if (si != null && si.getInstituteId() != null && si.getClassId() != null) {
+			jr.setResultCode(0);
+			jr.setResultData(si);
+		} else {
+			jr.setResultCode(-1);
+			jr.setResultData("个人信息缺失");
+		}
 		return jr;
 	}
 }

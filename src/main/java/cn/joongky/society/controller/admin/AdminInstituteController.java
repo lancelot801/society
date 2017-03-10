@@ -21,7 +21,6 @@ public class AdminInstituteController {
 
 	@RequestMapping(value = "/manage", method = RequestMethod.GET)
 	public ModelAndView manage(Model model, Integer pNo) {
-		// List<Institute> categories = instituteService.findAll();
 		if (pNo != null) {
 			pNo = pNo - 1;
 			if (pNo < 0)
@@ -30,7 +29,6 @@ public class AdminInstituteController {
 		} else {
 			model.addAttribute("institutes", instituteService.findWithRowBound(0));
 		}
-		// model.addAttribute("categories",categories);
 		return new ModelAndView("/admin/institutes");
 	}
 

@@ -53,10 +53,10 @@
 					<table class='table table-responsive table-striped col-xs-12'>
 						<thead>
 							<tr>
-								<th>类别名称</th>
-								<th>创建时间</th>
-								<th>创建者</th>
-								<th>操作</th>
+								<th style="text-align: center;">类别名称</th>
+								<th style="text-align: center;">创建时间</th>
+								<th style="text-align: center;">创建者</th>
+								<th style="text-align: center;">操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -64,11 +64,11 @@
 								<tr>
 
 									<td style="display: none;">${societyType.typeId }</td>
-									<td>${societyType.typeName}</td>
-									<td><fmt:formatDate value="${societyType.createdTime}"
+									<td style="text-align: center;">${societyType.typeName}</td>
+									<td style="text-align: center;"><fmt:formatDate value="${societyType.createdTime}"
 											pattern="yyyy年MM月dd日" /></td>
-									<td>${societyType.creater}</td>
-									<td><label>
+									<td style="text-align: center;">${societyType.creater}</td>
+									<td style="text-align: center;"><label>
 											<button
 												class="btn btn-info btn-sm glyphicon glyphicon-search queryBtn">修改信息</button>
 									</label> &nbsp;&nbsp;&nbsp; <span>

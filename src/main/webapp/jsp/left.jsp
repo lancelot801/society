@@ -22,8 +22,8 @@
 				<ul id="systemSetting" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
 					<li><a href="<%=request.getContextPath()%>/admin/institute/manage"><i class="glyphicon glyphicon-education"></i> 学院管理</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>
+					<!-- <li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
+					<li><a href="#"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>  -->
 					<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> 菜单管理</a></li>
 					<li><a href="<%=request.getContextPath()%>/admin/societyType/manage"><i class="glyphicon glyphicon-asterisk"></i> 社团类别</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-edit"></i> 修改密码</a></li>
@@ -36,7 +36,7 @@
 			</a>
 				<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
-						<li><a href="<%=request.getContextPath()%>/society/applyCreateSociety?studentId=${userLogin.studentId}"><i class="glyphicon glyphicon-heart"></i> 创办社团</a></li>
+						<li><a href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i class="glyphicon glyphicon-heart"></i> 创办社团</a></li>
 						<li><a href="<%=request.getContextPath()%>/student/showInfo?studentId=${userLogin.studentId}"><i class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
 						<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 我的社团</a></li>
 				</ul></li>

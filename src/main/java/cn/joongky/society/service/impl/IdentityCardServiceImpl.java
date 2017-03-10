@@ -36,5 +36,23 @@ public class IdentityCardServiceImpl  implements IdentityCardService{
 		example.or().andStudentIdEqualTo(studentId);
 		return icMapper.selectByExample(example);
 	}
+	@Override
+	public int updateCard(String ImageUrl, String studentId, String type) {
+		Date now = new Date();
+		IdentityCardExample example = new IdentityCardExample();
+		example.or().andStudentIdEqualTo(studentId).andTypeEqualTo(type);
+		IdentityCard idCard = icMapper.selectByExample(example).get(0);
+		idCard.setCardUrl(ImageUrl);
+		idCard.setUpdatedTime(now);
+		icMapper.updateByPrimaryKeySelective(idCard);
+		return icMapper.updateByPrimaryKeySelective(idCard);
+	}
+	@Override
+	public IdentityCard getByTypeAndId(String studentId, String type) {
+		IdentityCardExample example = new IdentityCardExample();
+		example.or().andStudentIdEqualTo(studentId).andTypeEqualTo(type);
+		IdentityCard idCard = icMapper.selectByExample(example).get(0);
+		return idCard;
+	}
 
 }

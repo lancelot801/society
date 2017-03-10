@@ -9,4 +9,8 @@ public interface IdentityCardService {
 	
 	//根据学生编号获取学生证信息
 	List<IdentityCard>  getIdList(String studentID);
+	
+	int updateCard(String ImageUrl,String studentId,String type);
+	
+	IdentityCard getByTypeAndId(String studentId,String type);
 }
