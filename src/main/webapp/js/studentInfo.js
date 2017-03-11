@@ -43,7 +43,7 @@ $(function() {
 			async : false
 		});
 		
-		
+		//获取学生证信息
 		$.ajax({
 			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+token,
 			type : "get",

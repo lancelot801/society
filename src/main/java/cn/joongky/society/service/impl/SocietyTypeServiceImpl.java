@@ -61,7 +61,7 @@ public class SocietyTypeServiceImpl implements SocietyTypeService{
 		example.setOrderByClause("type_name ASC");
 		Integer totalPage;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
-		if (stMapper.countByExample(null) % limit != 0) {
+		if (stMapper.countByExample(example) % limit != 0) {
 			totalPage = stMapper.countByExample(example) / limit + 1;
 		} else {
 			totalPage = stMapper.countByExample(example) / limit;

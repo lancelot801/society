@@ -24,7 +24,7 @@
 					<li><a href="<%=request.getContextPath()%>/admin/institute/manage"><i class="glyphicon glyphicon-education"></i> 学院管理</a></li>
 					<!-- <li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>  -->
-					<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> 菜单管理</a></li>
+					<li><a href="<%=request.getContextPath()%>/admin/society_apply/manage"><i class="glyphicon glyphicon-th-list"></i> 社团审核</a></li>
 					<li><a href="<%=request.getContextPath()%>/admin/societyType/manage"><i class="glyphicon glyphicon-asterisk"></i> 社团类别</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-edit"></i> 修改密码</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> 日志查看</a></li>

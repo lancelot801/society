@@ -14,11 +14,12 @@ import cn.joongky.society.service.IdentityCardService;
 import cn.joongky.society.util.BasicSysUtil;
 
 @Service("identityCardService")
-public class IdentityCardServiceImpl  implements IdentityCardService{
+public class IdentityCardServiceImpl implements IdentityCardService {
 	@Inject
 	private IdentityCardMapper icMapper;
+
 	@Override
-	public int addCard(String ImageUrl, String studentId,String type) {
+	public int addCard(String ImageUrl, String studentId, String type) {
 		IdentityCard ic1 = new IdentityCard();
 		Date now = new Date();
 		ic1.setIdentityCardId(BasicSysUtil.getUUID());
@@ -30,12 +31,14 @@ public class IdentityCardServiceImpl  implements IdentityCardService{
 		int result1 = icMapper.insertSelective(ic1);
 		return result1;
 	}
+
 	@Override
 	public List<IdentityCard> getIdList(String studentId) {
 		IdentityCardExample example = new IdentityCardExample();
 		example.or().andStudentIdEqualTo(studentId);
 		return icMapper.selectByExample(example);
 	}
+
 	@Override
 	public int updateCard(String ImageUrl, String studentId, String type) {
 		Date now = new Date();
@@ -47,12 +50,19 @@ public class IdentityCardServiceImpl  implements IdentityCardService{
 		icMapper.updateByPrimaryKeySelective(idCard);
 		return icMapper.updateByPrimaryKeySelective(idCard);
 	}
+
 	@Override
 	public IdentityCard getByTypeAndId(String studentId, String type) {
 		IdentityCardExample example = new IdentityCardExample();
 		example.or().andStudentIdEqualTo(studentId).andTypeEqualTo(type);
-		IdentityCard idCard = icMapper.selectByExample(example).get(0);
-		return idCard;
+		if (icMapper.selectByExample(example).size()>0) {
+			IdentityCard idCard = icMapper.selectByExample(example).get(0);
+			return idCard;
+		}else{
+			return null;
+		}
+
+		
 	}
 
 }
