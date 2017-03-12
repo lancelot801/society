@@ -282,6 +282,30 @@ $(function() {
 			async : false
 		}); 
 	});
+	
+	//反馈审核信息
+	$("#notPassBtn").click(function() {
+		var Validator = $('#societyApplyFrom').data('bootstrapValidator');
+		Validator.validate();
+		if (!Validator.isValid()) {
+			return;
+		} 
+		$.ajax({
+			url : "http://localhost:8080/society_server/admin/society_apply/notPassApply",
+			type : "post",
+			data:  $('#societyApplyFrom').serialize(),
+			success : function(data) {
+				alert("审核成功!");
+				window.location.href=window.location.href; 
+				window.location.reload; 
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		}); 
+	});
+	
 	// 时间
 	 $(".form_datetime").datetimepicker({
 		 language: 'zh-CN',

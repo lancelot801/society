@@ -214,12 +214,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer">		
 						<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
 						<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
 						<button type="button" id="btnClose" class="btn btn-default"
-							data-dismiss="modal">关闭</button>
-						
+							data-dismiss="modal">关闭</button>		
 					</div>
 				</div>
 			</form>
