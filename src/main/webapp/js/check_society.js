@@ -116,6 +116,23 @@ $(function() {
 		}
 	});
 	
+	$('#societyApplyFrom').bootstrapValidator({
+		message : 'This value is not valid',
+		feedbackIcons : {
+			valid : 'glyphicon glyphicon-ok',
+			invalid : 'glyphicon glyphicon-remove',
+			validating : 'glyphicon glyphicon-refresh'
+		},
+		fields : {
+			feedBack : {
+				validators : {
+					notEmpty : {
+						message : '反馈不能为空'
+					},
+				}
+			}
+		}
+	});
 	$("button.addBtn").click(function() {
 		$("#addsocietyTypeModal").modal().draggable({
 			handle : ".modal-header",
@@ -173,6 +190,7 @@ $(function() {
 		//alert("applyerId: " + applyerId);
 		*/
 		var applyerId = $(this).parents("tr").find("td").eq(3).html();
+		$("#applyerId").val(applyerId);
 		var typeId = "";
 		$.ajax({
 			url : "http://localhost:8080/society_server/admin/society_apply/findById?applyId=" + id,
@@ -181,13 +199,7 @@ $(function() {
 				//补充基本信息
 				$("#societyApplyId").val(id);
 				$("#societyName").val(data.resultData.societyName);
-				var checkStatus = document.getElementById("checkStatus2");  
-				for(var i=0; i<checkStatus.options.length; i++){  
-					if(checkStatus.options[i].value == String (data.resultData.checkStatus)){  
-						checkStatus.options[i].selected = true;  
-				        break;  
-				    }  
-				}
+				$("#checkStatus2").val(data.resultData.checkStatus);
 				$("#logoUrl").attr("src","/idCard"+data.resultData.logoUrl);
 				$("#introduction").val(data.resultData.introduction);
 				typeId = data.resultData.typeId; 
@@ -250,17 +262,17 @@ $(function() {
 	
 	//反馈审核信息
 	$("#submitBtn").click(function() {
-		var Validator = $('#updatesocietyType').data('bootstrapValidator');
+		var Validator = $('#societyApplyFrom').data('bootstrapValidator');
 		Validator.validate();
 		if (!Validator.isValid()) {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/societyType/updateById",
+			url : "http://localhost:8080/society_server/admin/society_apply/passApply",
 			type : "post",
-			data:  $('#updatesocietyType').serialize(),
+			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("修改成功!");
+				alert("审核成功!");
 				window.location.href=window.location.href; 
 				window.location.reload; 
 			},

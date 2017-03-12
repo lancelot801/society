@@ -116,7 +116,10 @@
 								<div style="display: none;">
 									<input id="societyApplyId" name="societyApplyId" />
 								</div>
-
+								<div style="display: none;">
+									<input id="operatorId" name="operatorId" value="${userLogin.studentId}"/>
+									<input id="applyerId" name="applyerId" />
+								</div>	
 								<div class="form-group">
 									<label for="societyName"
 										class="col-sm-2 control-label mylabStyle">社团名称</label>
@@ -125,8 +128,7 @@
 											name="societyName" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
-								<br />
-								<br />
+								<br /> <br />
 
 								<div class="form-group">
 									<label for="societyType"
@@ -136,8 +138,7 @@
 											name="societyType" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
-								<br />
-								<br />
+								<br /> <br />
 
 								<div class="form-group">
 									<label for="logoUrl" class="col-sm-2 control-label mylabStyle">社团图标</label>
@@ -146,84 +147,79 @@
 											style="width: 40px; height: 40px;" />
 									</div>
 								</div>
-								<br />
-								<br />
+								<br /> <br />
 
 								<div class="form-group">
 									<label for="introduction"
 										class="col-sm-2 control-label mylabStyle">社团简介</label>
 									<div class="col-sm-10">
-										<textarea autofocus="autofocus" type="text" readonly="readonly"
-											class="form-control" id="introduction" 
+										<textarea autofocus="autofocus" type="text"
+											readonly="readonly" class="form-control" id="introduction"
 											style="width: 90%;" name="introduction">
 												</textarea>
 									</div>
 								</div>
-								<br/><br/><br/>
-								
+								<br />
+								<br />
+								<br />
+
 								<div class="form-group">
-								<label for="applyerName"
+									<label for="applyerName"
 										class="col-sm-2 control-label mylabStyle">申请者</label>
 									<div class="col-sm-10">
-											<input type="text" id="applyerName" readonly="readonly"
+										<input type="text" id="applyerName" readonly="readonly"
 											name="applyerName" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
-								<br />
-								<br />
-								
-									<div class="form-group">
-									<label for="idCardCover" class="col-sm-2 control-label mylabStyle">申请者学生证封面</label>
+								<br /> <br />
+
+								<div class="form-group">
+									<label for="idCardCover"
+										class="col-sm-2 control-label mylabStyle">申请者学生证封面</label>
 									<div class="col-sm-10">
 										<img id="idCardCover" name="idCardCover"
 											style="width: 40px; height: 40px;" />
 									</div>
 								</div>
-								<br />
-								<br />
-								
+								<br /> <br />
+
 								<div class="form-group">
-									<label for="idCardContent" class="col-sm-2 control-label mylabStyle">申请者学生证内容</label>
+									<label for="idCardContent"
+										class="col-sm-2 control-label mylabStyle">申请者学生证内容</label>
 									<div class="col-sm-10">
 										<img id="idCardContent" name="idCardContent"
 											style="width: 40px; height: 40px;" />
 									</div>
 								</div>
-								<br />
-								<br />
-								
+								<br /> <br />
+
 								<div class="form-group">
 									<label for="checkStatus2"
 										class="col-sm-2 control-label mylabStyle">审核状态</label>
 									<div class="col-sm-10">
-										<select class="form-control " id="checkStatus2" style="width: 90%"
-											name="checkStatus2">
-											<option value="">--请选择审核状态--</option>
-											<option value="待审核">待审核</option>
-											<option value="已通过">通过</option>
-											<option value="不通过">不通过</option>
-										</select>
+										<input type="text" id="checkStatus2" readonly="readonly"
+											name="checkStatus" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
-								<br /> <br />	
-								
+								<br /> <br />
+
 								<div class="form-group">
-								<label for="feedBack"
-										class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
+									<label for="feedBack" class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
 									<div class="col-sm-10">
-											<input type="text" id="feedBack" placeholder="通过与否都需填写审核反馈"
+										<input type="text" id="feedBack" placeholder="通过与否都需填写审核反馈"
 											name="feedBack" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
-								<br />
-								<br />
+								<br /> <br />
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
+						<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
+						<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
 						<button type="button" id="btnClose" class="btn btn-default"
 							data-dismiss="modal">关闭</button>
-						<button id="submitBtn" type="submit" class="btn btn-primary">提交</button>
+						
 					</div>
 				</div>
 			</form>

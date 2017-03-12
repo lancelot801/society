@@ -28,6 +28,8 @@ public interface SocietyApplyService {
 	List<SocietyApply> findWithRowBoundAndStatus(Integer page,String status);
 	
 	//通过id查找申请记录
-	
 	SocietyApply findById(String applyId);
+	
+	//审核通过修改信息
+	int updateStatusById(String applyId,String feedBackId,String checkStatus);
 }

@@ -130,4 +130,14 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 		return saMapper.selectByPrimaryKey(applyId);
 	}
 
+	@Override
+	public int updateStatusById(String applyId,String feedBackId,String checkStatus) {
+		SocietyApply sa = saMapper.selectByPrimaryKey(applyId);
+		Date now = new Date();
+		sa.setCheckedTime(now);
+		sa.setCheckStatus(checkStatus);
+		sa.setFeedbackId(feedBackId);
+		return saMapper.updateByPrimaryKeySelective(sa);
+	}
+
 }
