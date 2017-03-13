@@ -1,6 +1,7 @@
 package cn.joongky.society.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import cn.joongky.society.dao.SocietyMemberMapper;
 import cn.joongky.society.pojo.SocietyMember;
+import cn.joongky.society.pojo.SocietyMemberExample;
 import cn.joongky.society.service.SocietyMemberService;
 import cn.joongky.society.util.BasicSysUtil;
 
@@ -27,5 +29,20 @@ public class SocietyMemberServiceImpl implements SocietyMemberService{
 		sm.setJoinedTime(now);
 		sMemberMapper.insertSelective(sm);
 		return sMemberMapper.selectByPrimaryKey(sm.getSmemberId());
+	}
+
+	@Override
+	public List<SocietyMember> listByStudentId(String studentId) {
+		SocietyMemberExample example = new SocietyMemberExample();
+		example.or().andMemberIdEqualTo(studentId);
+		return sMemberMapper.selectByExample(example);
+	}
+
+	@Override
+	public int getMembersCount(String societyId) {
+		SocietyMemberExample example = new SocietyMemberExample();
+		example.or().andSocietyIdEqualTo(societyId)
+					.andLeftTimeIsNull();
+		return sMemberMapper.countByExample(example);
 	}
 }

@@ -86,8 +86,11 @@ public class AdminSocietyApplyController {
 			// applyerId, "社团会长"));
 			saService.updateStatusById(societyApplyId, feedBackId, "已通过");
 			fbackService.add(feedBackId, feedBack, operatorId);
-			sInfoService.add(societyId, saService.findById(applyerId));
+			sInfoService.addByApply(societyId, saService.findById(applyerId));
 			sMemberService.joinSociety(societyId, applyerId, "社团会长");
+			//修改社团总数信息
+			int nowCount = sMemberService.getMembersCount(societyId)+ 1 ;
+			sInfoService.updateMemberCount(societyId, nowCount);
 			// 发送邮件通知
 			StudentInfo stu = studentInfoService.getInfo(applyerId);
 			String title = "社团申请通知";

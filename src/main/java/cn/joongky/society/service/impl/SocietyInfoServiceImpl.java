@@ -15,9 +15,8 @@ import cn.joongky.society.service.SocietyInfoService;
 public class SocietyInfoServiceImpl implements SocietyInfoService{
 	@Inject
 	private SocietyInfoMapper sInfoMapper;
-
 	@Override
-	public SocietyInfo add(String societyId, SocietyApply sa) {
+	public SocietyInfo addByApply(String societyId, SocietyApply sa) {
 		SocietyInfo si = new SocietyInfo();
 		Date now = new Date();
 		si.setSocietyId(societyId);
@@ -26,6 +25,19 @@ public class SocietyInfoServiceImpl implements SocietyInfoService{
 		si.setLogoUrl(sa.getLogoUrl());
 		si.setCreatedTime(now);
 		sInfoMapper.insertSelective(si);
+		return sInfoMapper.selectByPrimaryKey(societyId);
+	}
+
+	@Override
+	public SocietyInfo findBySocietyId(String societyId) {
+		return sInfoMapper.selectByPrimaryKey(societyId);
+	}
+
+	@Override
+	public SocietyInfo updateMemberCount(String societyId, int membersCount) {
+		SocietyInfo si = sInfoMapper.selectByPrimaryKey(societyId);
+		si.setMembersCount(membersCount);
+		sInfoMapper.updateByPrimaryKeySelective(si);
 		return sInfoMapper.selectByPrimaryKey(societyId);
 	}
 }
