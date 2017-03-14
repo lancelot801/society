@@ -11,8 +11,6 @@ public class ActivityApply {
 
     private String activityPlace;
 
-    private String content;
-
     private Date holdTime;
 
     private Date applyTime;
@@ -24,6 +22,8 @@ public class ActivityApply {
     private String status;
 
     private String feedbackId;
+
+    private String content;
 
     public String getActivityId() {
         return activityId;
@@ -55,14 +55,6 @@ public class ActivityApply {
 
     public void setActivityPlace(String activityPlace) {
         this.activityPlace = activityPlace == null ? null : activityPlace.trim();
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
     }
 
     public Date getHoldTime() {
@@ -111,5 +103,13 @@ public class ActivityApply {
 
     public void setFeedbackId(String feedbackId) {
         this.feedbackId = feedbackId == null ? null : feedbackId.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }

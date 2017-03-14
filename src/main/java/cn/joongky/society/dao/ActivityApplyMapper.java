@@ -17,6 +17,10 @@ public interface ActivityApplyMapper {
 
     int insertSelective(ActivityApply record);
 
+    List<ActivityApply> selectByExampleWithBLOBsWithRowbounds(ActivityApplyExample example, RowBounds rowBounds);
+
+    List<ActivityApply> selectByExampleWithBLOBs(ActivityApplyExample example);
+
     List<ActivityApply> selectByExampleWithRowbounds(ActivityApplyExample example, RowBounds rowBounds);
 
     List<ActivityApply> selectByExample(ActivityApplyExample example);
@@ -25,9 +29,13 @@ public interface ActivityApplyMapper {
 
     int updateByExampleSelective(@Param("record") ActivityApply record, @Param("example") ActivityApplyExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") ActivityApply record, @Param("example") ActivityApplyExample example);
+
     int updateByExample(@Param("record") ActivityApply record, @Param("example") ActivityApplyExample example);
 
     int updateByPrimaryKeySelective(ActivityApply record);
+
+    int updateByPrimaryKeyWithBLOBs(ActivityApply record);
 
     int updateByPrimaryKey(ActivityApply record);
 }

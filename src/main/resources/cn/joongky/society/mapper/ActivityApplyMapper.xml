@@ -6,13 +6,15 @@
     <result column="society_id" property="societyId" jdbcType="VARCHAR" />
     <result column="theme" property="theme" jdbcType="VARCHAR" />
     <result column="activity_place" property="activityPlace" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="hold_time" property="holdTime" jdbcType="TIMESTAMP" />
     <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
     <result column="applyer_id" property="applyerId" jdbcType="VARCHAR" />
     <result column="checked_time" property="checkedTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.joongky.society.pojo.ActivityApply" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,9 +75,28 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    activity_id, society_id, theme, activity_place, content, hold_time, apply_time, applyer_id, 
+    activity_id, society_id, theme, activity_place, hold_time, apply_time, applyer_id, 
     checked_time, status, feedback_id
   </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.joongky.society.pojo.ActivityApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from activity_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.ActivityApplyExample" >
     select
     <if test="distinct" >
@@ -90,9 +111,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from activity_apply
     where activity_id = #{activityId,jdbcType=VARCHAR}
   </select>
@@ -108,13 +131,13 @@
   </delete>
   <insert id="insert" parameterType="cn.joongky.society.pojo.ActivityApply" >
     insert into activity_apply (activity_id, society_id, theme, 
-      activity_place, content, hold_time, 
-      apply_time, applyer_id, checked_time, 
-      status, feedback_id)
+      activity_place, hold_time, apply_time, 
+      applyer_id, checked_time, status, 
+      feedback_id, content)
     values (#{activityId,jdbcType=VARCHAR}, #{societyId,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, 
-      #{activityPlace,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{holdTime,jdbcType=TIMESTAMP}, 
-      #{applyTime,jdbcType=TIMESTAMP}, #{applyerId,jdbcType=VARCHAR}, #{checkedTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=VARCHAR}, #{feedbackId,jdbcType=VARCHAR})
+      #{activityPlace,jdbcType=VARCHAR}, #{holdTime,jdbcType=TIMESTAMP}, #{applyTime,jdbcType=TIMESTAMP}, 
+      #{applyerId,jdbcType=VARCHAR}, #{checkedTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{feedbackId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.joongky.society.pojo.ActivityApply" >
     insert into activity_apply
@@ -130,9 +153,6 @@
       </if>
       <if test="activityPlace != null" >
         activity_place,
-      </if>
-      <if test="content != null" >
-        content,
       </if>
       <if test="holdTime != null" >
         hold_time,
@@ -152,6 +172,9 @@
       <if test="feedbackId != null" >
         feedback_id,
       </if>
+      <if test="content != null" >
+        content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="activityId != null" >
@@ -165,9 +188,6 @@
       </if>
       <if test="activityPlace != null" >
         #{activityPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
       </if>
       <if test="holdTime != null" >
         #{holdTime,jdbcType=TIMESTAMP},
@@ -186,6 +206,9 @@
       </if>
       <if test="feedbackId != null" >
         #{feedbackId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -210,9 +233,6 @@
       <if test="record.activityPlace != null" >
         activity_place = #{record.activityPlace,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=VARCHAR},
-      </if>
       <if test="record.holdTime != null" >
         hold_time = #{record.holdTime,jdbcType=TIMESTAMP},
       </if>
@@ -231,7 +251,27 @@
       <if test="record.feedbackId != null" >
         feedback_id = #{record.feedbackId,jdbcType=VARCHAR},
       </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update activity_apply
+    set activity_id = #{record.activityId,jdbcType=VARCHAR},
+      society_id = #{record.societyId,jdbcType=VARCHAR},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      activity_place = #{record.activityPlace,jdbcType=VARCHAR},
+      hold_time = #{record.holdTime,jdbcType=TIMESTAMP},
+      apply_time = #{record.applyTime,jdbcType=TIMESTAMP},
+      applyer_id = #{record.applyerId,jdbcType=VARCHAR},
+      checked_time = #{record.checkedTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR},
+      feedback_id = #{record.feedbackId,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,7 +282,6 @@
       society_id = #{record.societyId,jdbcType=VARCHAR},
       theme = #{record.theme,jdbcType=VARCHAR},
       activity_place = #{record.activityPlace,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
       hold_time = #{record.holdTime,jdbcType=TIMESTAMP},
       apply_time = #{record.applyTime,jdbcType=TIMESTAMP},
       applyer_id = #{record.applyerId,jdbcType=VARCHAR},
@@ -265,9 +304,6 @@
       <if test="activityPlace != null" >
         activity_place = #{activityPlace,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
       <if test="holdTime != null" >
         hold_time = #{holdTime,jdbcType=TIMESTAMP},
       </if>
@@ -286,7 +322,24 @@
       <if test="feedbackId != null" >
         feedback_id = #{feedbackId,jdbcType=VARCHAR},
       </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where activity_id = #{activityId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.joongky.society.pojo.ActivityApply" >
+    update activity_apply
+    set society_id = #{societyId,jdbcType=VARCHAR},
+      theme = #{theme,jdbcType=VARCHAR},
+      activity_place = #{activityPlace,jdbcType=VARCHAR},
+      hold_time = #{holdTime,jdbcType=TIMESTAMP},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      applyer_id = #{applyerId,jdbcType=VARCHAR},
+      checked_time = #{checkedTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      feedback_id = #{feedbackId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
     where activity_id = #{activityId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.joongky.society.pojo.ActivityApply" >
@@ -294,7 +347,6 @@
     set society_id = #{societyId,jdbcType=VARCHAR},
       theme = #{theme,jdbcType=VARCHAR},
       activity_place = #{activityPlace,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
       hold_time = #{holdTime,jdbcType=TIMESTAMP},
       apply_time = #{applyTime,jdbcType=TIMESTAMP},
       applyer_id = #{applyerId,jdbcType=VARCHAR},
@@ -303,6 +355,22 @@
       feedback_id = #{feedbackId,jdbcType=VARCHAR}
     where activity_id = #{activityId,jdbcType=VARCHAR}
   </update>
+  <select resultMap="ResultMapWithBLOBs" parameterType="cn.joongky.society.pojo.ActivityApplyExample" id="selectByExampleWithBLOBsWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from activity_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.ActivityApplyExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
