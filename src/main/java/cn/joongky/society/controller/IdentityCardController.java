@@ -25,7 +25,7 @@ public class IdentityCardController {
 	public JsonResult getIdCardByStudentId(@RequestParam String studentId) {
 		JsonResult jr = new JsonResult();
 		List<IdentityCard> idList = idService.getIdList(studentId);
-		if (idList.size() > 0) {
+		if (!idList.isEmpty()) {
 			jr.setResultCode(0);
 			jr.setResultData(idList);
 		} else {

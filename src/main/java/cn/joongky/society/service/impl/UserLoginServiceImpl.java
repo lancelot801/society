@@ -1,6 +1,5 @@
 package cn.joongky.society.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 		example.or().andEmailEqualTo(token);
 		example.or().andMobileEqualTo(token);
 		List<UserLogin> userlist = userLoginMapper.selectByExample(example);
-		UserLogin ul = null;
+		UserLogin ul;
 		if (userlist.size() == 1) {
 			ul = userlist.get(0);
 			String salt = ul.getSalt();
@@ -72,9 +71,8 @@ public class UserLoginServiceImpl implements UserLoginService {
 	public UserLogin findById(String studentId) {
 		UserLoginExample example = new UserLoginExample();
 		example.or().andStudentIdEqualTo(studentId);
-		List<UserLogin> uList = new ArrayList<>();
-		uList = userLoginMapper.selectByExample(example);
-		if (uList.size() > 0) {
+		List<UserLogin> uList = userLoginMapper.selectByExample(example);
+		if (!uList.isEmpty()) {
 			return uList.get(0);
 		} else {
 			return null;

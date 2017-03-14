@@ -24,6 +24,7 @@ public class SocietyInfoServiceImpl implements SocietyInfoService{
 		si.setSocietyName(sa.getSocietyName());
 		si.setLogoUrl(sa.getLogoUrl());
 		si.setCreatedTime(now);
+		si.setTypeId(sa.getTypeId());
 		sInfoMapper.insertSelective(si);
 		return sInfoMapper.selectByPrimaryKey(societyId);
 	}

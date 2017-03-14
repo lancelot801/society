@@ -3,83 +3,93 @@ package cn.joongky.society.pojo;
 import java.util.Date;
 
 public class SocietyInfo {
-	private String societyId;
+    private String societyId;
 
-	private String societyName;
+    private String societyName;
 
-	private String logoUrl;
+    private String logoUrl;
 
-	private String introduction;
+    private String introduction;
 
-	private String details;
+    private String details;
 
-	private Integer membersCount;
+    private Integer membersCount;
 
-	private Date createdTime;
+    private Date createdTime;
 
-	private Float societyStar;
+    private Float societyStar;
 
-	public String getSocietyId() {
-		return societyId;
-	}
+    private String typeId;
 
-	public void setSocietyId(String societyId) {
-		this.societyId = societyId == null ? null : societyId.trim();
-	}
+    public String getSocietyId() {
+        return societyId;
+    }
 
-	public String getSocietyName() {
-		return societyName;
-	}
+    public void setSocietyId(String societyId) {
+        this.societyId = societyId == null ? null : societyId.trim();
+    }
 
-	public void setSocietyName(String societyName) {
-		this.societyName = societyName == null ? null : societyName.trim();
-	}
+    public String getSocietyName() {
+        return societyName;
+    }
 
-	public String getLogoUrl() {
-		return logoUrl;
-	}
+    public void setSocietyName(String societyName) {
+        this.societyName = societyName == null ? null : societyName.trim();
+    }
 
-	public void setLogoUrl(String logoUrl) {
-		this.logoUrl = logoUrl == null ? null : logoUrl.trim();
-	}
+    public String getLogoUrl() {
+        return logoUrl;
+    }
 
-	public String getIntroduction() {
-		return introduction;
-	}
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl == null ? null : logoUrl.trim();
+    }
 
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction == null ? null : introduction.trim();
-	}
+    public String getIntroduction() {
+        return introduction;
+    }
 
-	public String getDetails() {
-		return details;
-	}
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction == null ? null : introduction.trim();
+    }
 
-	public void setDetails(String details) {
-		this.details = details == null ? null : details.trim();
-	}
+    public String getDetails() {
+        return details;
+    }
 
-	public Integer getMembersCount() {
-		return membersCount;
-	}
+    public void setDetails(String details) {
+        this.details = details == null ? null : details.trim();
+    }
 
-	public void setMembersCount(Integer membersCount) {
-		this.membersCount = membersCount;
-	}
+    public Integer getMembersCount() {
+        return membersCount;
+    }
 
-	public Date getCreatedTime() {
-		return createdTime;
-	}
+    public void setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+    }
 
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
-	}
+    public Date getCreatedTime() {
+        return createdTime;
+    }
 
-	public Float getSocietyStar() {
-		return societyStar;
-	}
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
-	public void setSocietyStar(Float societyStar) {
-		this.societyStar = societyStar;
-	}
+    public Float getSocietyStar() {
+        return societyStar;
+    }
+
+    public void setSocietyStar(Float societyStar) {
+        this.societyStar = societyStar;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
+    }
 }

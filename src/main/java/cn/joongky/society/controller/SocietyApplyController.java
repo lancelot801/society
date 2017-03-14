@@ -64,9 +64,9 @@ public class SocietyApplyController {
 			saService.addApply(societyName, ImageUrl, introduction, typeId, applyerId);
 			//申办后给管理员发送邮件通知
 			StudentInfo stu = studentInfoService.getInfo(applyerId);
-			String userEmail = ConfigUtil.getValue("admin_mail"); String title =
-			  "社团申请通知"; String text =
-			 "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
+			String userEmail = ConfigUtil.getValue("admin_mail"); 
+			String title = "社团申请通知"; 
+			String text ="<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
 			 + stu.getStudentId()+" 姓名: "+stu.getSname()+"提交了</i>" +"<i style='color:red;font-size:20px;'>"+stService.findById(typeId).getTypeName()
 			 		+ "申请,请尽快审核</i></div>"; 
 			  MailUtil.sendMail(title, text, userEmail);

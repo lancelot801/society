@@ -47,7 +47,6 @@ public class StudentInfoController {
 			String classId, String sname, String sex, String nickname, String email, String mobile,
 			MultipartFile identityCard1, MultipartFile identityCard2) {
 		JsonResult jr = new JsonResult();
-		// String identityId = BasicSysUtil.getUUID();
 		// 修改个人信息提示补充userlogin
 		StudentInfo si = sInfoService.updateStudentInfo(studentId, instituteId, classId, sname, sex, nickname, email,
 				mobile);

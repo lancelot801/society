@@ -31,8 +31,8 @@ public class InstituteServiceImpl implements InstituteService {
 	}
 	@Override
 	public Map<String, Integer> listToltalPage() {
-		Integer totalPage,totalRecord;
-	
+		Integer totalPage;
+		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		if (instituteMapper.countByExample(null) % limit != 0) {
 			totalPage = instituteMapper.countByExample(null) / limit + 1;
@@ -64,8 +64,7 @@ public class InstituteServiceImpl implements InstituteService {
 		if (page >= totalPage)
 			page = totalPage - 1;
 		RowBounds rowBounds = new RowBounds(page * limit, limit);
-		List<Institute> inList = instituteMapper.selectByExampleWithRowbounds(example, rowBounds);
-		return inList;
+		return instituteMapper.selectByExampleWithRowbounds(example, rowBounds);
 	}
 	@Override
 	public int deleteById(String instituteId) {

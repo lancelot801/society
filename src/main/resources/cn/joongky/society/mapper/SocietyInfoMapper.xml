@@ -10,6 +10,7 @@
     <result column="members_count" property="membersCount" jdbcType="INTEGER" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="society_star" property="societyStar" jdbcType="REAL" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     society_id, society_name, logo_url, introduction, details, members_count, created_time, 
-    society_star
+    society_star, type_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyInfoExample" >
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="cn.joongky.society.pojo.SocietyInfo" >
     insert into society_info (society_id, society_name, logo_url, 
       introduction, details, members_count, 
-      created_time, society_star)
+      created_time, society_star, type_id
+      )
     values (#{societyId,jdbcType=VARCHAR}, #{societyName,jdbcType=VARCHAR}, #{logoUrl,jdbcType=VARCHAR}, 
       #{introduction,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}, #{membersCount,jdbcType=INTEGER}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{societyStar,jdbcType=REAL})
+      #{createdTime,jdbcType=TIMESTAMP}, #{societyStar,jdbcType=REAL}, #{typeId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.joongky.society.pojo.SocietyInfo" >
     insert into society_info
@@ -138,6 +141,9 @@
       <if test="societyStar != null" >
         society_star,
       </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="societyId != null" >
@@ -163,6 +169,9 @@
       </if>
       <if test="societyStar != null" >
         #{societyStar,jdbcType=REAL},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +208,9 @@
       <if test="record.societyStar != null" >
         society_star = #{record.societyStar,jdbcType=REAL},
       </if>
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +225,8 @@
       details = #{record.details,jdbcType=VARCHAR},
       members_count = #{record.membersCount,jdbcType=INTEGER},
       created_time = #{record.createdTime,jdbcType=TIMESTAMP},
-      society_star = #{record.societyStar,jdbcType=REAL}
+      society_star = #{record.societyStar,jdbcType=REAL},
+      type_id = #{record.typeId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +255,9 @@
       <if test="societyStar != null" >
         society_star = #{societyStar,jdbcType=REAL},
       </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
     </set>
     where society_id = #{societyId,jdbcType=VARCHAR}
   </update>
@@ -253,7 +269,8 @@
       details = #{details,jdbcType=VARCHAR},
       members_count = #{membersCount,jdbcType=INTEGER},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
-      society_star = #{societyStar,jdbcType=REAL}
+      society_star = #{societyStar,jdbcType=REAL},
+      type_id = #{typeId,jdbcType=VARCHAR}
     where society_id = #{societyId,jdbcType=VARCHAR}
   </update>
   <select resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyInfoExample" id="selectByExampleWithRowbounds" >

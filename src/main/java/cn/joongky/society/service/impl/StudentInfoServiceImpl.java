@@ -34,6 +34,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 	}
 
 	// 修改学生信息
+	@Override
 	public StudentInfo updateStudentInfo(String studentId, String institueId, String classId, String sname, String sex,
 			String nickname, String email, String mobile) {
 		StudentInfo si = sinfoMapper.selectByPrimaryKey(studentId);

@@ -74,7 +74,6 @@ public class UserLoginController {
 	public String quit(HttpSession session) {
 		session.invalidate();
 		// 为空默认index 速度慢 或者制定为index.jsp
-		// return ("redirect:/");
-		return ("redirect:/index.jsp");
+		return "redirect:/index.jsp";
 	}
 }
