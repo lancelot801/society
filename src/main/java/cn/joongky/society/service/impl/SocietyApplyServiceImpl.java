@@ -42,7 +42,8 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 
 	@Override
 	public Map<String, Integer> listToltalPage() {
-		Integer totalPage, totalRecord;
+		Integer totalPage;
+		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		if (saMapper.countByExample(null) % limit != 0) {
 			totalPage = saMapper.countByExample(null) / limit + 1;
@@ -60,7 +61,8 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 	public Map<String, Integer> listToltalPageByStatus(String status) {
 		SocietyApplyExample example = new SocietyApplyExample();
 		example.or().andCheckStatusEqualTo(status);
-		Integer totalPage, totalRecord;
+		Integer totalPage;
+		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		if (saMapper.countByExample(example) % limit != 0) {
 			totalPage = saMapper.countByExample(example) / limit + 1;
@@ -101,8 +103,7 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 		if (page >= totalPage)
 			page = totalPage - 1;
 		RowBounds rowBounds = new RowBounds(page * limit, limit);
-		List<SocietyApply> saList = saMapper.selectByExampleWithRowbounds(example, rowBounds);
-		return saList;
+		return saMapper.selectByExampleWithRowbounds(example, rowBounds);
 	}
 
 	@Override
@@ -121,8 +122,7 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 		if (page >= totalPage)
 			page = totalPage - 1;
 		RowBounds rowBounds = new RowBounds(page * limit, limit);
-		List<SocietyApply> saList = saMapper.selectByExampleWithRowbounds(example, rowBounds);
-		return saList;
+		return saMapper.selectByExampleWithRowbounds(example, rowBounds);
 	}
 
 	@Override

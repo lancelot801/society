@@ -23,7 +23,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/check_society.js"></script>
+	src="<%=request.getContextPath()%>/js/my_society.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
@@ -38,19 +38,20 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>审核社团申请</title>
+<title>我的社团</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">审核社团申请</h1>
+				<h1 class="page-header">我的社团</h1>
 				<div id="contain" class="row placeholders">
 					<table class='table table-responsive table-striped col-xs-12'>
 						<thead>
 							<tr>
 								<th style="text-align: center;">社团名称</th>
+								<th style="text-align: center;">社团类别</th>
 								<th style="text-align: center;">社团图标</th>
 								<th style="text-align: center;">现有人数</th>
 								<th style="text-align: center;">我的职位</th>
@@ -58,24 +59,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${societyApplies}" var="societyApply">
+							<c:forEach items="${societyInfos}" var="societyInfo" varStatus="loop">
 								<tr>
 
-									<td style="display: none;">${societyApply.applyId }</td>
-									<td style="text-align: center;">${societyApply.societyName}</td>
+									<td style="display: none;">${societyInfo.societyId }</td>
+									<td style="text-align: center;">${societyInfo.societyName}</td>
+									<td style="text-align: center;">${societyTypes[loop.count-1].typeName}</td>
 									<td style="text-align: center;"><img
 										style="width: 30px; height: 30px;"
-										src="/idCard/${societyApply.logoUrl}" /></td>
-									<td style="text-align: center;">${societyApply.applyerId}</td>
-									<td style="text-align: center;"><fmt:formatDate
-											value="${societyApply.appliedTime}" pattern="yyyy年MM月dd日" /></td>
-									<td style="text-align: center;">${societyApply.checkStatus}</td>
+										src="/idCard/${societyInfo.logoUrl}" /></td>
+									<td style="text-align: center;">${societyInfo.membersCount}</td>
+									<td style="text-align: center;">${societyMembers[loop.count-1].position}</td>
 									<td style="text-align: center;"><label>
 											<button
-												class="btn btn-info btn-sm glyphicon glyphicon-search queryBtn">查看详情</button>
+												class="btn btn-info btn-sm glyphicon glyphicon-fire activityApply">活动申请</button>
 									</label> &nbsp;&nbsp;&nbsp; <span>
 											<button
-												class="btn btn-info btn-sm glyphicon glyphicon-remove deleteBtn">删除信息</button>
+												class="btn btn-info btn-sm glyphicon glyphicon-user membersManage">成员管理</button>
 									</span></td>
 								</tr>
 							</c:forEach>

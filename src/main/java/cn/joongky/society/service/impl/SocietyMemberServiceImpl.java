@@ -1,7 +1,9 @@
 package cn.joongky.society.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,9 +14,10 @@ import cn.joongky.society.pojo.SocietyMember;
 import cn.joongky.society.pojo.SocietyMemberExample;
 import cn.joongky.society.service.SocietyMemberService;
 import cn.joongky.society.util.BasicSysUtil;
+import cn.joongky.society.util.ConfigUtil;
 
 @Service("societyMemberService")
-public class SocietyMemberServiceImpl implements SocietyMemberService{
+public class SocietyMemberServiceImpl implements SocietyMemberService {
 	@Inject
 	private SocietyMemberMapper sMemberMapper;
 
@@ -41,8 +44,27 @@ public class SocietyMemberServiceImpl implements SocietyMemberService{
 	@Override
 	public int getMembersCount(String societyId) {
 		SocietyMemberExample example = new SocietyMemberExample();
-		example.or().andSocietyIdEqualTo(societyId)
-					.andLeftTimeIsNull();
+		example.or().andSocietyIdEqualTo(societyId).andLeftTimeIsNull();
 		return sMemberMapper.countByExample(example);
+	}
+
+	@Override
+	public Map<String, Integer> listToltalPage(String studentId) {
+		Integer totalPage;
+		Integer totalRecord;
+		SocietyMemberExample example = new SocietyMemberExample();
+		example.or().andMemberIdEqualTo(studentId)
+					.andLeftTimeIsNull();
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		if (sMemberMapper.countByExample(example) % limit != 0) {
+			totalPage = sMemberMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = sMemberMapper.countByExample(example) / limit;
+		}
+		totalRecord = sMemberMapper.countByExample(example);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("totalPage", totalPage);
+		map.put("totalRecords", totalRecord);
+		return map;
 	}
 }

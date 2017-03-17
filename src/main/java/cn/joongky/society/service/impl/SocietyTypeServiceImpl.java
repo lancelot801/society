@@ -70,8 +70,7 @@ public class SocietyTypeServiceImpl implements SocietyTypeService{
 		if (page >= totalPage)
 			page = totalPage - 1;
 		RowBounds rowBounds = new RowBounds(page * limit, limit);
-		List<SocietyType> stList = stMapper.selectByExampleWithRowbounds(example, rowBounds);
-		return stList;
+		return  stMapper.selectByExampleWithRowbounds(example, rowBounds);
 	}
 
 	@Override

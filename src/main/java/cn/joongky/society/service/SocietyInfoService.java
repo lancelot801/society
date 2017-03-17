@@ -10,4 +10,5 @@ public interface SocietyInfoService {
 	SocietyInfo findBySocietyId(String societyId);
 	//更新社团人数
 	SocietyInfo updateMemberCount(String societyId,int membersCount);
+	
 }    
