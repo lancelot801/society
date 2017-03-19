@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.joongky.society.JsonResult;
+import cn.joongky.society.pojo.StudentInfo;
 import cn.joongky.society.service.ActivityApplyService;
 import cn.joongky.society.service.SocietyInfoService;
+import cn.joongky.society.service.StudentInfoService;
+import cn.joongky.society.util.ConfigUtil;
+import cn.joongky.society.util.MailUtil;
 
 @Controller
 @RequestMapping("/student/activity_apply")
@@ -21,7 +25,8 @@ public class ActivityApplyController {
 	private SocietyInfoService sInfoService;
 	@Inject
 	private ActivityApplyService activityApplyService;
-
+	@Inject
+	private StudentInfoService studentInfoService;
 	@RequestMapping(value = "/publish", method = RequestMethod.GET)
 	public ModelAndView applyCreateSociety(Model model, String studentId, String societyId) {
 		model.addAttribute("societyInfo", sInfoService.findBySocietyId(societyId));
@@ -31,9 +36,17 @@ public class ActivityApplyController {
 	@ResponseBody
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	public JsonResult editor(@RequestParam String societyId, @RequestParam String applyerId, @RequestParam String theme,
-			@RequestParam String content, @RequestParam String holdTime) {
+			@RequestParam String content, @RequestParam String holdTime) throws Exception {
 		JsonResult jr = new JsonResult();
 		activityApplyService.addApply(societyId, theme, applyerId, content, holdTime);
+		// 发送邮件通知
+		StudentInfo stu  = studentInfoService.getInfo(applyerId);
+		String userEmail = ConfigUtil.getValue("admin_mail");
+		String title = "社团申请通知";
+		String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
+				+ stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i style='color:red;font-size:20px;'>"
+				+ theme + "社团活动申请,请尽快审核!</i></div>";
+		MailUtil.sendMail(title, text, userEmail);
 		jr.setResultCode(0);
 		jr.setResultData(content);
 		return jr;

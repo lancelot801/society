@@ -25,9 +25,9 @@ $(function() {
 			data :params,
 			success : function(data) {
 				if(data.resultCode == 0){	
-					alert(data.resultData);
+					alert("活动申请成功,等待管理员审核");
 				}else{
-					alert("对不起,请先完善个人信息再申请");
+					alert("对不起,添加活动申请失败");
 					//返回上一个页面
 					window.history.back(-1); 
 				}
