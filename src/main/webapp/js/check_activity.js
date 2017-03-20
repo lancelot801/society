@@ -8,11 +8,11 @@ $(function() {
 		}else{
 			return null;
 		}
-	}
+	};
 
 	function isContains(str, substr) {
 	    return new RegExp(substr).test(str);
-	}
+	};
 	//init
 	$(function(){
 		var totalPage ;
@@ -39,7 +39,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/society_apply/listToltalPage",
+				url : "http://localhost:8080/society_server/admin/activity_apply/listToltalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -173,95 +173,8 @@ $(function() {
 	
 	//获取社团申请信息详情
 	$("button.queryBtn").click(function() {
-		$("#societyApplyModal").modal().draggable({
-			handle : ".modal-header",
-			cursor : 'move',
-			refreshPositions : false
-		});
-		var id = $(this).parents("tr").find("td").eq(0).html();
-		/*
-		var societyName = $(this).parents("tr").find("td").eq(1).html();
-		var status = $(this).parents("tr").find("td").eq(5).html();
-		var checkStatus = document.getElementById("checkStatus2");  
-		for(var i=0; i<checkStatus.options.length; i++){  
-			if(checkStatus.options[i].value == String (status)){  
-				checkStatus.options[i].selected = true;  
-		        break;  
-		    }  
-		} 
-		var applyerId = $(this).parents("tr").find("td").eq(3).html();
-		$("#societyApplyId").val(id);
-		//alert("applyerId: " + applyerId);
-		*/
-		var applyerId = $(this).parents("tr").find("td").eq(3).html();
-		$("#applyerId").val(applyerId);
-		var typeId = "";
-		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/findById?applyId=" + id,
-			type : "get",
-			success : function(data) {
-				//补充基本信息
-				$("#societyApplyId").val(id);
-				$("#societyName").val(data.resultData.societyName);
-				$("#checkStatus2").val(data.resultData.checkStatus);
-				$("#logoUrl").attr("src","/idCard"+data.resultData.logoUrl);
-				$("#introduction").val(data.resultData.introduction);
-				typeId = data.resultData.typeId; 
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取学生证信息
-		$.ajax({
-			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+applyerId,
-			type : "get",
-			success : function(data) {
-				//补充学生证信息
-				var dataRole = eval(data.resultData); 
-				for(var i= 0; i< dataRole.length;i++)
-				{
-				   if(dataRole[i].type == "cover"){
-					   $("#idCardCover").attr("src","/idCard"+dataRole[i].cardUrl);
-				   }else if(dataRole[i].type == "content"){
-					   $("#idCardContent").attr("src","/idCard"+dataRole[i].cardUrl);
-				   }   	
-				}
-				
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取社团类别
-		$.ajax({
-			url : "http://localhost:8080/society_server/societyType/findById?typeId="+typeId,
-			type : "get",
-			success : function(data) {
-				$("#societyType").val(data.resultData.typeName);
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取学生姓名
-		$.ajax({
-			url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
-			type : "post",
-			success : function(data) {
-				$("#applyerName").val(applyerId + " " + data.resultData.sname);
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
+		var activityId = $(this).parents("tr").find("td").eq(0).html();
+		window.location.href="/society_server/admin/activity_apply/getDetail?activityId="+activityId; 
 	});
 	
 	//反馈审核信息

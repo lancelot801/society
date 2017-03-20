@@ -21,7 +21,7 @@ $(function() {
 		var url = window.location.href;
 		var uri ;
 		
-		var checkStatus = getParameter('checkStauts');
+		var activityId = getParameter('activityId');
 		//获取uri
 		if(url.indexOf("Status")>0){
 			if(url.indexOf("&")>0){
@@ -39,11 +39,11 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/society_apply/listToltalPage",
+				url : "http://localhost:8080/society_server/student/activity_apply/findByActivityId?activityId="+activityId,
 				type : "get",
 				success : function(result) {
-					totalPage = result.resultData.totalPage;
-					totalRecords = result.resultData.totalRecords;
+					$(".activity_title").html(result.resultData.theme);
+					 $("#content").append(result.resultData.content);
 				},
 				error : function(error) {
 					alert(error.resultData);
@@ -173,40 +173,11 @@ $(function() {
 	
 	//获取社团申请信息详情
 	$("button.queryBtn").click(function() {
-		$("#societyApplyModal").modal().draggable({
-			handle : ".modal-header",
-			cursor : 'move',
-			refreshPositions : false
-		});
-		var id = $(this).parents("tr").find("td").eq(0).html();
-		/*
-		var societyName = $(this).parents("tr").find("td").eq(1).html();
-		var status = $(this).parents("tr").find("td").eq(5).html();
-		var checkStatus = document.getElementById("checkStatus2");  
-		for(var i=0; i<checkStatus.options.length; i++){  
-			if(checkStatus.options[i].value == String (status)){  
-				checkStatus.options[i].selected = true;  
-		        break;  
-		    }  
-		} 
-		var applyerId = $(this).parents("tr").find("td").eq(3).html();
-		$("#societyApplyId").val(id);
-		//alert("applyerId: " + applyerId);
-		*/
-		var applyerId = $(this).parents("tr").find("td").eq(3).html();
-		$("#applyerId").val(applyerId);
-		var typeId = "";
+		var activityId = $(this).parents("tr").find("td").eq(0).html();
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/findById?applyId=" + id,
+			url : "http://localhost:8080/society_server/admin/activity_apply/getDetail?activityId="+activityId,
 			type : "get",
 			success : function(data) {
-				//补充基本信息
-				$("#societyApplyId").val(id);
-				$("#societyName").val(data.resultData.societyName);
-				$("#checkStatus2").val(data.resultData.checkStatus);
-				$("#logoUrl").attr("src","/idCard"+data.resultData.logoUrl);
-				$("#introduction").val(data.resultData.introduction);
-				typeId = data.resultData.typeId; 
 			},
 			error : function(error) {
 				alert(error.responseText);

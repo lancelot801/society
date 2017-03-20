@@ -127,4 +127,13 @@ public class AdminSocietyApplyController {
 		jr.setResultData("审核不通过");
 		return jr;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listToltalPage", method = RequestMethod.GET)
+	public JsonResult listToltalPage() {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(saService.listToltalPage());
+		return jr;
+	}
 }

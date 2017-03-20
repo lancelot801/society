@@ -26,4 +26,7 @@ public interface ActivityApplyService {
 	
 	// 根据社团编号查找总页数和总记录数
 	Map<String, Integer> listToltalPageBySocietyId(String societyId);
+	
+	// 分页查找所有社团活动申请记录
+	List<ActivityApply> findWithRowBound(Integer page);
 }

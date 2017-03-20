@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.joongky.society.JsonResult;
+import cn.joongky.society.pojo.ActivityApply;
 import cn.joongky.society.pojo.StudentInfo;
 import cn.joongky.society.service.ActivityApplyService;
 import cn.joongky.society.service.SocietyInfoService;
@@ -49,6 +50,21 @@ public class ActivityApplyController {
 		MailUtil.sendMail(title, text, userEmail);
 		jr.setResultCode(0);
 		jr.setResultData(content);
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/findByActivityId", method = RequestMethod.GET)
+	public JsonResult findByActivityId(@RequestParam String activityId){
+		JsonResult jr = new JsonResult();
+		ActivityApply aapply = activityApplyService.findByActivityId(activityId);
+		if(aapply!=null){
+			jr.setResultCode(0);
+			jr.setResultData(aapply);
+		}else{
+			jr.setResultCode(-1);
+			jr.setResultData("所查询的活动不存在");
+		}
 		return jr;
 	}
 }

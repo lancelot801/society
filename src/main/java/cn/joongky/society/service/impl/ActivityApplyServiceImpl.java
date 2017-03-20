@@ -129,4 +129,22 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		return map;
 	}
 
+	@Override
+	public List<ActivityApply> findWithRowBound(Integer page) {
+		ActivityApplyExample example = new ActivityApplyExample();
+		example.setOrderByClause("apply_time DESC");
+		Integer totalPage;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		if (activityApplyMapper.countByExample(example) % limit != 0) {
+			totalPage = activityApplyMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = activityApplyMapper.countByExample(example) / limit;
+		}
+
+		if (page >= totalPage)
+			page = totalPage - 1;
+		RowBounds rowBounds = new RowBounds(page * limit, limit);
+		return activityApplyMapper.selectByExampleWithRowbounds(example, rowBounds);
+	}
+
 }
