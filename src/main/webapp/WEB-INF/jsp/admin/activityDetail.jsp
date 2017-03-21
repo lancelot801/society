@@ -45,11 +45,24 @@
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			
+				<form>
 				<h1 class="activity_title"></h1>
 				
 				<div id="content">
-				
+				 <h1 style="color: #9a0e14;text-align: center;">活动内容如下:</h1>
 				</div>
+					<div class="form-group">
+									<label for="feedBack" class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
+									<div class="col-sm-10">
+										<input type="text" id="feedBack" placeholder="通过与否都需填写审核反馈"
+											name="feedBack" style="width: 90%;" class="form-control" />
+									</div>
+					</div>
+					<br/><br/>
+				<div style="text-align: center;">
+				<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
+				<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
+				</div>
+				</form>
 </body>
 </html>

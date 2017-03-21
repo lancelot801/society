@@ -29,4 +29,7 @@ public interface ActivityApplyService {
 	
 	// 分页查找所有社团活动申请记录
 	List<ActivityApply> findWithRowBound(Integer page);
+	
+	//修改活动申请信息
+	ActivityApply updateActivityStatus(String activityId,String feedBackId,String status);
 }

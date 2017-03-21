@@ -37,16 +37,44 @@ $(function() {
 			  uri = url.substring(url.lastIndexOf("/")+1);	
 			}
 		}
-		$(document).ready(function() {		
+		$(document).ready(function() {	
+			var applyerId ;
+			var studentName ;
 			$.ajax({
 				url : "http://localhost:8080/society_server/student/activity_apply/findByActivityId?activityId="+activityId,
 				type : "get",
 				success : function(result) {
-					$(".activity_title").html(result.resultData.theme);
+					applyerId = result.resultData.applyerId;
+					$.ajax({
+						url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
+						type : "post",
+						success : function(data) {
+							studentName = data.resultData.sname;
+						},
+						error : function(error) {
+							alert(error.responseText);
+						},
+						async : false
+					});
+					$(".activity_title").html("活动标题: " +result.resultData.theme+"<br/>"+
+							"申请时间: "+result.resultData.applyTime + "<br/>"+
+							"申请者: " +applyerId + " " +studentName + "<br/>" );
 					 $("#content").append(result.resultData.content);
 				},
 				error : function(error) {
 					alert(error.resultData);
+				},
+				async : false
+			});
+			$.ajax({
+				url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
+				type : "post",
+				success : function(data) {
+					var complete = $(".activity_title").text();
+					$(".activity_title").append(data.resultData.studentName);
+				},
+				error : function(error) {
+					alert(error.responseText);
 				},
 				async : false
 			});
@@ -77,13 +105,7 @@ $(function() {
 			});
 	});
 });
-	//根据审核状态查询  里面配上ajax请求
-	$('#checkStatus').change(function(){ 
-		//alert($(this).children('option:selected').val()); 
-		//var p1=$(this).children('option:selected').val();//这就是selected的值 
-		//var p2=$('#param2').val();//获取本页面其他标签的值 
-		//window.location.href="xx.php?param1="+p1+"¶m2="+p2+"";//页面跳转并传参 
-		}); 
+
 	$('#addsocietyTypeForm').bootstrapValidator({
 		message : 'This value is not valid',
 		feedbackIcons : {

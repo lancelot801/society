@@ -68,11 +68,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${activities}" var="activity">
+							<c:forEach items="${activities}" var="activity" varStatus="loop">
 								<tr>
 
 									<td style="display: none;">${activity.activityId }</td>
-									<td style="text-align: center;">${activity.societyId}</td>
+									<td style="text-align: center;">${sInfoList[loop.count-1].societyName}</td>
 									<td style="text-align: center;">${activity.theme}</td>
 									<td style="text-align: center;">${activity.applyerId}</td>
 									<td style="text-align: center;"><fmt:formatDate

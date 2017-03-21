@@ -147,4 +147,15 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		return activityApplyMapper.selectByExampleWithRowbounds(example, rowBounds);
 	}
 
+	@Override
+	public ActivityApply updateActivityStatus(String activityId, String feedBackId, String status) {
+		ActivityApply activityApply = activityApplyMapper.selectByPrimaryKey(activityId);
+		Date now = new Date();
+		activityApply.setCheckedTime(now);
+		activityApply.setFeedbackId(feedBackId);
+		activityApply.setStatus(status);
+		activityApplyMapper.updateByPrimaryKeySelective(activityApply);
+		return activityApplyMapper.selectByPrimaryKey(activityId);
+	}
+
 }

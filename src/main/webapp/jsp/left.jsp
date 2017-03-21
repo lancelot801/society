@@ -68,7 +68,7 @@
 							class="glyphicon glyphicon-link"></i> 参与活动</a></li>
 				</ul></li>
 			<li><a href="./grid.html"> <i
-					class="glyphicon glyphicon-globe"></i> 分发配置 <span
+					class="glyphicon glyphicon-globe"></i> 我的申请 <span
 					class="label label-warning pull-right">5</span>
 			</a></li>
 
