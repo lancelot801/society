@@ -83,11 +83,12 @@ public class AdminActivityApplyController {
 			String feedBackId = BasicSysUtil.getUUID();
 			activityApplyService.updateActivityStatus(activityId, feedBackId, "已通过");
 			fbService.add(feedBackId, feedBack, operatorId);
+			ActivityApply aa = activityApplyService.findByActivityId(activityId);
 			// 发送邮件通知
 			StudentInfo stu = studentInfoService.getInfo(applyerId);
-			String title = "社团申请通知";
+			String title = "社团活动申请通知";
 			String text = "<div style='font-family:Microsoft YaHei'>亲爱的同学，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
-					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "您申请的社团 "  + "</i>"
+					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "您申请的活动 "+ aa.getTheme() + "</i>"
 					+ "<i style='color:red;font-size:20px;'>" + "已通过审核</i></div>";
 			MailUtil.sendMail(title, text, stu.getEmail());
 		}
@@ -106,11 +107,12 @@ public class AdminActivityApplyController {
 		synchronized (this) {
 			String feedBackId = BasicSysUtil.getUUID();
 			activityApplyService.updateActivityStatus(activityId, feedBackId, "不通过");
+			ActivityApply aa = activityApplyService.findByActivityId(activityId);
 			fbService.add(feedBackId, feedBack, operatorId);
 			StudentInfo stu = studentInfoService.getInfo(applyerId);
-			String title = "社团申请通知";
+			String title = "社团活动申请通知";
 			String text = "<div style='font-family:Microsoft YaHei'>亲爱的同学，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
-					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "。很抱歉,您申请的社团 " + societyName + "未能通过审核</i>"
+					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "。很抱歉,您申请的社团活动 " + aa.getTheme() + "未能通过审核</i>"
 					+ "<i style='color:red;font-size:20px;'>" + "未能通过审核</i>" + "<i style='font-size:20px;'>反馈原因:</i>"
 					+ "<i style='color:red;font-size:20px;'>" + feedBack + "</i></div>";
 			MailUtil.sendMail(title, text, stu.getEmail());

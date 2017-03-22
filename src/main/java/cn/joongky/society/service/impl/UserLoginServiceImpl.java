@@ -92,4 +92,23 @@ public class UserLoginServiceImpl implements UserLoginService {
 		userLoginMapper.updateByPrimaryKeySelective(ul);
 		return userLoginMapper.selectByExample(example).get(0);
 	}
+
+	@Override
+	public int checkPassword(String studentId, String prePwd) {
+		UserLogin ul = this.findById(studentId);
+		if (ul.getCurrentPassword().equals(EncryptUtil.encodeByMD5(prePwd + ul.getSalt()))) {
+			return 1;
+		}else{
+			return -1;
+		}	
+	}
+
+	@Override
+	public int resetPwd(String studentId, String password) {
+		Date now = new Date();
+		UserLogin ul = this.findById(studentId);
+		ul.setUpdatedTime(now);
+		ul.setCurrentPassword(EncryptUtil.encodeByMD5(password+ul.getSalt()));
+		return userLoginMapper.updateByPrimaryKeySelective(ul);
+	}
 }

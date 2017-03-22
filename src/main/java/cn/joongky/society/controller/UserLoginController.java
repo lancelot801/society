@@ -24,17 +24,14 @@ public class UserLoginController {
 	private StudentInfoService sInfoService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam String token, @RequestParam String password, HttpSession session)
-			throws Exception {
+	public String login(@RequestParam String token, @RequestParam String password, HttpSession session) {
 		UserLogin ul = userLoginService.login(token, password);
-		/*
-		 * String userEmail = ConfigUtil.getValue("admin_mail"); String title =
-		 * "用户登录通知"; String text =
-		 * "<div style='font-family:Microsoft YaHei'>亲爱的用户，您好！<br/>欢迎使用校园社团管理系统,你的用户审核<i style='color:red;font-size:20px;'>失败</i>，请重新申请！</div>"
-		 * ; MailUtil.sendMail(title, text, userEmail);
-		 */
 		session.setAttribute("userLogin", ul);
-		return "admin/activities";
+		if(ul.getRole().contains("admin")){
+			return "admin/checkActivity";
+		}else{
+			return "student/mySociety";
+		}	
 	}
 
 	@ResponseBody
@@ -76,4 +73,33 @@ public class UserLoginController {
 		// 为空默认index 速度慢 或者制定为index.jsp
 		return "redirect:/index.jsp";
 	}
-}
+	//判断密码是否正确
+	@ResponseBody
+	@RequestMapping(value = "/checkPassword", method = RequestMethod.GET)
+	public ValidJson checkPassword(@RequestParam String prePwd,@RequestParam String studentId) {
+		ValidJson vj = new ValidJson();
+		int result = userLoginService.checkPassword(studentId,prePwd);
+		if (result < 0) {
+			vj.setValid(false);
+		} else {
+			vj.setValid(true);
+		}
+		return vj;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+	public JsonResult resetPassword(@RequestParam String studentId,@RequestParam String currentPwd){
+		JsonResult jr = new JsonResult();
+		int result = userLoginService.resetPwd(studentId, currentPwd);
+		if(result>0){
+			jr.setResultCode(0);
+			jr.setResultData("密码修改成功");
+		}else{
+			jr.setResultCode(-1);
+			jr.setResultData("密码修改失败");
+		}
+		return jr ;
+	}
+}	
+

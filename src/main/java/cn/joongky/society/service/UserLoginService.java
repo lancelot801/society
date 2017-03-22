@@ -18,4 +18,10 @@ public interface UserLoginService {
 
 	// 添加昵称,邮箱和手机号
 	UserLogin addOtherInfo(String studentId, String nickname, String email, String mobile);
+	
+	//判断原密码是否正确
+	int checkPassword(String studentId,String prePwd);
+	
+	//修改密码
+	int resetPwd(String studentId,String password);
 }

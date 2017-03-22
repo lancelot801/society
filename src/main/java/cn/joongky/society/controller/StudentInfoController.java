@@ -118,4 +118,9 @@ public class StudentInfoController {
 		}
 		return jr;
 	}
+	
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.GET)
+	public String resetPassword(){
+		return "/reset_pwd";
+	}
 }
