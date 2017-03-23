@@ -28,9 +28,9 @@ public class UserLoginController {
 		UserLogin ul = userLoginService.login(token, password);
 		session.setAttribute("userLogin", ul);
 		if(ul.getRole().contains("admin")){
-			return "admin/checkActivity";
+			return "redirect:/admin/activity_apply/manage";
 		}else{
-			return "student/mySociety";
+			return "redirect:/student/societyInfo/manage?studentId=" + ul.getStudentId();
 		}	
 	}
 

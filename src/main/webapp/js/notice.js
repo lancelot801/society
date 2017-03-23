@@ -35,7 +35,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/institute/listToltalPage",
+				url : "http://localhost:8080/society_server/admin/notice/listToltalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -74,7 +74,7 @@ $(function() {
 	});
 });
 	
-	$('#addInstituteForm').bootstrapValidator({
+	$('#noticeForm').bootstrapValidator({
 		message : 'This value is not valid',
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
@@ -82,71 +82,21 @@ $(function() {
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields : {
-			instituteName : {
+			theme : {
 				validators : {
 					notEmpty : {
-						message : '学院名称不能为空'
+						message : '公告主题不能为空'
 					},
 				}
 			}
 		}
 	});
-	
-	$('#updateInstitute').bootstrapValidator({
-		message : 'This value is not valid',
-		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
-			invalid : 'glyphicon glyphicon-remove',
-			validating : 'glyphicon glyphicon-refresh'
-		},
-		fields : {
-			instituteName : {
-				validators : {
-					notEmpty : {
-						message : '学院名称不能为空'
-					},
-				}
-			}
-		}
-	});
-	
-	$("button.addBtn").click(function() {
-		$("#addInstituteModal").modal().draggable({
-			handle : ".modal-header",
-			cursor : 'move',
-			refreshPositions : false
-		});
-	});
-	//添加学院信息
-	$("#addInstituteBtn").click(function() {
-		var Validator = $('#addInstituteForm').data('bootstrapValidator');
-		Validator.validate();
-		if (!Validator.isValid()) {
-			return;
-		} 
-		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/add",
-			type : "post",
-			data:  $('#addInstituteForm').serialize(),
-			success : function(data) {
-				if(data.resultCode == 0){
-					alert("添加成功!");
-					window.location.href=window.location.href; 
-					window.location.reload; 
-				}
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-	});  
-	
+
 	$("button.deleteBtn").click(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/institute/deleteById?instituteId=" + id,
+				url : "http://localhost:8080/society_server/admin/notice/deleteById?noticeId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -169,18 +119,20 @@ $(function() {
 	});
 	
 	$("button.queryBtn").click(function() {
-		$("#instituteModal").modal().draggable({
+		$("#noticeModal").modal().draggable({
 			handle : ".modal-header",
 			cursor : 'move',
 			refreshPositions : false
 		});
 		var id = $(this).parents("tr").find("td").eq(0).html();
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/findById?instituteId=" + id,
+			url : "http://localhost:8080/society_server/admin/notice/findById?noticeId=" + id,
 			type : "get",
 			success : function(data) {
-				$("#instituteId").val(data.resultData.instituteId);
-				$("#instituteName2").val(data.resultData.instituteName);
+				$("#noticeId").val(data.resultData.noticeId);
+				$("#theme").val(data.resultData.theme);
+				editor.clear();
+				editor.$txt.append(data.resultData.content);
 			},
 			error : function(error) {
 				alert(error.responseText);
@@ -190,19 +142,26 @@ $(function() {
 	});
 	//修改学院信息
 	$("#submitBtn").click(function() {
-		var Validator = $('#updateInstitute').data('bootstrapValidator');
+		var Validator = $('#noticeForm').data('bootstrapValidator');
 		Validator.validate();
 		if (!Validator.isValid()) {
 			return;
 		} 
+		  var html = editor.$txt.html();
+	    	"use strict"; 
+		    let params = {};
+		    params = {
+		    	noticeId :	$("#noticeId").val(),
+		    	theme : $("#theme").val(),
+		    	content: html,
+		    };
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/updateById",
+			url : "http://localhost:8080/society_server/admin/notice/updateById",
 			type : "post",
-			data:  $('#updateInstitute').serialize(),
+			data:  params,
 			success : function(data) {
 				alert("修改成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				window.location.href="/society_server/admin//notice/noticeManage"; 
 			},
 			error : function(error) {
 				alert(error.responseText);

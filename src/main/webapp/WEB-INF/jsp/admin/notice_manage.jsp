@@ -19,17 +19,15 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
 <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/wangEditor.min.js"></script>
-<!--引入jquery和wangEditor.js-->
-<!--注意：javascript必须放在body最后，否则可能会出现问题-->
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/editor.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/wangEditor.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/notice.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
@@ -44,72 +42,94 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>社团活动申请</title>
+<title>公告管理</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">社团活动申请</h1>
+				<h1 class="page-header">
+					社团公告管理
+				</h1>
 				<div id="contain" class="row placeholders">
-					<form class="form-horizontal" id="activityApplyForm"
-						enctype="multipart/form-data" action="#">
-						<div style="margin-left: auto; margin-right: auto;">
-						<input type="text"  id="societyId"style="display: none;" value="${societyInfo.societyId}"name="societyId"  />
-							<input type="text"  id="applyerId"style="display: none;" value="${userLogin.studentId}"name="applyerId"  />
-							<div class="form-group">
-								<label for="societyName" style="padding-left: 10px"
-									class="col-sm-2 control-label mylabStyle">社团名称</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="societyName"
-										style="width: 90%" value="${societyInfo.societyName}"
-										name="societyName" readonly="readonly" />
-								</div>
-							</div>
+					<table class='table table-responsive table-striped col-xs-12'>
+						<thead>
+							<tr>
+								<th>公告主题</th>
+								<th>公告内容</th>
+								<th>发布时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${notices}" var="notice">
+								<tr>
 
-							<div class="form-group">
-								<label for="theme" style="padding-left: 10px"
-									class="col-sm-2 control-label mylabStyle">活动主题</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="theme"
-										style="width: 90%" 
-										name="theme"  />
-								</div>
-							</div>
+									<td style="display: none;">${notice.noticeId}</td>
+									<td>${notice.theme}</td>
+									<td><fmt:formatDate
+											value="${notice.publishedTime}" pattern="yyyy年MM月dd日" />
+									</td>
+									<td><label>
+											<button
+												class="btn btn-info btn-sm glyphicon glyphicon-search queryBtn">查看公告</button>
+									</label> &nbsp;&nbsp;&nbsp; <span>
+											<button
+												class="btn btn-info btn-sm glyphicon glyphicon-remove deleteBtn">删除公告</button>
+									</span></td>
+								</tr>
+							</c:forEach>
 
-
-							<div class="form-group">
-								<label for="holdTime"
-									class="col-sm-2 control-label mylabStyle">活动时间</label>
-								<div class="input-group date form_datetime col-sm-10"
-									data-date="2016-10-12" data-date-format="yyyy-MM-dd"
-									style="margin-left: 80px; width: 280px;"
-									data-link-field="startTime">
-									<input class="form-control" id="holdTime" name="holdTime"
-										size="16" style="margin-left: 14px;" type="text" value=""
-										placeholder="请选择活动时间"> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-remove"></span></span> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-th"></span></span>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<h3 style="margin-left: auto; margin-right: auto;">活动内容</h3>
-							</div>
-							<textarea id="textarea1" style="height: 200px;"></textarea>
-
-							<button id="applyBtn"
-								class="btn btn-info btn-sm glyphicon glyphicon-plus ">提交申请</button>
-					</form>
+						</tbody>
+					</table>
+					<div id="kkpager" style="width: 80%; height: 30px"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script type="text/javascript">
+
+	<!-- 修改模态框 -->
+	<div class="modal  fade" id="noticeModal">
+		<div class="modal-dialog">
+			<form id="noticeForm" >
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal" type="button">&times;</button>
+						<h4 class="modal-title">
+							<span class="glyphicon glyphicon-leaf"></span>&nbsp;公告信息
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div style="display: none;">
+									<input id="noticeId" name="noticeId" />
+								</div>
+								<div class="form-group">
+									<label for="theme"
+										class="col-sm-2 control-label mylabStyle">公告主题</label>
+									<div class="col-sm-10">
+										<input type="text" id="theme" name="theme"
+											style="width: 90%;" class="form-control" placeholder="请输入公告主题" />
+									</div>
+								</div>
+								<br/><br/>	
+									<textarea id="textarea1" style="height: 400px;"></textarea>		
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="btnClose" class="btn btn-default"
+							data-dismiss="modal">关闭</button>
+						<button id="submitBtn" class="btn btn-primary">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<script type="text/javascript">
 		var editor = new wangEditor('textarea1');
 
 		// 上传图片（举例）

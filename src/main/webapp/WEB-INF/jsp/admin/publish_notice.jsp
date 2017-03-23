@@ -38,39 +38,23 @@
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/society.css">
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/kkpager.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>社团活动申请</title>
+<title>社团公告</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">社团活动申请</h1>
+				<h1 class="page-header">社团公告</h1>
 				<div id="contain" class="row placeholders">
-					<form class="form-horizontal" id="activityApplyForm"
-						enctype="multipart/form-data" action="#">
+					<form class="form-horizontal" id="noticeForm" action="#">
 						<div style="margin-left: auto; margin-right: auto;">
-						<input type="text"  id="societyId"style="display: none;" value="${societyInfo.societyId}"name="societyId"  />
-							<input type="text"  id="applyerId"style="display: none;" value="${userLogin.studentId}"name="applyerId"  />
-							<div class="form-group">
-								<label for="societyName" style="padding-left: 10px"
-									class="col-sm-2 control-label mylabStyle">社团名称</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="societyName"
-										style="width: 90%" value="${societyInfo.societyName}"
-										name="societyName" readonly="readonly" />
-								</div>
-							</div>
-
+							<input type="text"  id="publisher"style="display: none;" value="${userLogin.studentId}"name="publisher"  />
 							<div class="form-group">
 								<label for="theme" style="padding-left: 10px"
-									class="col-sm-2 control-label mylabStyle">活动主题</label>
+									class="col-sm-2 control-label mylabStyle">公告主题</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="theme"
 										style="width: 90%" 
@@ -78,31 +62,13 @@
 								</div>
 							</div>
 
-
 							<div class="form-group">
-								<label for="holdTime"
-									class="col-sm-2 control-label mylabStyle">活动时间</label>
-								<div class="input-group date form_datetime col-sm-10"
-									data-date="2016-10-12" data-date-format="yyyy-MM-dd"
-									style="margin-left: 80px; width: 280px;"
-									data-link-field="startTime">
-									<input class="form-control" id="holdTime" name="holdTime"
-										size="16" style="margin-left: 14px;" type="text" value=""
-										placeholder="请选择活动时间"> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-remove"></span></span> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-th"></span></span>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<h3 style="margin-left: auto; margin-right: auto;">活动内容</h3>
+								<h3 style="margin-left: auto; margin-right: auto;">公告内容</h3>
 							</div>
 							<textarea id="textarea1" style="height: 200px;"></textarea>
 
-							<button id="applyBtn"
-								class="btn btn-info btn-sm glyphicon glyphicon-plus ">提交申请</button>
+							<button id="noticeBtn"
+								class="btn btn-info btn-sm glyphicon glyphicon-plus ">发布公告</button>
 					</form>
 				</div>
 			</div>

@@ -32,4 +32,7 @@ public interface ActivityApplyService {
 	
 	//修改活动申请信息
 	ActivityApply updateActivityStatus(String activityId,String feedBackId,String status);
+	
+	//根据状态分页查找所有活动信息
+	List<ActivityApply> findByStatusWithRowBound(Integer page,String status);
 }

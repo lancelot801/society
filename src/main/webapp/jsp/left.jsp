@@ -32,17 +32,26 @@
 						<li><a
 							href="<%=request.getContextPath()%>/admin/societyType/manage"><i
 								class="glyphicon glyphicon-asterisk"></i> 社团类别</a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-edit"></i>
-								修改密码</a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/activity_apply/manage"><i class="glyphicon glyphicon-ok"></i>
 								活动审核</a></li>
 					</ul></li>
+					<li><a href="#systemSetting2" class="nav-header collapsed"
+					data-toggle="collapse"> <i class="glyphicon glyphicon-fire"></i>
+						公告管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+				</a>
+				
+					<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
+						style="height: 0px;">
+						<li><a href="<%=request.getContextPath()%>/admin/notice/publishNotice"> <i class="glyphicon glyphicon-arrow-up"></i> 发布公告
+						</a></li>
+					<li><a href="<%=request.getContextPath()%>/admin/notice/noticeManage"><i class="glyphicon glyphicon-envelope"></i> 查看公告</a></li>  
+					</ul></li>
 			</c:if>
-			<li><a href="#systemSetting2" class="nav-header collapsed"
+			<li><a href="#systemSetting3" class="nav-header collapsed"
 				data-toggle="collapse"> <i class="glyphicon glyphicon-th-list"></i>
 					信息管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
 			</a>
-				<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
+				<ul id="systemSetting3" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
 					<li><a
 						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
@@ -53,12 +62,14 @@
 					<li><a
 						href="<%=request.getContextPath()%>/student/societyInfo/manage?studentId=${userLogin.studentId}"><i
 							class="glyphicon glyphicon-eye-open"></i> 我的社团</a></li>
+					<li><a href="<%=request.getContextPath()%>/student/resetPassword"><i class="glyphicon glyphicon-edit"></i>
+							修改密码</a></li>
 				</ul></li>
-			<li><a href="#systemSetting3" class="nav-header collapsed"
+			<li><a href="#systemSetting4" class="nav-header collapsed"
 				data-toggle="collapse"> <i class="glyphicon glyphicon-leaf"></i>
 					我的活动<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 			</a>
-				<ul id="systemSetting3" class="nav nav-list collapse secondmenu"
+				<ul id="systemSetting4" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
 					<li><a
 						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
@@ -71,13 +82,14 @@
 					class="glyphicon glyphicon-globe"></i> 我的申请 <span
 					class="label label-warning pull-right">5</span>
 			</a></li>
-
+			<li><a href="#"> <i class="glyphicon glyphicon-fire"></i>
+					系统公告
+			</a></li>
+			
 			<li><a href="./charts.html"> <i
 					class="glyphicon glyphicon-calendar"></i> 图表统计
 			</a></li>
-			<li><a href="#"> <i class="glyphicon glyphicon-fire"></i>
-					关于系统
-			</a></li>
+			
 
 		</ul>
 	</div>

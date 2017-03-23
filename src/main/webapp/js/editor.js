@@ -38,7 +38,62 @@ $(function() {
 			async : false
 		});
 	});
-
+	
+	$('#noticeForm').bootstrapValidator({
+		message : 'This value is not valid',
+		feedbackIcons : {
+			valid : 'glyphicon glyphicon-ok',
+			invalid : 'glyphicon glyphicon-remove',
+			validating : 'glyphicon glyphicon-refresh'
+		},
+		fields : {
+			theme : {
+				validators : {
+					notEmpty : {
+						message : '公告主题不能为空'
+					},
+				}
+			}
+		}
+	});
+	
+	//发布公告
+	$("#noticeBtn").click(function() {
+		var Validator = $('#noticeForm').data('bootstrapValidator');
+		Validator.validate();
+		if (!Validator.isValid()) {
+			return;
+		} 
+		 // 获取编辑器区域完整html代码
+        var html = editor.$txt.html();
+    	"use strict"; 
+	    let params = {};
+	    params = {
+	    	publisher : $("#publisher").val(),
+	    	theme : $("#theme").val(),
+	    	content: html,
+	    };
+        $.ajax({
+			url : "http://localhost:8080/society_server/admin/notice/publish",
+			type : "post",
+			data :params,
+			success : function(data) {
+				if(data.resultCode == 0){	
+					alert("公告发布成功");
+					window.location.href=window.location.href; 
+					window.location.reload; 
+				}else{
+					alert("对不起,发布活动失败");
+					//返回上一个页面
+					window.history.back(-1); 
+				}
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
+	});
 	// 时间
 	 $(".form_datetime").datetimepicker({
 		 language: 'zh-CN',

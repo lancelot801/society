@@ -96,7 +96,7 @@
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>
 						<h4 class="modal-title">
-							<span class="glyphicon glyphicon-leaf"></span>&nbsp;课程信息
+							<span class="glyphicon glyphicon-leaf"></span>&nbsp;学院信息
 						</h4>
 					</div>
 					<div class="modal-body">
