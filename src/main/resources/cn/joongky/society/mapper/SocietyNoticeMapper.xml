@@ -4,9 +4,11 @@
   <resultMap id="BaseResultMap" type="cn.joongky.society.pojo.SocietyNotice" >
     <id column="notice_id" property="noticeId" jdbcType="VARCHAR" />
     <result column="theme" property="theme" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="published_time" property="publishedTime" jdbcType="TIMESTAMP" />
     <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.joongky.society.pojo.SocietyNotice" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,8 +69,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    notice_id, theme, content, published_time, publisher
+    notice_id, theme, published_time, publisher
   </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" >
     select
     <if test="distinct" >
@@ -83,9 +104,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from society_notice
     where notice_id = #{noticeId,jdbcType=VARCHAR}
   </select>
@@ -100,10 +123,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.joongky.society.pojo.SocietyNotice" >
-    insert into society_notice (notice_id, theme, content, 
-      published_time, publisher)
-    values (#{noticeId,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{publishedTime,jdbcType=TIMESTAMP}, #{publisher,jdbcType=VARCHAR})
+    insert into society_notice (notice_id, theme, published_time, 
+      publisher, content)
+    values (#{noticeId,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{publishedTime,jdbcType=TIMESTAMP}, 
+      #{publisher,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.joongky.society.pojo.SocietyNotice" >
     insert into society_notice
@@ -114,14 +137,14 @@
       <if test="theme != null" >
         theme,
       </if>
-      <if test="content != null" >
-        content,
-      </if>
       <if test="publishedTime != null" >
         published_time,
       </if>
       <if test="publisher != null" >
         publisher,
+      </if>
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +154,14 @@
       <if test="theme != null" >
         #{theme,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
       <if test="publishedTime != null" >
         #{publishedTime,jdbcType=TIMESTAMP},
       </if>
       <if test="publisher != null" >
         #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -157,16 +180,27 @@
       <if test="record.theme != null" >
         theme = #{record.theme,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=VARCHAR},
-      </if>
       <if test="record.publishedTime != null" >
         published_time = #{record.publishedTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.publisher != null" >
         publisher = #{record.publisher,jdbcType=VARCHAR},
       </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update society_notice
+    set notice_id = #{record.noticeId,jdbcType=VARCHAR},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      published_time = #{record.publishedTime,jdbcType=TIMESTAMP},
+      publisher = #{record.publisher,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,7 +209,6 @@
     update society_notice
     set notice_id = #{record.noticeId,jdbcType=VARCHAR},
       theme = #{record.theme,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
       published_time = #{record.publishedTime,jdbcType=TIMESTAMP},
       publisher = #{record.publisher,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -188,26 +221,49 @@
       <if test="theme != null" >
         theme = #{theme,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
       <if test="publishedTime != null" >
         published_time = #{publishedTime,jdbcType=TIMESTAMP},
       </if>
       <if test="publisher != null" >
         publisher = #{publisher,jdbcType=VARCHAR},
       </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where notice_id = #{noticeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.joongky.society.pojo.SocietyNotice" >
+    update society_notice
+    set theme = #{theme,jdbcType=VARCHAR},
+      published_time = #{publishedTime,jdbcType=TIMESTAMP},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
     where notice_id = #{noticeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.joongky.society.pojo.SocietyNotice" >
     update society_notice
     set theme = #{theme,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
       published_time = #{publishedTime,jdbcType=TIMESTAMP},
       publisher = #{publisher,jdbcType=VARCHAR}
     where notice_id = #{noticeId,jdbcType=VARCHAR}
   </update>
+  <select resultMap="ResultMapWithBLOBs" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" id="selectByExampleWithBLOBsWithRowbounds" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from society_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select resultMap="BaseResultMap" parameterType="cn.joongky.society.pojo.SocietyNoticeExample" id="selectByExampleWithRowbounds" >
     select
     <if test="distinct" >
