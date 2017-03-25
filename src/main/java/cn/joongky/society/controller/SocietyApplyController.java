@@ -77,4 +77,26 @@ public class SocietyApplyController {
 		jr.setResultData("申请成功");
 		return jr;
 	}
+	
+	@RequestMapping(value = "/listMySocietyApply", method = RequestMethod.GET)
+	public ModelAndView manage(Model model, Integer pNo,String studentId) {
+		if (pNo != null) {
+			pNo = pNo - 1;
+			if (pNo < 0)
+				pNo = 0;
+			model.addAttribute("societyApplies", saService.findByStudentIdWithRowBound(pNo, studentId));
+		} else {
+			model.addAttribute("societyApplies", saService.findByStudentIdWithRowBound(0, studentId));
+		}
+		return new ModelAndView("/student/my_society_apply");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listToltalPageByStudentId", method = RequestMethod.GET)
+	public JsonResult listToltalPage(@RequestParam String studentId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(saService.listToltalPageByStudentId(studentId));
+		return jr;
+	}
 }

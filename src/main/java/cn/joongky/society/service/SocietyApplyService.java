@@ -32,4 +32,10 @@ public interface SocietyApplyService {
 	
 	//审核通过修改信息
 	int updateStatusById(String applyId,String feedBackId,String checkStatus);
+	
+	// 根据学号分页查找所有社团申请记录
+	List<SocietyApply> findByStudentIdWithRowBound(Integer page,String studentId);
+	
+	//根据学号查找总页数和总记录数
+	Map<String, Integer> listToltalPageByStudentId(String studentId);
 }

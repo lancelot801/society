@@ -67,23 +67,23 @@
 				</ul></li>
 			<li><a href="#systemSetting4" class="nav-header collapsed"
 				data-toggle="collapse"> <i class="glyphicon glyphicon-leaf"></i>
-					我的活动<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+					申请记录<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 			</a>
 				<ul id="systemSetting4" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
 					<li><a
-						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
-							class="glyphicon glyphicon-flag"></i> 举办活动</a></li>
+						href="<%=request.getContextPath()%>/student/activity_apply/listMyApply?studentId=${userLogin.studentId}&pNo=0"><i
+							class="glyphicon glyphicon-flag"></i> 活动申请</a></li>
 					<li><a
-						href="<%=request.getContextPath()%>/student/showInfo?studentId=${userLogin.studentId}"><i
-							class="glyphicon glyphicon-link"></i> 参与活动</a></li>
+						href="<%=request.getContextPath()%>/societyApply/listMySocietyApply?studentId=${userLogin.studentId}&pNo=0"><i
+							class="glyphicon glyphicon-link"></i> 社团申请</a></li>
 				</ul></li>
 			<li><a href="./grid.html"> <i
 					class="glyphicon glyphicon-globe"></i> 我的申请 <span
 					class="label label-warning pull-right">5</span>
 			</a></li>
 			<li><a href="#"> <i class="glyphicon glyphicon-fire"></i>
-					系统公告
+					系统介绍
 			</a></li>
 			
 			<li><a href="./charts.html"> <i

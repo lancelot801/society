@@ -117,12 +117,12 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		ActivityApplyExample example = new ActivityApplyExample();
 		example.or().andSocietyIdEqualTo(societyId);
-		if (activityApplyMapper.countByExample(null) % limit != 0) {
-			totalPage = activityApplyMapper.countByExample(null) / limit + 1;
+		if (activityApplyMapper.countByExample(example) % limit != 0) {
+			totalPage = activityApplyMapper.countByExample(example) / limit + 1;
 		} else {
-			totalPage = activityApplyMapper.countByExample(null) / limit;
+			totalPage = activityApplyMapper.countByExample(example) / limit;
 		}
-		totalRecord = activityApplyMapper.countByExample(null);
+		totalRecord = activityApplyMapper.countByExample(example);
 		Map<String, Integer> map = new HashMap<>();
 		map.put("totalPage", totalPage);
 		map.put("totalRecords", totalRecord);
@@ -174,6 +174,43 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 			page = totalPage - 1;
 		RowBounds rowBounds = new RowBounds(page * limit, limit);
 		return  activityApplyMapper.selectByExampleWithRowbounds(example, rowBounds);
+	}
+
+	@Override
+	public List<ActivityApply> findByStudentIdWithRowBound(Integer page, String studentId) {
+		ActivityApplyExample example = new ActivityApplyExample();
+		example.or().andApplyerIdEqualTo(studentId);
+		Integer totalPage;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		if (activityApplyMapper.countByExample(example) % limit != 0) {
+			totalPage = activityApplyMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = activityApplyMapper.countByExample(example) / limit;
+		}
+
+		if (page >= totalPage)
+			page = totalPage - 1;
+		RowBounds rowBounds = new RowBounds(page * limit, limit);
+		return  activityApplyMapper.selectByExampleWithRowbounds(example, rowBounds);
+	}
+
+	@Override
+	public Map<String, Integer> listToltalPageByStudentId(String studentId) {
+		Integer totalPage;
+		Integer totalRecord;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		ActivityApplyExample example = new ActivityApplyExample();
+		example.or().andApplyerIdEqualTo(studentId);
+		if (activityApplyMapper.countByExample(example) % limit != 0) {
+			totalPage = activityApplyMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = activityApplyMapper.countByExample(example) / limit;
+		}
+		totalRecord = activityApplyMapper.countByExample(example);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("totalPage", totalPage);
+		map.put("totalRecords", totalRecord);
+		return map;
 	}
 
 }

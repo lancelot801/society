@@ -140,4 +140,42 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 		return saMapper.updateByPrimaryKeySelective(sa);
 	}
 
+	@Override
+	public List<SocietyApply> findByStudentIdWithRowBound(Integer page, String studentId) {
+		SocietyApplyExample example = new SocietyApplyExample();
+		example.setOrderByClause("applied_time DESC");
+		example.or().andApplyerIdEqualTo(studentId);
+		Integer totalPage;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		if (saMapper.countByExample(example) % limit != 0) {
+			totalPage = saMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = saMapper.countByExample(example) / limit;
+		}
+
+		if (page >= totalPage)
+			page = totalPage - 1;
+		RowBounds rowBounds = new RowBounds(page * limit, limit);
+		return saMapper.selectByExampleWithRowbounds(example, rowBounds);
+	}
+
+	@Override
+	public Map<String, Integer> listToltalPageByStudentId(String studentId) {
+		SocietyApplyExample example = new SocietyApplyExample();
+		example.or().andApplyerIdEqualTo(studentId);
+		Integer totalPage;
+		Integer totalRecord;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		if (saMapper.countByExample(example) % limit != 0) {
+			totalPage = saMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = saMapper.countByExample(example) / limit;
+		}
+		totalRecord = saMapper.countByExample(example);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("totalPage", totalPage);
+		map.put("totalRecords", totalRecord);
+		return map;
+	}
+
 }
