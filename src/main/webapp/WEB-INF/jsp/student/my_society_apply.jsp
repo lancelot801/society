@@ -204,20 +204,11 @@
 								</div>
 								<br /> <br />
 
-								<div class="form-group">
-									<label for="feedBack" class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
-									<div class="col-sm-10">
-										<input type="text" id="feedBack" placeholder="通过与否都需填写审核反馈"
-											name="feedBack" style="width: 90%;" class="form-control" />
-									</div>
-								</div>
-								<br /> <br />
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">		
 						<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
-						<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
 						<button type="button" id="btnClose" class="btn btn-default"
 							data-dismiss="modal">关闭</button>		
 					</div>

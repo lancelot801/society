@@ -99,4 +99,14 @@ public class SocietyApplyController {
 		jr.setResultData(saService.listToltalPageByStudentId(studentId));
 		return jr;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/findById", method = RequestMethod.GET)
+	public JsonResult findByApplyId(@RequestParam String applyId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(saService.findById(applyId));
+		return jr;
+	}
+
 }

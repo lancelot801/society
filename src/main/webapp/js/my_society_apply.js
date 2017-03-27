@@ -180,25 +180,11 @@ $(function() {
 			refreshPositions : false
 		});
 		var id = $(this).parents("tr").find("td").eq(0).html();
-		/*
-		var societyName = $(this).parents("tr").find("td").eq(1).html();
-		var status = $(this).parents("tr").find("td").eq(5).html();
-		var checkStatus = document.getElementById("checkStatus2");  
-		for(var i=0; i<checkStatus.options.length; i++){  
-			if(checkStatus.options[i].value == String (status)){  
-				checkStatus.options[i].selected = true;  
-		        break;  
-		    }  
-		} 
-		var applyerId = $(this).parents("tr").find("td").eq(3).html();
-		$("#societyApplyId").val(id);
-		//alert("applyerId: " + applyerId);
-		*/
 		var applyerId = $(this).parents("tr").find("td").eq(3).html();
 		$("#applyerId").val(applyerId);
 		var typeId = "";
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/findById?applyId=" + id,
+			url : "http://localhost:8080/society_server/societyApply/findById?applyId=" + id,
 			type : "get",
 			success : function(data) {
 				//补充基本信息
