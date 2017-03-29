@@ -132,7 +132,7 @@
 	<!-- 添加模态框 -->
 	<div class="modal  fade" id="addInstituteModal">
 		<div class="modal-dialog">
-			<form id="addInstituteForm" action="" method="">
+			<form id="addInstituteForm" >
 				<div class="modal-content">
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>

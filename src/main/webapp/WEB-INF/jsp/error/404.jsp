@@ -19,9 +19,9 @@
       <div class="text-center">
          <br>
          <h2 class="padding-top"> 
-         <stong>404 Not Found</stong> 
+         <strong>404 Not Found</strong> 
          <br/>
-         <stong>您所访问的页面不存在</stong> 
+         <strong>您所访问的页面不存在</strong> 
          </h2>
          <div class=""> 
             <div class="float-left">
@@ -38,5 +38,6 @@
           </div> 
       </div> 
    </div> 
+   </div>
 </body>
 </html>

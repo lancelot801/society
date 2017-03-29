@@ -45,7 +45,10 @@
 		<div class="row">
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<form>
+				<form id="detailForm">
+				<input style="display: none;" id="activityId" name="activityId"/>
+				<input style="display: none;" id="applyerId" name="applyerId"/>
+				<input style="display: none;" id="operatorId" name="operatorId" value="${userLogin.studentId} "/>
 				<h1 class="activity_title"></h1>
 				
 				<div id="content">
@@ -64,5 +67,8 @@
 				<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
 				</div>
 				</form>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

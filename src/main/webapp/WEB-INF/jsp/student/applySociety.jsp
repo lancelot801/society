@@ -51,8 +51,7 @@
 						enctype="multipart/form-data" action="#">
 						<table class="table table-hover table-bordered"
 							style="margin-left: auto; margin-right: auto;">
-							<input type="text" class="form-control" id="applyerId"
-								name="applyerId" style="display: none;"
+							<input type="text" class="form-control" id="applyerId" name="applyerId" style="display: none;"
 								value="${userLogin.studentId}" />
 							<tr>
 								<td>
@@ -104,7 +103,7 @@
 										<label for="introduction" style="padding-left: 10px"
 											class="col-sm-2 control-label mylabStyle">社团简介</label>
 										<div class="col-sm-10">
-											<textarea autofocus="autofocus" type="text"
+											<textarea autofocus="autofocus" 
 												class="form-control" id="introduction" rows="10"
 												style="width: 90%; height: 80px;" name="introduction"
 												placeholder="请输入社团简介">

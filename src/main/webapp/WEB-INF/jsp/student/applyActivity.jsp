@@ -55,7 +55,6 @@
 				<div id="contain" class="row placeholders">
 					<form class="form-horizontal" id="activityApplyForm"
 						enctype="multipart/form-data" action="#">
-						<div style="margin-left: auto; margin-right: auto;">
 						<input type="text"  id="societyId"style="display: none;" value="${societyInfo.societyId}"name="societyId"  />
 							<input type="text"  id="applyerId"style="display: none;" value="${userLogin.studentId}"name="applyerId"  />
 							<div class="form-group">

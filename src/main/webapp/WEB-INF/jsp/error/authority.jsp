@@ -19,9 +19,9 @@
       <div class="text-center">
          <br>
          <h2 class="padding-top"> 
-         <stong>Authority Not Enough</stong> 
+         <strong>Authority Not Enough</strong> 
          <br/>
-         <stong>抱歉,权限不足或者尚未登录</stong> 
+         <strong>抱歉,权限不足或者尚未登录</strong> 
          </h2>
          <div class=""> 
             <div class="float-left">
@@ -38,5 +38,6 @@
           </div> 
       </div> 
    </div> 
+   </div>
 </body>
 </html>

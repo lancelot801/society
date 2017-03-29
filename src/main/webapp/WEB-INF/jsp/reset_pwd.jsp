@@ -49,11 +49,9 @@
 				<div id="contain" class="row placeholders">
 					<form class="form-horizontal" id="passwordForm"  action="#">
 						<table class="table table-hover table-bordered" style="margin-left: auto;margin-right: auto;">
-							<input type="text"  class="form-control" id="studentId" style="width: 90%;display: none;" value="${userLogin.studentId}"
-										name="studentId" />
-				
 							<tr>
 							<td>
+							<input type="text" id="studentId"  name="studentId" style="display: none;" value="${userLogin.studentId}" />
 								<div class="form-group">
 								<label for="prePwd"  style="padding-left:10px"
 										class="col-sm-2 control-label mylabStyle">原密码</label>

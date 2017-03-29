@@ -18,7 +18,7 @@
    <div class="panel margin-big-top">
       <div class="text-center">
          <br>
-         <h2 class="padding-top"> <stong>${exception.message}</stong> </h2>
+         <h2 class="padding-top"> <strong>${exception.message}</strong> </h2>
          <div class=""> 
             <div class="float-left">
                 <img src="../img/ds-1.gif">
@@ -34,5 +34,6 @@
           </div> 
       </div> 
    </div> 
+   </div>
 </body>
 </html>

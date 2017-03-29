@@ -19,9 +19,9 @@
       <div class="text-center">
          <br>
          <h2 class="padding-top"> 
-         <stong>500 Server Error</stong> 
+         <strong>500 Server Error</strong> 
          <br/>
-         <stong>服务器内部错误</stong> 
+         <strong>服务器内部错误</strong> 
          </h2>
          <div class=""> 
             <div class="float-left">
@@ -38,5 +38,6 @@
           </div> 
       </div> 
    </div> 
+   </div>
 </body>
 </html>
