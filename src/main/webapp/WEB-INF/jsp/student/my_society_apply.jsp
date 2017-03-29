@@ -3,9 +3,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <%@ include file="/jsp/header_nav.jsp"%>
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -125,7 +123,7 @@
 									<label for="societyName"
 										class="col-sm-2 control-label mylabStyle">社团名称</label>
 									<div class="col-sm-10">
-										<input type="text" id="societyName" readonly="readonly"
+										<input type="text" id="societyName" 
 											name="societyName" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
@@ -154,8 +152,7 @@
 									<label for="introduction"
 										class="col-sm-2 control-label mylabStyle">社团简介</label>
 									<div class="col-sm-10">
-										<textarea autofocus="autofocus" type="text"
-											readonly="readonly" class="form-control" id="introduction"
+										<textarea autofocus="autofocus" class="form-control" id="introduction"
 											style="width: 90%;" name="introduction">
 												</textarea>
 									</div>
@@ -203,12 +200,12 @@
 									</div>
 								</div>
 								<br /> <br />
-
+								
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">		
-						<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
+						<button style="display: none;" id="submitBtn" class="btn btn-primary">修改</button>
 						<button type="button" id="btnClose" class="btn btn-default"
 							data-dismiss="modal">关闭</button>		
 					</div>
@@ -216,48 +213,6 @@
 			</form>
 		</div>
 	</div>
-
-
-	<!-- 添加模态框 -->
-	<div class="modal  fade" id="addsocietyTypeModal">
-		<div class="modal-dialog">
-			<form id="addsocietyTypeForm" action="" method="">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button class="close" data-dismiss="modal" type="button">&times;</button>
-						<h4 class="modal-title">
-							<span class="glyphicon glyphicon-leaf"></span>&nbsp;添加社团类别
-						</h4>
-					</div>
-					<div class="modal-body">
-						<div class="panel panel-default">
-							<div class="panel-body">
-
-								<div class="form-group">
-									<label for="societyTypeName"
-										class="col-sm-2 control-label mylabStyle">类别名称</label> <input
-										type="text" id="studentId" name="studentId"
-										value="${userLogin.studentId}" style="display: none" />
-									<div class="col-sm-10">
-										<input type="text" id="societyTypeName" name="societyTypeName"
-											style="width: 90%" class="form-control" placeholder="请输入社团类别" />
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="btnClose" class="btn btn-default"
-							data-dismiss="modal">关闭</button>
-						<button id="addsocietyTypeBtn" type="submit"
-							class="btn btn-primary">提交</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
 
 </body>
 </html>

@@ -178,4 +178,20 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 		return map;
 	}
 
+	@Override
+	public SocietyApply updateApply(String societyApplyId, String societyName, String introduction) {
+		SocietyApply sa = saMapper.selectByPrimaryKey(societyApplyId);
+		Date now = new Date();
+		sa.setAppliedTime(now);
+		sa.setIntroduction(introduction);
+		sa.setSocietyName(societyName);
+		saMapper.updateByPrimaryKeySelective(sa);
+		return saMapper.selectByPrimaryKey(societyApplyId);
+	}
+
+	@Override
+	public int deleteById(String applyId) {
+		return saMapper.deleteByPrimaryKey(applyId);
+	}
+
 }

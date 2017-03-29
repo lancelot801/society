@@ -219,7 +219,7 @@
 	<!-- 添加模态框 -->
 	<div class="modal  fade" id="addsocietyTypeModal">
 		<div class="modal-dialog">
-			<form id="addsocietyTypeForm" action="" method="">
+			<form id="addsocietyTypeForm" action="" >
 				<div class="modal-content">
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>

@@ -108,5 +108,22 @@ public class SocietyApplyController {
 		jr.setResultData(saService.findById(applyId));
 		return jr;
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateApply", method = RequestMethod.POST)
+	public JsonResult updateApply(@RequestParam String societyApplyId,String societyName,String introduction) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(saService.updateApply(societyApplyId, societyName, introduction));
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/deleteById", method = RequestMethod.POST)
+	public JsonResult deleteById(@RequestParam String applyId){
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(saService.deleteById(applyId));
+		return jr ;
+	}
 }

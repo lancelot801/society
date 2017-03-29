@@ -38,4 +38,10 @@ public interface SocietyApplyService {
 	
 	//根据学号查找总页数和总记录数
 	Map<String, Integer> listToltalPageByStudentId(String studentId);
+	
+	//修改社团申请信息
+	SocietyApply updateApply(String societyApplyId,String societyName,String introduction);
+	
+	//根据编号删除社团申请信息
+	int deleteById(String applyId);
 }

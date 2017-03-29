@@ -129,10 +129,17 @@ $(function() {
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields : {
-			feedBack : {
+			societyName : {
 				validators : {
 					notEmpty : {
-						message : '反馈不能为空'
+						message : '社团名称不能为空'
+					},
+				}
+			},
+			introduction: {
+				validators : {
+					notEmpty : {
+						message : '社团简介不能为空'
 					},
 				}
 			}
@@ -150,7 +157,7 @@ $(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/societyType/deleteById?typeId=" + id,
+				url : "http://localhost:8080/society_server/societyApply/deleteById?applyId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -193,6 +200,10 @@ $(function() {
 				$("#checkStatus2").val(data.resultData.checkStatus);
 				$("#logoUrl").attr("src","/idCard"+data.resultData.logoUrl);
 				$("#introduction").val(data.resultData.introduction);
+				var currentBtn = document.getElementById("submitBtn");
+				    if (data.resultData.checkStatus =="待审核") {
+				        currentBtn.style.display = "inline"; //style中的display属性
+				}
 				typeId = data.resultData.typeId; 
 			},
 			error : function(error) {
@@ -259,11 +270,11 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/passApply",
+			url : "http://localhost:8080/society_server/societyApply/updateApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("审核成功!");
+				alert("修改成功,请等待管理员审核!");
 				window.location.href=window.location.href; 
 				window.location.reload; 
 			},
@@ -274,29 +285,7 @@ $(function() {
 		}); 
 	});
 	
-	//反馈审核信息
-	$("#notPassBtn").click(function() {
-		var Validator = $('#societyApplyFrom').data('bootstrapValidator');
-		Validator.validate();
-		if (!Validator.isValid()) {
-			return;
-		} 
-		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/notPassApply",
-			type : "post",
-			data:  $('#societyApplyFrom').serialize(),
-			success : function(data) {
-				alert("审核成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		}); 
-	});
-	
+
 	// 时间
 	 $(".form_datetime").datetimepicker({
 		 language: 'zh-CN',
