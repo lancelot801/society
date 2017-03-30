@@ -41,89 +41,81 @@
 				</div>
 				<div class="nav">
 					<ul>
-						<li><a href="http://www.club.sdu.edu.cn/stgk.htm">社团概况</a>
+						<li><a href="#">社团概况</a>
 							<ol style="display:none;">
-
-								<a href="http://www.club.sdu.edu.cn/stgk/stjj.htm">
-									<li>社团简介</li>
-								</a>
-
-						
-								<a href="http://www.club.sdu.edu.cn/stgk/gzzd.htm">
+								<a href="#">
+									<li>社团简介</li></a>
+								<a href="#">
+									<li>规章制度</li></a>
+								<a href="#">
+									<li>社团简介</li></a>
+								<a href="#">
 									<li>规章制度</li>
 								</a>
-
-								<a href="http://www.club.sdu.edu.cn/stgk/stjj.htm">
-									<li>社团简介</li>
-								</a>
-
-						
-								<a href="http://www.club.sdu.edu.cn/stgk/gzzd.htm">
-									<li>规章制度</li>
-								</a>
-							</ol>
+							</ol> 
 
 						</li>
 
-						<li><a href="http://www.club.sdu.edu.cn/gzzn.htm">工作指南</a>
+						<li><a href="#">工作指南</a>
+						
 							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
 
-								<a href="http://www.club.sdu.edu.cn/gzzn/gzlc.htm">
+								<a href="#">
 									<li>工作流程</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/gzzn/bgxz.htm">
+								<a href="#">
 									<li>表格下载</li>
 								</a>
 							</ol>
 
 						</li>
 
-						<li><a href="http://www.club.sdu.edu.cn/xjpd.htm">星级评定</a>
+						<li><a href="#">星级评定</a>
 							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
-
-								<a href="http://www.club.sdu.edu.cn/xjpd/styp.htm">
+								<a href="#">
 									<li>社团月评</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/xjpd/ndzp.htm">
+								<a href="#">
 									<li>年度总评</li>
 								</a>
 							</ol>
 
 						</li>
 
-						<li><a href="http://www.club.sdu.edu.cn/zjst.htm">走进社团</a>
+						<li><a href="#">走进社团</a>
+							
 							<ol style="display: none; margin-left: -1px; width: 262px; height: 241px; background: url(&quot;img/changxiala.png&quot;);">
 
-								<a href="http://www.club.sdu.edu.cn/zjst/stfc.htm">
+								<a href="#">
 									<li>社团风采</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/zjst/stmx.htm">
+								<a href="#">
 									<li>社团明星</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/zjst/stfjx.htm">
+								<a href="#">
 									<li>社团风景线</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/zjst/stwhj.htm">
+								<a href="#">
 									<li>社团文化节</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/zjst/stgw.htm">
+								<a href="#">
 									<li>社团感悟</li>
 								</a>
 
-								<a href="http://www.club.sdu.edu.cn/zjst/szqc.htm">
+								<a href="#">
 									<li>视展青春</li>
 								</a>
 							</ol>
 
 						</li>
 
-						<li><a href="http://www.club.sdu.edu.cn/liuyanyemian.jsp?urltype=tree.TreeTempUrl&amp;wbtreeid=1005">在线留言</a>
+						<li><a href="#">在线留言</a>
 
 						</li>
 
@@ -202,10 +194,10 @@
 					</div>
 					<ul class="shetuanyaowen">
 
-						<a href="newsModel.html">
+						<a href="#">
 							<li>徐州工程学院第七届星光达人秀初赛举行<span style=" float:right">2016年11月14日</span></li>
 						</a>
-						<a href="newsModel.html">
+						<a href="#">
 							<li>徐州工程学院白杨社2016年度校区总结大会顺利召开<span style=" float:right">2016年06月13日</span></li>
 						</a>
 						<a href="newsModel.html">
@@ -224,7 +216,7 @@
 						<a href="styleModel.html">
 							<li>中医协会包饺子聚餐活动顺利举行<span style=" float:right">2016年12月26日</span></li>
 						</a>
-
+						
 						<a href="styleModel.html">
 							<li>徐州工程学院城南校区社管会成功举办2016年度工作总结暨元旦晚会<span style=" float:right">2016年12月24日</span></li>
 						</a>
@@ -263,47 +255,33 @@
 
 						<a href="styleModel.html">
 							<li>爱心协会举办包饺子活动<span style=" float:right">2016年12月14日</span></li>
-						</a>
+						</a> 
 						<!--#endeditable-->
 					</ul>
 
 				</div>
 				<div class="contain-inner-right">
-					<div class="tittle-right">重要通知<span><a href="#" target="">more&gt;&gt;</a></span></div>
+					<div class="tittle-right">系统公告<span><a href="#" target="">more&gt;&gt;</a></span></div>
 					<div style=" clear:both"></div>
-					<ul class="shetuanyaowen pad">
-
-						<a href="notifyModel.html">
+					<ul class="shetuanyaowen pad" style="height: 192px;">
+						<div id="notice_foreshow">
+						<a href="#">
 							<li>关于选拔徐州工程学院学生社团参评2...<span style=" float:right">2016年11月14日</span></li>
 						</a>
+						
 
-						<a href="notifyModel.html">
-							<li>徐州工程学院学生会及学生社团2016 ...<span style=" float:right">2016年11月11日</span></li>
-						</a>
-
-						<a href="notifyModel.html">
-							<li>关于举办徐州工程学院第七届山东24 ...<span style=" float:right">2016年11月08日</span></li>
-						</a>
-
-						<a href="notifyModel.html">
-							<li>关于开展徐州工程学院2016-2017年社...<span style=" float:right">2016年11月03日</span></li>
-						</a>
-
-						<a href="notifyModel.html">
-							<li>关于选拔学生代表参加第十届高 ...<span style=" float:right">2016年10月11日</span></li>
-						</a>
-
+						</div>
 						<!--#endeditable-->
 					</ul>
 
 					<div class="tittle-right  margintop">活动预告<span><a href="#" target="">more&gt;&gt;</a></span></div>
-					<div style=" clear:both"></div>
-					<ul class="shetuanyaowen pad">
-
-						<a href="activityModel.html">
+					<div style="clear:both"></div>
+					<ul class="shetuanyaowen pad" style="height: 192px;">
+						<div id="activity_foreshow">
+						<a href="#">
 							<li>关于徐州工程学院＂自强杯＂演讲比...<span style=" float:right">2016年12月01日</span></li>
 						</a>
-
+						<!--  
 						<a href="activityModel.html">
 							<li>文成学府、武动校园活动预告<span style=" float:right">2016年11月30日</span></li>
 						</a>
@@ -318,8 +296,8 @@
 
 						<a href="activityModel.html">
 							<li>关于举办“徐州工程学院枯木逢春青...<span style=" float:right">2016年11月22日</span></li>
-						</a>
-
+						</a>  -->
+						</div>
 						<!--#endeditable-->
 					</ul>
 

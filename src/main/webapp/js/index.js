@@ -1,7 +1,75 @@
 $(function() {
-
+	//时间格式化函数
+	Date.prototype.Format = function(fmt) 
+	{ 
+	  var o = { 
+	    "M+" : this.getMonth()+1,                 //月份 
+	    "d+" : this.getDate(),                    //日 
+	    "h+" : this.getHours(),                   //小时 
+	    "m+" : this.getMinutes(),                 //分 
+	    "s+" : this.getSeconds(),                 //秒 
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+	    "S"  : this.getMilliseconds()             //毫秒 
+	  }; 
+	  if(/(y+)/.test(fmt)) 
+	    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); //格式化年份
+	  for(var k in o) //循环获取上面定义的月、日、小时等，格式化对应的数据。
+	    if(new RegExp("("+ k +")").test(fmt)) 
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
+	  return fmt; 
+	}
+	
+	
 	$(document).ready(function() {
 		$("#theTarget").skippr();
+		//获取活动信息
+		$.ajax({
+			url : "./common/listActivity",
+			type : "get",
+			success : function(data) {
+				if (data.resultCode == 0) {
+				//eval将后台写的json格式字符串处理成json对象数组 eval(data.resultData)
+					for(var i= 0; i< data.resultData.length;i++)
+					{
+						var holdTime = new Date(data.resultData[i].holdTime).Format("yyyy年MM月dd日");
+						$("#activity_foreshow").append("<a href=\"./common/getActivity?activityId=" +
+								data.resultData[i].activityId +"\">" +
+						"<li>" +data.resultData[i].theme +
+						"<span style=\"float:right\">" + holdTime +"</span></li></a>");
+					}	
+				} else {
+				}
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
+		
+		//获取公告信息
+		$.ajax({
+			url : "./common/listNotice",
+			type : "get",
+			success : function(data) {
+				if (data.resultCode == 0) {
+				//eval将后台写的json格式字符串处理成json对象数组 eval(data.resultData)
+					for(var i= 0; i< data.resultData.length;i++)
+					{
+						var publishedTime = new Date(data.resultData[i].publishedTime).Format("yyyy年MM月dd日");
+						$("#notice_foreshow").append("<a href=\"./common/getNotice?noticeId=" +
+								data.resultData[i].noticeId +"\">" +
+						"<li>" +data.resultData[i].theme +
+						"<span style=\"float:right\">" + publishedTime +"</span></li></a>");
+					}	
+				} else {
+					alert("注册失败!");
+				}
+			},
+			error : function(error) {
+				alert(error.responseText);
+			},
+			async : false
+		});
 	});
 
 	$("#theTarget").skippr({
