@@ -162,6 +162,7 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 	public List<ActivityApply> findByStatusWithRowBound(Integer page, String status) {
 		ActivityApplyExample example = new ActivityApplyExample();
 		example.or().andStatusEqualTo(status);
+		example.setOrderByClause("checked_time DESC");
 		Integer totalPage;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		if (activityApplyMapper.countByExample(example) % limit != 0) {
@@ -211,6 +212,27 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		map.put("totalPage", totalPage);
 		map.put("totalRecords", totalRecord);
 		return map;
+	}
+
+	@Override
+	public ActivityApply updateByActivityId(String activityId, String theme, String content, String holdTime) {
+		ActivityApply activityApply = activityApplyMapper.selectByPrimaryKey(activityId);
+		Date now = new Date();
+		activityApply.setContent(content);
+		activityApply.setApplyTime(now);
+		activityApply.setTheme(theme);
+		Date ConvertTime = null;
+		if (holdTime != null && !holdTime.equals("")) {
+			SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd"); // 时间格式
+			try {
+				ConvertTime = sim.parse(holdTime); // String强转时间
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		activityApply.setHoldTime(ConvertTime);
+		activityApplyMapper.updateByPrimaryKeyWithBLOBs(activityApply);
+		return activityApplyMapper.selectByPrimaryKey(activityId);
 	}
 
 }

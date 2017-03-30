@@ -50,7 +50,6 @@
 				<h1 class="page-header">社团公告</h1>
 				<div id="contain" class="row placeholders">
 					<form class="form-horizontal" id="noticeForm" action="#">
-						<div style="margin-left: auto; margin-right: auto;">
 							<input type="text"  id="publisher"style="display: none;" value="${userLogin.studentId}"name="publisher"  />
 							<div class="form-group">
 								<label for="theme" style="padding-left: 10px"

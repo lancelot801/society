@@ -58,23 +58,15 @@ $(function() {
 					});
 					$(".activity_title").html("活动标题: " +result.resultData.theme+"<br/>"+
 							"申请时间: "+result.resultData.applyTime + "<br/>"+
-							"申请者: " +applyerId + " " +studentName + "<br/>" );
+							"审核时间: "+result.resultData.checkedTime + "<br/>"+
+							"申请者: " +applyerId + " " +studentName + "<br/>"+
+							"当前状态: " + result.resultData.status );
+					 $("#activityId").val(activityId);
+					 $("#applyerId").val(applyerId);
 					 $("#content").append(result.resultData.content);
 				},
 				error : function(error) {
 					alert(error.resultData);
-				},
-				async : false
-			});
-			$.ajax({
-				url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
-				type : "post",
-				success : function(data) {
-					var complete = $(".activity_title").text();
-					$(".activity_title").append(data.resultData.studentName);
-				},
-				error : function(error) {
-					alert(error.responseText);
 				},
 				async : false
 			});
@@ -106,43 +98,8 @@ $(function() {
 	});
 });
 
-	$('#addsocietyTypeForm').bootstrapValidator({
-		message : 'This value is not valid',
-		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
-			invalid : 'glyphicon glyphicon-remove',
-			validating : 'glyphicon glyphicon-refresh'
-		},
-		fields : {
-			societyTypeName : {
-				validators : {
-					notEmpty : {
-						message : '社团类别名称不能为空'
-					},
-				}
-			}
-		}
-	});
 	
-	$('#updatesocietyType').bootstrapValidator({
-		message : 'This value is not valid',
-		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
-			invalid : 'glyphicon glyphicon-remove',
-			validating : 'glyphicon glyphicon-refresh'
-		},
-		fields : {
-			societyTypeName : {
-				validators : {
-					notEmpty : {
-						message : '社团类别名称不能为空'
-					},
-				}
-			}
-		}
-	});
-	
-	$('#societyApplyFrom').bootstrapValidator({
+	$('#detailForm').bootstrapValidator({
 		message : 'This value is not valid',
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
@@ -159,115 +116,18 @@ $(function() {
 			}
 		}
 	});
-	$("button.addBtn").click(function() {
-		$("#addsocietyTypeModal").modal().draggable({
-			handle : ".modal-header",
-			cursor : 'move',
-			refreshPositions : false
-		});
-	});
-	
-	$("button.deleteBtn").click(function() {
-		if (confirm('确定要删除此信息吗？')) {
-			var id = $(this).parents("tr").find("td").eq(0).html();
-			$.ajax({
-				url : "http://localhost:8080/society_server/admin/societyType/deleteById?typeId=" + id,
-				type : "post",
-				success : function(result) {
-					if (result.resultCode == 0) {
-						alert("删除成功！");
-						window.location.href=window.location.href; 
-						window.location.reload; 
-					} else {
-						alert("非常抱歉 ," + result.resultData);
-					}
-				},
-				error : function(error) {
-					alert(error.resultData);
-				},
-				async : false
-			});
-			return true;
-		} else {
-			return false;
-		}
-	});
-	
-	//获取社团申请信息详情
-	$("button.queryBtn").click(function() {
-		var activityId = $(this).parents("tr").find("td").eq(0).html();
-		$.ajax({
-			url : "http://localhost:8080/society_server/admin/activity_apply/getDetail?activityId="+activityId,
-			type : "get",
-			success : function(data) {
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取学生证信息
-		$.ajax({
-			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+applyerId,
-			type : "get",
-			success : function(data) {
-				//补充学生证信息
-				var dataRole = eval(data.resultData); 
-				for(var i= 0; i< dataRole.length;i++)
-				{
-				   if(dataRole[i].type == "cover"){
-					   $("#idCardCover").attr("src","/idCard"+dataRole[i].cardUrl);
-				   }else if(dataRole[i].type == "content"){
-					   $("#idCardContent").attr("src","/idCard"+dataRole[i].cardUrl);
-				   }   	
-				}
-				
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取社团类别
-		$.ajax({
-			url : "http://localhost:8080/society_server/societyType/findById?typeId="+typeId,
-			type : "get",
-			success : function(data) {
-				$("#societyType").val(data.resultData.typeName);
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-		
-		//获取学生姓名
-		$.ajax({
-			url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
-			type : "post",
-			success : function(data) {
-				$("#applyerName").val(applyerId + " " + data.resultData.sname);
-			},
-			error : function(error) {
-				alert(error.responseText);
-			},
-			async : false
-		});
-	});
 	
 	//反馈审核信息
 	$("#submitBtn").click(function() {
-		var Validator = $('#societyApplyFrom').data('bootstrapValidator');
+		var Validator = $('#detailForm').data('bootstrapValidator');
 		Validator.validate();
 		if (!Validator.isValid()) {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/passApply",
+			url : "http://localhost:8080/society_server/admin/activity_apply/passApply",
 			type : "post",
-			data:  $('#societyApplyFrom').serialize(),
+			data:  $('#detailForm').serialize(),
 			success : function(data) {
 				alert("审核成功!");
 				window.location.href=window.location.href; 
@@ -282,15 +142,15 @@ $(function() {
 	
 	//反馈审核信息
 	$("#notPassBtn").click(function() {
-		var Validator = $('#societyApplyFrom').data('bootstrapValidator');
+		var Validator = $('#detailForm').data('bootstrapValidator');
 		Validator.validate();
 		if (!Validator.isValid()) {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/notPassApply",
+			url : "http://localhost:8080/society_server/admin/activity_apply/notPassApply",
 			type : "post",
-			data:  $('#societyApplyFrom').serialize(),
+			data:  $('#detailForm').serialize(),
 			success : function(data) {
 				alert("审核成功!");
 				window.location.href=window.location.href; 

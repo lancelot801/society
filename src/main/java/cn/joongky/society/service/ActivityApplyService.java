@@ -40,4 +40,7 @@ public interface ActivityApplyService {
 	
 	//根据学号分页查找申请信息
 	List<ActivityApply> findByStudentIdWithRowBound(Integer page,String studentId);
+	
+	//学生根据活动申请编号修改活动申请信息
+	ActivityApply updateByActivityId(String activityId,String theme,String content,String holdTime);
 }

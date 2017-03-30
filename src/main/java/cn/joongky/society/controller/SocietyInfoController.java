@@ -57,4 +57,13 @@ public class SocietyInfoController {
 		jr.setResultData(sMemberService.listToltalPage(studentId));
 		return jr;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/findById", method = RequestMethod.GET)
+	public JsonResult findById(@RequestParam String societyId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(sInfoService.findBySocietyId(societyId));
+		return jr;
+	}
 }

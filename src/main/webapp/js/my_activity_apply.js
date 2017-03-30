@@ -175,7 +175,7 @@ $(function() {
 	//获取社团申请信息详情
 	$("button.queryBtn").click(function() {
 		var activityId = $(this).parents("tr").find("td").eq(0).html();
-		window.location.href="/society_server/admin/activity_apply/getDetail?activityId="+activityId; 
+		window.location.href="/society_server/student/activity_apply/getDetail?activityId="+activityId; 
 	});
 	
 	//反馈审核信息

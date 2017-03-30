@@ -26,6 +26,11 @@ public class FeedBackServiceImpl implements FeedBackService{
 		fbMapper.insertSelective(fb);
 		return fbMapper.selectByPrimaryKey(feedBackId);
 	}
+
+	@Override
+	public Feedback findById(String feedbackId) {
+		return fbMapper.selectByPrimaryKey(feedbackId);
+	}
 	
 	
 }

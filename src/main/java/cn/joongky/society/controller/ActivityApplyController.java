@@ -2,6 +2,8 @@ package cn.joongky.society.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.joongky.society.JsonResult;
 import cn.joongky.society.pojo.ActivityApply;
+import cn.joongky.society.pojo.SocietyInfo;
 import cn.joongky.society.pojo.StudentInfo;
 import cn.joongky.society.service.ActivityApplyService;
 import cn.joongky.society.service.SocietyInfoService;
@@ -98,10 +101,66 @@ public class ActivityApplyController {
         response.getWriter().write("/idCard" + ConfigUtil.getValue("activity_img")+"/" + timeStamp+ realName);
 	}
 	
+		
+	@RequestMapping(value = "/listMyApply", method = RequestMethod.GET)
+	public ModelAndView applyCreateSociety(Model model,Integer pNo, @RequestParam String studentId) {
+		List<ActivityApply> aaList;
+		if (pNo != null) {
+			pNo = pNo - 1;
+			if (pNo < 0)
+				pNo = 0;
+			aaList = activityApplyService.findWithRowBound(pNo);
+		} else {
+			aaList = activityApplyService.findWithRowBound(0);
+		}
+		model.addAttribute("activities", aaList);
+		List<SocietyInfo> sInfoList = new ArrayList<>();
+		for (ActivityApply aa : aaList) {
+			sInfoList.add(sInfoService.findBySocietyId(aa.getSocietyId()));
+		}
+		model.addAttribute("sInfoList", sInfoList);
+		return new ModelAndView("/student/my_activity_apply");
+	}
+	
 	@ResponseBody
-	@RequestMapping(value = "/listPassActivity", method = RequestMethod.GET)
-	public JsonResult listPassActivity(@RequestParam String status, @RequestParam Integer pNo) {
-			JsonResult jr = new JsonResult();
-			return jr;
+	@RequestMapping(value = "/listToltalPage", method = RequestMethod.GET)
+	public JsonResult listToltalPage() {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(activityApplyService.listToltalPage());
+		return jr;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/listToltalPageByStudentId", method = RequestMethod.GET)
+	public JsonResult listToltalPageByStudentId(@RequestParam String studentId) {
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(activityApplyService.listToltalPageByStudentId(studentId));
+		return jr;
+	}
+	
+	@RequestMapping(value = "/getDetail", method = RequestMethod.GET)
+	public String getActivityDetail() {
+		return "/student/activityDetail";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateApply", method = RequestMethod.POST)
+	public JsonResult updateApply(@RequestParam String activityId, String theme,
+			 String content,  String holdTime) throws Exception {
+		JsonResult jr = new JsonResult();
+		activityApplyService.updateByActivityId(activityId, theme, content, holdTime);
+		// 发送邮件通知
+//		StudentInfo stu = studentInfoService.getInfo(applyerId);
+//		String userEmail = ConfigUtil.getValue("admin_mail");
+//		String title = "社团申请通知";
+//		String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
+//				+ stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i style='color:red;font-size:20px;'>"
+//				+ theme + "社团活动申请,请尽快审核!</i></div>";
+//		MailUtil.sendMail(title, text, userEmail);
+		jr.setResultCode(0);
+		jr.setResultData(content);
+		return jr;
 	}
 }
