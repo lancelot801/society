@@ -54,18 +54,22 @@
 			</a>
 				<ul id="systemSetting3" class="nav nav-list collapse secondmenu"
 					style="height: 0px;">
+					
+					<li><a
+						href="<%=request.getContextPath()%>/student/showInfo?studentId=${userLogin.studentId}"><i
+							class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
+					<li><a href="<%=request.getContextPath()%>/student/resetPassword"><i class="glyphicon glyphicon-edit"></i>
+							修改密码</a></li>
+					<c:if test="${(userLogin.role != 'admin')}">		
 					<li><a
 						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
 							class="glyphicon glyphicon-heart"></i> 创办社团</a></li>
 					<li><a
-						href="<%=request.getContextPath()%>/student/showInfo?studentId=${userLogin.studentId}"><i
-							class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
-					<li><a
 						href="<%=request.getContextPath()%>/student/societyInfo/manage?studentId=${userLogin.studentId}"><i
 							class="glyphicon glyphicon-eye-open"></i> 我的社团</a></li>
-					<li><a href="<%=request.getContextPath()%>/student/resetPassword"><i class="glyphicon glyphicon-edit"></i>
-							修改密码</a></li>
+					</c:if>
 				</ul></li>
+				<c:if test="${(userLogin.role != 'admin')}">
 			<li><a href="#systemSetting4" class="nav-header collapsed"
 				data-toggle="collapse"> <i class="glyphicon glyphicon-leaf"></i>
 					申请记录<span class="pull-right glyphicon glyphicon-chevron-down"></span>
@@ -79,6 +83,7 @@
 						href="<%=request.getContextPath()%>/societyApply/listMySocietyApply?studentId=${userLogin.studentId}&pNo=0"><i
 							class="glyphicon glyphicon-link"></i> 社团申请</a></li>
 				</ul></li>
+				</c:if>
 			<li><a href="./grid.html"> <i
 					class="glyphicon glyphicon-globe"></i> 我的申请 <span
 					class="label label-warning pull-right">5</span>

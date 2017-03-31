@@ -46,6 +46,7 @@
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">审核社团申请</h1>
+				<!-- 
 				<div>
 					<select class="form-control " id="checkStatus"
 						style="width: 15%; display: inline;" name="checkStatus">
@@ -55,6 +56,7 @@
 						<option value="不通过">不通过</option>
 					</select>
 				</div>
+				 -->
 				<div id="contain" class="row placeholders">
 					<table class='table table-responsive table-striped col-xs-12'>
 						<thead>
@@ -84,8 +86,10 @@
 											<button
 												class="btn btn-info btn-sm glyphicon glyphicon-search queryBtn">查看详情</button>
 									</label> &nbsp;&nbsp;&nbsp; <span>
+											<!--  
 											<button
 												class="btn btn-info btn-sm glyphicon glyphicon-remove deleteBtn">删除信息</button>
+												-->
 									</span></td>
 								</tr>
 							</c:forEach>
@@ -202,7 +206,7 @@
 									</div>
 								</div>
 								<br /> <br />
-
+								<div id ="fb">
 								<div class="form-group">
 									<label for="feedBack" class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
 									<div class="col-sm-10">
@@ -210,11 +214,12 @@
 											name="feedBack" style="width: 90%;" class="form-control" />
 									</div>
 								</div>
+								</div>
 								<br /> <br />
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">		
+					<div id="fbBtn" class="modal-footer">		
 						<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
 						<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
 						<button type="button" id="btnClose" class="btn btn-default"

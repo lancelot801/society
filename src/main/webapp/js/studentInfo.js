@@ -52,7 +52,11 @@ $(function() {
 					var dataRole = eval(data.resultData); 
 					for(var i= 0; i< dataRole.length;i++)
 					{
-					 $("#identityCard"+(i+1)).attr("src","/idCard"+dataRole[i].cardUrl);
+						if(dataRole[i].type =="cover"){
+							 $("#identityCard"+(1)).attr("src","/idCard"+dataRole[i].cardUrl);
+						}else if(dataRole[i].type =="content"){
+							 $("#identityCard"+(2)).attr("src","/idCard"+dataRole[i].cardUrl);
+						}
 					}
 				}
 			},

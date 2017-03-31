@@ -86,7 +86,7 @@ public class AdminSocietyApplyController {
 			// applyerId, "社团会长"));
 			saService.updateStatusById(societyApplyId, feedBackId, "已通过");
 			fbackService.add(feedBackId, feedBack, operatorId);
-			sInfoService.addByApply(societyId, saService.findById(applyerId));
+			sInfoService.addByApply(societyId, saService.findById(societyApplyId));
 			sMemberService.joinSociety(societyId, applyerId, "社团会长");
 			//修改社团总数信息
 			int nowCount = sMemberService.getMembersCount(societyId)+ 1 ;

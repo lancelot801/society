@@ -31,11 +31,11 @@ $(function() {
 				//eval将后台写的json格式字符串处理成json对象数组 eval(data.resultData)
 					for(var i= 0; i< data.resultData.length;i++)
 					{
-						var holdTime = new Date(data.resultData[i].holdTime).Format("yyyy年MM月dd日");
+						var checkedTime = new Date(data.resultData[i].checkedTime).Format("yyyy年MM月dd日");
 						$("#activity_foreshow").append("<a href=\"./common/getActivity?activityId=" +
 								data.resultData[i].activityId +"\">" +
 						"<li>" +data.resultData[i].theme +
-						"<span style=\"float:right\">" + holdTime +"</span></li></a>");
+						"<span style=\"float:right\">" + checkedTime +"</span></li></a>");
 					}	
 				} else {
 				}

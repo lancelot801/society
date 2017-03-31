@@ -207,6 +207,13 @@ $(function() {
 				$("#logoUrl").attr("src","/idCard"+data.resultData.logoUrl);
 				$("#introduction").val(data.resultData.introduction);
 				typeId = data.resultData.typeId; 
+				if(data.resultData.checkStatus != "待审核"){
+					 var fb = document.getElementById("fb");
+					 fb.style.display = "none";
+					 var fb2 = document.getElementById("fbBtn");
+					 fb2.style.display = "none";
+				}
+				
 			},
 			error : function(error) {
 				alert(error.responseText);

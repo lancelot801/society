@@ -64,6 +64,11 @@ $(function() {
 					 $("#activityId").val(activityId);
 					 $("#applyerId").val(applyerId);
 					 $("#content").append(result.resultData.content);
+					 if(result.resultData.status != "待审核"){
+						 var fb = document.getElementById("fb");
+						 fb.style.display = "none";
+					 }
+					 
 				},
 				error : function(error) {
 					alert(error.resultData);

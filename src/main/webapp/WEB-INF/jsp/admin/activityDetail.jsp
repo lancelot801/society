@@ -54,6 +54,7 @@
 				<div id="content">
 				 <h1 style="color: #9a0e14;text-align: center;">活动内容如下:</h1>
 				</div>
+					<div id="fb">
 					<div class="form-group">
 									<label for="feedBack" class="col-sm-2 control-label mylabStyle">审核意见反馈</label>
 									<div class="col-sm-10">
@@ -65,6 +66,7 @@
 				<div style="text-align: center;">
 				<button id="submitBtn" type="submit" class="btn btn-primary">通过</button>
 				<button id="notPassBtn" type="submit" class="btn btn-primary">不通过</button>
+				</div>
 				</div>
 				</form>
 				</div>
