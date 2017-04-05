@@ -52,7 +52,7 @@ public class ActivityApplyController {
 		// 发送邮件通知
 		StudentInfo stu = studentInfoService.getInfo(applyerId);
 		String userEmail = ConfigUtil.getValue("admin_mail");
-		String title = "社团申请通知";
+		String title = "活动申请通知";
 		String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
 				+ stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i style='color:red;font-size:20px;'>"
 				+ theme + "社团活动申请,请尽快审核!</i></div>";
