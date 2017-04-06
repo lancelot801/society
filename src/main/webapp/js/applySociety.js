@@ -9,7 +9,7 @@ $(function() {
 	$(document).ready(function() {
 		var token = getParameter("studentId");
 		$.ajax({
-			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+token,
+			url : "/society_server/identityCard/getIdCardByStudentId?studentId="+token,
 			type : "get",
 			success : function(data) {
 				if(data.resultCode == 0){	
@@ -26,7 +26,7 @@ $(function() {
 		});
 		/*
 		$.ajax({
-			url : "http://localhost:8080/society_server/societyType/list",
+			url : "/society_server/societyType/list",
 			type : "get",
 			success : function(data) {
 				if(data.resultCode == 0){	
@@ -82,7 +82,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/societyApply/add",
+			url : "/society_server/societyApply/add",
 			type : "post",
 			data:  new FormData($('#societyApply')[0]),
 			cache: false,

@@ -35,7 +35,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/institute/listToltalPage",
+				url : "/society_server/admin/institute/listToltalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -125,7 +125,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/add",
+			url : "/society_server/admin/institute/add",
 			type : "post",
 			data:  $('#addInstituteForm').serialize(),
 			success : function(data) {
@@ -146,7 +146,7 @@ $(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/institute/deleteById?instituteId=" + id,
+				url : "/society_server/admin/institute/deleteById?instituteId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -176,7 +176,7 @@ $(function() {
 		});
 		var id = $(this).parents("tr").find("td").eq(0).html();
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/findById?instituteId=" + id,
+			url : "/society_server/admin/institute/findById?instituteId=" + id,
 			type : "get",
 			success : function(data) {
 				$("#instituteId").val(data.resultData.instituteId);
@@ -196,7 +196,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/institute/updateById",
+			url : "/society_server/admin/institute/updateById",
 			type : "post",
 			data:  $('#updateInstitute').serialize(),
 			success : function(data) {

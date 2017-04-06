@@ -8,11 +8,11 @@ $(function() {
 		}else{
 			return null;
 		}
-	};
+	}
 
 	function isContains(str, substr) {
 	    return new RegExp(substr).test(str);
-	};
+	}
 	//init
 	$(function(){
 		var totalPage ;
@@ -39,7 +39,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/activity_apply/listToltalPage",
+				url : "/society_server/admin/activity_apply/listToltalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -149,7 +149,7 @@ $(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/societyType/deleteById?typeId=" + id,
+				url : "/society_server/admin/societyType/deleteById?typeId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -185,7 +185,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/passApply",
+			url : "/society_server/admin/society_apply/passApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
@@ -208,7 +208,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/notPassApply",
+			url : "/society_server/admin/society_apply/notPassApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {

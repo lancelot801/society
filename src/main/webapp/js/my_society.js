@@ -36,7 +36,7 @@ $(function() {
 		$(document).ready(function() {		
 			var token = getParameter("studentId");
 			$.ajax({
-				url : "http://localhost:8080/society_server/student/societyInfo/listToltalPage?studentId="+token,
+				url : "/society_server/student/societyInfo/listToltalPage?studentId="+token,
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -161,7 +161,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/passApply",
+			url : "/society_server/admin/society_apply/passApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
@@ -184,7 +184,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/society_apply/notPassApply",
+			url : "/society_server/admin/society_apply/notPassApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {

@@ -35,7 +35,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/notice/listToltalPage",
+				url : "/society_server/admin/notice/listToltalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -96,7 +96,7 @@ $(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/admin/notice/deleteById?noticeId=" + id,
+				url : "/society_server/admin/notice/deleteById?noticeId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -126,7 +126,7 @@ $(function() {
 		});
 		var id = $(this).parents("tr").find("td").eq(0).html();
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/notice/findById?noticeId=" + id,
+			url : "/society_server/admin/notice/findById?noticeId=" + id,
 			type : "get",
 			success : function(data) {
 				$("#noticeId").val(data.resultData.noticeId);
@@ -156,7 +156,7 @@ $(function() {
 		    	content: html,
 		    };
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/notice/updateById",
+			url : "/society_server/admin/notice/updateById",
 			type : "post",
 			data:  params,
 			success : function(data) {

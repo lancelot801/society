@@ -20,7 +20,7 @@ $(function() {
 	    	content: html,
 	    };
         $.ajax({
-			url : "http://localhost:8080/society_server/student/activity_apply/apply",
+			url : "/society_server/student/activity_apply/apply",
 			type : "post",
 			data :params,
 			success : function(data) {
@@ -74,7 +74,7 @@ $(function() {
 	    	content: html,
 	    };
         $.ajax({
-			url : "http://localhost:8080/society_server/admin/notice/publish",
+			url : "/society_server/admin/notice/publish",
 			type : "post",
 			data :params,
 			success : function(data) {

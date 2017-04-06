@@ -41,12 +41,12 @@ $(function() {
 			var applyerId ;
 			var studentName ;
 			$.ajax({
-				url : "http://localhost:8080/society_server/student/activity_apply/findByActivityId?activityId="+activityId,
+				url : "/society_server/student/activity_apply/findByActivityId?activityId="+activityId,
 				type : "get",
 				success : function(result) {
 					applyerId = result.resultData.applyerId;
 					$.ajax({
-						url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
+						url : "/society_server/student/getInfo?studentId="+applyerId,
 						type : "post",
 						success : function(data) {
 							studentName = data.resultData.sname;
@@ -130,7 +130,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/activity_apply/passApply",
+			url : "/society_server/admin/activity_apply/passApply",
 			type : "post",
 			data:  $('#detailForm').serialize(),
 			success : function(data) {
@@ -153,7 +153,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/admin/activity_apply/notPassApply",
+			url : "/society_server/admin/activity_apply/notPassApply",
 			type : "post",
 			data:  $('#detailForm').serialize(),
 			success : function(data) {

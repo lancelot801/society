@@ -13,7 +13,7 @@ $(function() {
 		var id = getParameter('activityId');
 		var societyId;
 		$.ajax({
-			url : "http://localhost:8080/society_server/student/activity_apply/findByActivityId?activityId="+ id,
+			url : "/society_server/student/activity_apply/findByActivityId?activityId="+ id,
 			type : "get",
 			success : function(result) {
 				 editor.$txt.html(result.resultData.content);
@@ -33,7 +33,7 @@ $(function() {
 		
 		 //查找社团名称
 		 $.ajax({
-				url : "http://localhost:8080/society_server/student/societyInfo/findById?societyId="+ societyId,
+				url : "/society_server/student/societyInfo/findById?societyId="+ societyId,
 				type : "get",
 				success : function(result) {
 					 $("#societyName").val(result.resultData.societyName);
@@ -63,7 +63,7 @@ $(function() {
 	    	activityId : activityId
 	    };
         $.ajax({
-			url : "http://localhost:8080/society_server/student/activity_apply/updateApply",
+			url : "/society_server/student/activity_apply/updateApply",
 			type : "post",
 			data :params,
 			success : function(data) {
@@ -119,7 +119,7 @@ $(function() {
 	    	content: html,
 	    };
         $.ajax({
-			url : "http://localhost:8080/society_server/admin/notice/publish",
+			url : "/society_server/admin/notice/publish",
 			type : "post",
 			data :params,
 			success : function(data) {

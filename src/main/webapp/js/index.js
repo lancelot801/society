@@ -127,7 +127,7 @@ $(function() {
 					},
 					threshold :  11 ,
 					remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-                        url: 'http://localhost:8080/society_server/user/existStudentId',//验证地址
+                        url: '/society_server/user/existStudentId',//验证地址
                         message: '用户已存在',//提示消息
                         delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
                         type: 'GET'//请求方式
@@ -211,7 +211,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/user/register",
+			url : "/society_server/user/register",
 			type : "post",
 			data : $('#registerForm').serialize(),
 			success : function(data) {
@@ -240,7 +240,7 @@ $(function() {
 		} 
 		//debugger;
 		$.ajax({
-			url : "http://localhost:8080/society_server/user/login",
+			url : "/society_server/user/login",
 			type : "get",
 			data : $('#loginForm').serialize(),
 			success : function(data) {

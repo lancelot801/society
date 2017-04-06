@@ -3,7 +3,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -29,7 +29,6 @@
 		<script type="text/javascript" src="bootstrap/js/zh_CN.js"></script>
 		<title>徐州工程学院社团空间</title>
 	</head>
-</head>
 <body>
 	<div class="top">
 			<div class="top-inner">
@@ -65,7 +64,7 @@
 								</a>
 
 								<a href="#">
-									<li>表格下载</li>
+									<li>使用指南</li>
 								</a>
 							</ol>
 
@@ -265,10 +264,6 @@
 					<div style=" clear:both"></div>
 					<ul class="shetuanyaowen pad" style="height: 192px;">
 						<div id="notice_foreshow">
-						<a href="#">
-							<li>关于选拔徐州工程学院学生社团参评2...<span style=" float:right">2016年11月14日</span></li>
-						</a>
-						
 
 						</div>
 						<!--#endeditable-->
@@ -278,9 +273,6 @@
 					<div style="clear:both"></div>
 					<ul class="shetuanyaowen pad" style="height: 192px;">
 						<div id="activity_foreshow">
-						<a href="#">
-							<li>关于徐州工程学院＂自强杯＂演讲比...<span style=" float:right">2016年12月01日</span></li>
-						</a>
 						<!--  
 						<a href="activityModel.html">
 							<li>文成学府、武动校园活动预告<span style=" float:right">2016年11月30日</span></li>

@@ -8,7 +8,7 @@ $(function() {
 	$(document).ready(function() {
 		var token = getParameter("studentId");
 		$.ajax({
-			url : "http://localhost:8080/society_server/student/getInfo?studentId="+token,
+			url : "/society_server/student/getInfo?studentId="+token,
 			type : "post",
 			success : function(data) {
 				
@@ -45,7 +45,7 @@ $(function() {
 		
 		//获取学生证信息
 		$.ajax({
-			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+token,
+			url : "/society_server/identityCard/getIdCardByStudentId?studentId="+token,
 			type : "get",
 			success : function(data) {
 				if(data.resultCode == 0){
@@ -116,7 +116,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/student/updateStudentInfo",
+			url : "/society_server/student/updateStudentInfo",
 			type : "post",
 			data:  new FormData($('#studentInfoForm')[0]),
 			cache: false,

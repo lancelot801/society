@@ -40,7 +40,7 @@ $(function() {
 		var student = $("#society_studentId").val();
 		$(document).ready(function() {		
 			$.ajax({
-				url : "http://localhost:8080/society_server/societyApply/listToltalPageByStudentId?studentId="+student,
+				url : "/society_server/societyApply/listToltalPageByStudentId?studentId="+student,
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;
@@ -157,7 +157,7 @@ $(function() {
 		if (confirm('确定要删除此信息吗？')) {
 			var id = $(this).parents("tr").find("td").eq(0).html();
 			$.ajax({
-				url : "http://localhost:8080/society_server/societyApply/deleteById?applyId=" + id,
+				url : "/society_server/societyApply/deleteById?applyId=" + id,
 				type : "post",
 				success : function(result) {
 					if (result.resultCode == 0) {
@@ -191,7 +191,7 @@ $(function() {
 		$("#applyerId").val(applyerId);
 		var typeId = "";
 		$.ajax({
-			url : "http://localhost:8080/society_server/societyApply/findById?applyId=" + id,
+			url : "/society_server/societyApply/findById?applyId=" + id,
 			type : "get",
 			success : function(data) {
 				//补充基本信息
@@ -214,7 +214,7 @@ $(function() {
 		
 		//获取学生证信息
 		$.ajax({
-			url : "http://localhost:8080/society_server/identityCard/getIdCardByStudentId?studentId="+applyerId,
+			url : "/society_server/identityCard/getIdCardByStudentId?studentId="+applyerId,
 			type : "get",
 			success : function(data) {
 				//补充学生证信息
@@ -237,7 +237,7 @@ $(function() {
 		
 		//获取社团类别
 		$.ajax({
-			url : "http://localhost:8080/society_server/societyType/findById?typeId="+typeId,
+			url : "/society_server/societyType/findById?typeId="+typeId,
 			type : "get",
 			success : function(data) {
 				$("#societyType").val(data.resultData.typeName);
@@ -250,7 +250,7 @@ $(function() {
 		
 		//获取学生姓名
 		$.ajax({
-			url : "http://localhost:8080/society_server/student/getInfo?studentId="+applyerId,
+			url : "/society_server/student/getInfo?studentId="+applyerId,
 			type : "post",
 			success : function(data) {
 				$("#applyerName").val(applyerId + " " + data.resultData.sname);
@@ -270,7 +270,7 @@ $(function() {
 			return;
 		} 
 		$.ajax({
-			url : "http://localhost:8080/society_server/societyApply/updateApply",
+			url : "/society_server/societyApply/updateApply",
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {

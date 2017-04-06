@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="padding-big">
-               <a href="http://localhost:8080/society_server/" class="button bg-yellow">返回首页</a>
+               <a href="/society_server/" class="button bg-yellow">返回首页</a>
                <a href="#" class="button">保证不打死管理员</a>
           </div> 
       </div> 
