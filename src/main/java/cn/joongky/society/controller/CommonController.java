@@ -70,4 +70,14 @@ public class CommonController {
 		model.addAttribute("activity", activityApplyService.findByActivityId(activityId));
 		return new ModelAndView("/common/activity_detail");
 	}
+	
+	@RequestMapping(value = "/guidence", method = RequestMethod.GET)
+	public String guidence(){
+		return "/common/guidence";
+	}
+	
+	@RequestMapping(value = "/activity_more", method = RequestMethod.GET)
+	public String activityMore(){
+		return "/common/activity_more";
+	}
 }
