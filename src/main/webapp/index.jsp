@@ -8,7 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>校园社团首页</title>
-<head>
 		<meta charset="utf-8" />
 		<link rel="shortcut icon" href="img/my_ico.ico">
 		<link rel="stylesheet" href="css/posterTvGrid.css" />
@@ -63,7 +62,7 @@
 									<li>工作流程</li>
 								</a>
 
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/guidence">
 									<li>使用指南</li>
 								</a>
 							</ol>
@@ -175,7 +174,8 @@
     	时间：2017-01-11
     	描述：内容
     -->
-		<div class="contain" style="zoom: 85%;">
+		<!-- 缩放对象 chrome正常 ie显示不局中 <div class="contain" style="zoom: 85%;"> -->
+		<div class="contain"  style="zoom:85%;">
 			<div class="contain-inner">
 				<div class="contain-inner-left">
 					<div class="tittle">社团要闻</div>
@@ -260,7 +260,7 @@
 
 				</div>
 				<div class="contain-inner-right">
-					<div class="tittle-right">系统公告<span><a href="#" target="">more&gt;&gt;</a></span></div>
+					<div class="tittle-right">系统公告<span><a href="./common/notice_more" target="">more&gt;&gt;</a></span></div>
 					<div style=" clear:both"></div>
 					<ul class="shetuanyaowen pad" style="height: 192px;">
 						<div id="notice_foreshow">
@@ -269,7 +269,7 @@
 						<!--#endeditable-->
 					</ul>
 
-					<div class="tittle-right  margintop">活动预告<span><a href="#" target="">more&gt;&gt;</a></span></div>
+					<div class="tittle-right  margintop">活动预告<span><a href="./common/activity_more" target="">more&gt;&gt;</a></span></div>
 					<div style="clear:both"></div>
 					<ul class="shetuanyaowen pad" style="height: 192px;">
 						<div id="activity_foreshow">
@@ -415,7 +415,7 @@
 		<!-- 登录模态框（Modal） -->
 		<div class="modal  fade" id="mylogin">
 			<div class="modal-dialog">
-				<div class="modal-content" style="background-color：#9a0e14;">
+				<div class="modal-content" >
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>
 						<h4 class="modal-title"><label class="label label-danger" style="background-color: #9a0e14;border-color: #9a0e14;"><span class="glyphicon glyphicon-user">用户登录</span></label></h4>
@@ -470,38 +470,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-default">
-							<div class="panel-body">
-								<!-- 
-								<div class="form-group">
-									<label for="学院"  style="padding-left:10px" 
-										class="col-sm-2 control-label mylabStyle">选择学院</label>
-									<div class="col-sm-10">
-									     <select class="form-control " id="instituteId"
-											name="instituteId">
-											 <c:forEach var="institute" items="${institutes}">
-    										 <option value="${institute.instituteId}">${institute.instituteName}</option>
- 										 </c:forEach>
-										</select>
-									</div>
-								</div>
-								<br /> <br />
-							
-						<!-- <div style="display:none;"><input id="courseId" name="courseId" /> </div> -->	
-								<!--  
-								<div class="form-group">
-									<label for="班级"  style="padding-left:10px"
-										class="col-sm-2 control-label mylabStyle">选择班级</label>
-									<div class="col-sm-10">
-									     <select class="form-control " id="classId"
-											name="class">
-											 <c:forEach var="class" items="${classes}">
-    										 <option value="${class.classId}">${class.className}</option>
- 										 </c:forEach>
-										</select>
-									</div>
-								</div>
-								<br /> <br />  -->
-								
+							<div class="panel-body">	
 								<div class="form-group">
 									<label for="studentId"
 										class="col-sm-2 control-label mylabStyle">学号</label>

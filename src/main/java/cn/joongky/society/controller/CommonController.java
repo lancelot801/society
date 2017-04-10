@@ -77,7 +77,45 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value = "/activity_more", method = RequestMethod.GET)
-	public String activityMore(){
-		return "/common/activity_more";
+	public ModelAndView activityMore(Model model, Integer pNo) {
+		if (pNo != null) {
+			pNo = pNo - 1;
+			if (pNo < 0)
+				pNo = 0;
+			model.addAttribute("activities", activityApplyService.findByStatusWithRowBound(pNo, "已通过"));
+		} else {
+			model.addAttribute("activities", activityApplyService.findByStatusWithRowBound(0, "已通过"));
+		}
+		return new ModelAndView("/common/activity_more");
+	}
+	
+	@RequestMapping(value = "/notice_more", method = RequestMethod.GET)
+	public ModelAndView noticeMore(Model model, Integer pNo) {
+		if (pNo != null) {
+			pNo = pNo - 1;
+			if (pNo < 0)
+				pNo = 0;
+			model.addAttribute("notices", societyNoticeService.findWithRowBound(pNo));
+		} else {
+			model.addAttribute("notices", societyNoticeService.findWithRowBound(0));
+		}
+		return new ModelAndView("/common/notice_more");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/activity/listPassTotalPage", method = RequestMethod.GET)
+	public JsonResult passTotalPage(){
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(activityApplyService.listTotalPageByStatus("已通过"));
+		return jr ;
+	}
+	@ResponseBody
+	@RequestMapping(value = "/notice/listTotalPage", method = RequestMethod.GET)
+	public JsonResult listTotalPage(){
+		JsonResult jr = new JsonResult();
+		jr.setResultCode(0);
+		jr.setResultData(societyNoticeService.listTotalPage());
+		return jr ;
 	}
 }
