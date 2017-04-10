@@ -70,7 +70,7 @@ $(function(){
 	$(document).ready(function() {
 		/*
 		$.ajax({
-			url : "http://api.flyplus1.com/admin/course/queryToltalPageByCourseStatus?courseStatus="+courseStatus,
+			url : "http://api.flyplus1.com/admin/course/queryTotalPageByCourseStatus?courseStatus="+courseStatus,
 			type : "get",
 			success : function(result) {
 				totalPage = result.resultData.totalPage;

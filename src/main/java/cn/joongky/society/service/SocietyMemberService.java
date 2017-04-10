@@ -13,5 +13,5 @@ public interface SocietyMemberService {
 	//获取当前社团人数
 	int  getMembersCount(String societyId);
 	//根据学号查找我的社团总页数和总记录数(尚未离开)
-	Map<String,Integer> listToltalPage(String studentId); 
+	Map<String,Integer> listTotalPage(String studentId); 
 }

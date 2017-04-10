@@ -49,7 +49,7 @@ public class SocietyMemberServiceImpl implements SocietyMemberService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage(String studentId) {
+	public Map<String, Integer> listTotalPage(String studentId) {
 		Integer totalPage;
 		Integer totalRecord;
 		SocietyMemberExample example = new SocietyMemberExample();

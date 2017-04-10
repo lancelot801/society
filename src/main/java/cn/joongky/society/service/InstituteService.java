@@ -10,7 +10,7 @@ public interface InstituteService {
 	  int addInstitute(String instituteName);
 	  
 	  //查找总页数和总记录数
-	  Map<String,Integer> listToltalPage(); 
+	  Map<String,Integer> listTotalPage(); 
 	  
 	  //查找所有的学院
 	  List<Institute> findAll();

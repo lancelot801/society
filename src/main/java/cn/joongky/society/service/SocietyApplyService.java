@@ -10,10 +10,10 @@ public interface SocietyApplyService {
 	SocietyApply addApply(String societyName, String ImageUrl, String introduction, String typeId, String applyerId);
 
 	// 查找总页数和总记录数
-	Map<String, Integer> listToltalPage();
+	Map<String, Integer> listTotalPage();
 	
 	// 根据状态查找总页数和总记录数
-	Map<String, Integer> listToltalPageByStatus(String status);
+	Map<String, Integer> listTotalPageByStatus(String status);
 	
 	// 查找所有的社团类别
 	List<SocietyApply> findAll();
@@ -37,7 +37,7 @@ public interface SocietyApplyService {
 	List<SocietyApply> findByStudentIdWithRowBound(Integer page,String studentId);
 	
 	//根据学号查找总页数和总记录数
-	Map<String, Integer> listToltalPageByStudentId(String studentId);
+	Map<String, Integer> listTotalPageByStudentId(String studentId);
 	
 	//修改社团申请信息
 	SocietyApply updateApply(String societyApplyId,String societyName,String introduction);

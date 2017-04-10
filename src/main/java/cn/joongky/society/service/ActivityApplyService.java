@@ -22,13 +22,17 @@ public interface ActivityApplyService {
 	List<ActivityApply> listApplyWithRowBound(Integer page);
 	
 	// 查找总页数和总记录数
-	Map<String, Integer> listToltalPage();
+	Map<String, Integer> listTotalPage();
 	
 	// 根据社团编号查找总页数和总记录数
-	Map<String, Integer> listToltalPageBySocietyId(String societyId);
+	Map<String, Integer> listTotalPageBySocietyId(String societyId);
 	
 	// 根据学号查找总页数和总记录数
-	Map<String, Integer> listToltalPageByStudentId(String studentId);
+	Map<String, Integer> listTotalPageByStudentId(String studentId);
+	
+	// 根据状态查找总页数和总记录数
+	Map<String, Integer> listTotalPageByStatus(String status);
+		
 	// 分页查找所有社团活动申请记录
 	List<ActivityApply> findWithRowBound(Integer page);
 	

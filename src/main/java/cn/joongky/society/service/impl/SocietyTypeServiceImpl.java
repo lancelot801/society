@@ -34,7 +34,7 @@ public class SocietyTypeServiceImpl implements SocietyTypeService{
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage() {
+	public Map<String, Integer> listTotalPage() {
 		Integer totalPage,totalRecord;
 		
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));

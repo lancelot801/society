@@ -36,7 +36,7 @@ $(function() {
 		$(document).ready(function() {		
 			var token = getParameter("studentId");
 			$.ajax({
-				url : "/society_server/student/societyInfo/listToltalPage?studentId="+token,
+				url : "/society_server/student/societyInfo/listTotalPage?studentId="+token,
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;

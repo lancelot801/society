@@ -22,8 +22,8 @@ public interface ClassService {
 	List<Classes>  findByInstituteAndPage(String instituteId,Integer page);
 	
 	//查出总页数和总记录数
-	Map<String,Integer> listToltalPage(); 
+	Map<String,Integer> listTotalPage(); 
 	
 	//根据学院查出总页数和总记录数
-	Map<String,Integer> queryToltalPageByInstituteId(String instituteId);
+	Map<String,Integer> queryTotalPageByInstituteId(String instituteId);
 }

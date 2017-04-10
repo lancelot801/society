@@ -40,7 +40,7 @@ $(function() {
 		var student = $("#society_studentId").val();
 		$(document).ready(function() {		
 			$.ajax({
-				url : "/society_server/societyApply/listToltalPageByStudentId?studentId="+student,
+				url : "/society_server/societyApply/listTotalPageByStudentId?studentId="+student,
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;

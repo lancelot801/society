@@ -40,7 +40,7 @@ public class SocietyNoticeServiceImpl implements SocietyNoticeService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage() {
+	public Map<String, Integer> listTotalPage() {
 		Integer totalPage;
 		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));

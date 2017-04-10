@@ -81,11 +81,11 @@ public class AdminNoticeController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/listToltalPage", method = RequestMethod.GET)
-	public JsonResult listToltalPage() {
+	@RequestMapping(value = "/listTotalPage", method = RequestMethod.GET)
+	public JsonResult listTotalPage() {
 		JsonResult jr = new JsonResult();
 		jr.setResultCode(0);
-		jr.setResultData(snoticeService.listToltalPage());
+		jr.setResultData(snoticeService.listTotalPage());
 		return jr;
 	}
 	

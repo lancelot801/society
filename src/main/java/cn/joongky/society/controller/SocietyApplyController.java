@@ -92,11 +92,11 @@ public class SocietyApplyController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/listToltalPageByStudentId", method = RequestMethod.GET)
-	public JsonResult listToltalPage(@RequestParam String studentId) {
+	@RequestMapping(value = "/listTotalPageByStudentId", method = RequestMethod.GET)
+	public JsonResult listTotalPage(@RequestParam String studentId) {
 		JsonResult jr = new JsonResult();
 		jr.setResultCode(0);
-		jr.setResultData(saService.listToltalPageByStudentId(studentId));
+		jr.setResultData(saService.listTotalPageByStudentId(studentId));
 		return jr;
 	}
 	

@@ -14,7 +14,7 @@ public interface SocietyNoticeService {
 	SocietyNotice findById(String noticeId);
 	
 	//查找出公告总记录数和总页数
-	Map<String,Integer> listToltalPage(); 
+	Map<String,Integer> listTotalPage(); 
 	
 	//分页查找所有公告信息
 	List<SocietyNotice> findWithRowBound(Integer page);

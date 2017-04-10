@@ -15,6 +15,7 @@
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
 <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/notice_detail_texiao.js"></script>
 <script
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -69,8 +70,8 @@
 									<li>工作流程</li>
 								</a>
 
-								<a href="#">
-									<li>表格下载</li>
+								<a href="<%=request.getContextPath()%>/common/guidence">
+									<li>使用指南</li>
 								</a>
 							</ol>
 
@@ -243,5 +244,136 @@
 				</div>
 			</div>
 		</div>	
+		
+		<!-- 登录模态框（Modal） -->
+		<div class="modal  fade" id="mylogin">
+			<div class="modal-dialog">
+				<div class="modal-content" style="background-color：#9a0e14;">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal" type="button">&times;</button>
+						<h4 class="modal-title"><label class="label label-danger" style="background-color: #9a0e14;border-color: #9a0e14;"><span class="glyphicon glyphicon-user">用户登录</span></label></h4>
+					</div>
+					<div class="modal-body">
+						<br />
+						<br />
+						<form role="form" class="form-horizontal" id="loginForm" action="/society_server/user/login" method="post">
+							<div class="form-group">
+								<label for="loginToken" class="col-sm-2 control-label"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="loginToken" name="token" placeholder="请输入您的账户号码/邮箱/手机">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="loginPassword" class="col-sm-2 control-label"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="loginPassword" name="password" placeholder="请输入您的密码">
+								</div>
+							</div>
+
+							<div style="text-align: center;">
+								<button type="submit" id="loginBtn" class="btn btn-primary" style="width:350px;background-color: #9a0e14;border-color: #9a0e14;margin-left:65px;"><span class=" glyphicon glyphicon-ok-sign"></span>&nbsp;登录</button>
+							</div>
+						</form>
+					</div>
+					<br />
+					<br />
+					<div class="modal-footer">
+						<div class="container">
+							<div class="pull-left">
+								<a href="#" title="还没激活账号？赶紧用学号注册吧！" id="registAccount" data-dismiss="modal" style="color:#9a0e14;">注册账号</a>
+								<span style="margin-left:120px;color:#9a0e14;">徐州工程学院社团管理平台</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 注册模态框  -->
+		<div class="modal  fade" id="registerModal">
+		<div class="modal-dialog">
+			<form id="registerForm" action="" method="" enctype="multipart/form-data">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal" type="button">&times;</button>
+						<h4 class="modal-title">
+							<span class="glyphicon glyphicon-leaf"></span>&nbsp;用户注册
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<!-- 
+								<div class="form-group">
+									<label for="学院"  style="padding-left:10px" 
+										class="col-sm-2 control-label mylabStyle">选择学院</label>
+									<div class="col-sm-10">
+									     <select class="form-control " id="instituteId"
+											name="instituteId">
+											 <c:forEach var="institute" items="${institutes}">
+    										 <option value="${institute.instituteId}">${institute.instituteName}</option>
+ 										 </c:forEach>
+										</select>
+									</div>
+								</div>
+								<br /> <br />
+							
+						<!-- <div style="display:none;"><input id="courseId" name="courseId" /> </div> -->	
+								<!--  
+								<div class="form-group">
+									<label for="班级"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">选择班级</label>
+									<div class="col-sm-10">
+									     <select class="form-control " id="classId"
+											name="class">
+											 <c:forEach var="class" items="${classes}">
+    										 <option value="${class.classId}">${class.className}</option>
+ 										 </c:forEach>
+										</select>
+									</div>
+								</div>
+								<br /> <br />  -->
+								
+								<div class="form-group">
+									<label for="studentId"
+										class="col-sm-2 control-label mylabStyle">学号</label>
+									<div class="col-sm-10">
+										<input type="text" style="width:95%" id="studentId" name="studentId"
+											class="form-control" placeholder="请输入学号" />
+									</div>
+								</div>
+								<br /> <br />
+								
+								<div class="form-group">
+									<label for="password"
+										class="col-sm-2 control-label mylabStyle">密码</label>
+									<div class="col-sm-10">
+										<input type="password" style="width:95%" id="password" name="password"
+											class="form-control" placeholder="请输入密码" />
+									</div>
+								</div>
+								<br/> <br/>
+								
+								<div class="form-group">
+									<label for="confirmPassword"  style="padding-left:10px"
+										class="col-sm-2 control-label mylabStyle">确认密码</label>
+									<div class="col-sm-10">
+										<input type="password" style="width:95%" id="confirmPassword" name="confirmPassword"
+											class="form-control" placeholder="请再输入密码" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="registerBtn" type="submit"  style="background-color: #9a0e14;border-color: #9a0e14;" class="btn btn-primary">提交</button>
+						<button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

@@ -39,7 +39,7 @@ $(function() {
 		}
 		$(document).ready(function() {		
 			$.ajax({
-				url : "/society_server/admin/society_apply/listToltalPage",
+				url : "/society_server/admin/society_apply/listTotalPage",
 				type : "get",
 				success : function(result) {
 					totalPage = result.resultData.totalPage;

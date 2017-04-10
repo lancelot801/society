@@ -80,7 +80,7 @@ public class ClassServiceImpl implements ClassService{
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage() {
+	public Map<String, Integer> listTotalPage() {
 		Integer totalPage,totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
 		if (classesMapper.countByExample(null) % limit != 0) {
@@ -96,7 +96,7 @@ public class ClassServiceImpl implements ClassService{
 	}
 
 	@Override
-	public Map<String, Integer> queryToltalPageByInstituteId(String instituteId) {
+	public Map<String, Integer> queryTotalPageByInstituteId(String instituteId) {
 		Integer totalPage,totalRecord;
 		ClassesExample example = new ClassesExample();
 		example.or().andInstituteIdEqualTo(instituteId);

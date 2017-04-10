@@ -109,9 +109,9 @@ public class ActivityApplyController {
 			pNo = pNo - 1;
 			if (pNo < 0)
 				pNo = 0;
-			aaList = activityApplyService.findWithRowBound(pNo);
+			aaList = activityApplyService.findByStudentIdWithRowBound(pNo, studentId);
 		} else {
-			aaList = activityApplyService.findWithRowBound(0);
+			aaList = activityApplyService.findByStudentIdWithRowBound(0,studentId);
 		}
 		model.addAttribute("activities", aaList);
 		List<SocietyInfo> sInfoList = new ArrayList<>();
@@ -123,20 +123,20 @@ public class ActivityApplyController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/listToltalPage", method = RequestMethod.GET)
-	public JsonResult listToltalPage() {
+	@RequestMapping(value = "/listTotalPage", method = RequestMethod.GET)
+	public JsonResult listTotalPage() {
 		JsonResult jr = new JsonResult();
 		jr.setResultCode(0);
-		jr.setResultData(activityApplyService.listToltalPage());
+		jr.setResultData(activityApplyService.listTotalPage());
 		return jr;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/listToltalPageByStudentId", method = RequestMethod.GET)
-	public JsonResult listToltalPageByStudentId(@RequestParam String studentId) {
+	@RequestMapping(value = "/listTotalPageByStudentId", method = RequestMethod.GET)
+	public JsonResult listTotalPageByStudentId(@RequestParam String studentId) {
 		JsonResult jr = new JsonResult();
 		jr.setResultCode(0);
-		jr.setResultData(activityApplyService.listToltalPageByStudentId(studentId));
+		jr.setResultData(activityApplyService.listTotalPageByStudentId(studentId));
 		return jr;
 	}
 	

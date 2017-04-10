@@ -16,9 +16,11 @@
 <script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/common.js"></script><script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/activity_more.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/common.js"></script>
+<script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/notice_detail_texiao.js"></script>
-
 <script
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
@@ -37,7 +39,7 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>活动预告</title>
+<title>历史活动</title>
 </head>
 <body>
 	<div class="top">
@@ -156,7 +158,7 @@
 					<div class="slide-guideline">
 						<div class="tittle margintop">
 							<!--#begineditable "栏目名称侧面" -->
-							活动预告
+							历史活动
 							<!--#endeditable-->
 						</div>
 						<div style="clear: both"></div>
@@ -169,100 +171,19 @@
 					</div>
 					<div class="slide-list">
 						<!--#begineditable "栏目名称" -->
-						<h1>活动预告</h1>
+						<h1>历史活动</h1>
 						<div class="neirong">
 							<!--#begineditable "文章内容" -->
 							<ul>
-								<li id="line_u8_0"><a
-									href="http://www.club.sdu.edu.cn/info/1071/10477.htm"
-									title="关于进行山东大学2016-2017学年学生社团星级评定的通知" class="clearfix"><span
-										class="main-time float_right">2017年04月10日</span>关于进行山东大学2016-2017学年学生社团星级评定的通知
+								<c:forEach items="${activities}" var="activity">
+									<li id="line_u8_0"><a
+									href="../common/getActivity?activityId=${activity.activityId}"
+									title="${activity.theme}" class="clearfix"><span
+										class="main-time float_right"><fmt:formatDate value="${activity.checkedTime}" pattern="yyyy年MM月dd日" /> </span>
+										${activity.theme}
 								</a></li>
-								<li id="line_u8_1"><a
-									href="http://www.club.sdu.edu.cn/info/1071/10187.htm"
-									title="关于选拔山东大学学生社团参评2016年度山东省“百佳学生社团”活动的通知" class="clearfix"><span
-										class="main-time float_right">2016年11月14日</span>关于选拔山东大学学生社团参评2016年度山东省“百佳学生社团”活动的通知
-								</a></li>
-								<li id="line_u8_2"><a
-									href="http://www.club.sdu.edu.cn/info/1071/10167.htm"
-									title="山东大学学生会及学生社团2016社会实践资助明细公示" class="clearfix"><span
-										class="main-time float_right">2016年11月11日</span>山东大学学生会及学生社团2016社会实践资助明细公示
-								</a></li>
-								<li id="line_u8_3"><a
-									href="http://www.club.sdu.edu.cn/info/1071/10158.htm"
-									title="关于举办山东大学第七届山东24小时杯社团星光达人秀的通知" class="clearfix"><span
-										class="main-time float_right">2016年11月08日</span>关于举办山东大学第七届山东24小时杯社团星光达人秀的通知
-								</a></li>
-								<li id="line_u8_4"><a
-									href="http://www.club.sdu.edu.cn/info/1071/10139.htm"
-									title="关于开展山东大学2016-2017年社团风景线学生社团立项活动的通知" class="clearfix"><span
-										class="main-time float_right">2016年11月03日</span>关于开展山东大学2016-2017年社团风景线学生社团立项活动的通知
-								</a></li>
-								<li id="line_u8_5"><a
-									href="http://www.club.sdu.edu.cn/info/1071/9728.htm"
-									title="关于选拔学生代表参加第十届高校学生课外理论社团研讨会的通知" class="clearfix"
-									style="font-weight: bold;"><span
-										class="main-time float_right">2016年10月11日</span>关于选拔学生代表参加第十届高校学生课外理论社团研讨会的通知
-								</a></li>
-								<li id="line_u8_6"><a
-									href="http://www.club.sdu.edu.cn/info/1071/9697.htm"
-									title="关于山东大学学生旅游协会违规行为的处理通报" class="clearfix"><span
-										class="main-time float_right">2016年09月23日</span>关于山东大学学生旅游协会违规行为的处理通报
-								</a></li>
-								<li id="line_u8_7"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4909.htm"
-									title="山东大学学生社团2016年3-4月份星级社团评比结果公示                      "
-									class="clearfix"><span class="main-time float_right">2016年05月29日</span>山东大学学生社团2016年3-4月份星级社团评比结果公示
-
-								</a></li>
-								<li id="line_u8_8"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4908.htm"
-									title="关于公布2016年山东大学第十六届社团文化节立项结果的通知                      "
-									class="clearfix"><span class="main-time float_right">2016年05月16日</span>关于公布2016年山东大学第十六届社团文化节立项结果的通知
-
-								</a></li>
-								<li id="line_u8_9"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4907.htm"
-									title="关于进行第十六届社团文化节结题答辩的通知                      "
-									class="clearfix"><span class="main-time float_right">2016年05月09日</span>关于进行第十六届社团文化节结题答辩的通知
-
-								</a></li>
-								<li id="line_u8_10"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4906.htm"
-									title="关于举办山东大学第四届笑林大会决赛的比赛通知                      "
-									class="clearfix"><span class="main-time float_right">2016年05月02日</span>关于举办山东大学第四届笑林大会决赛的比赛通知
-
-								</a></li>
-								<li id="line_u8_11"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4895.htm"
-									title="国学社将于兴隆山校区开展古琴培训活动                      "
-									class="clearfix"><span class="main-time float_right">2016年05月02日</span>国学社将于兴隆山校区开展古琴培训活动
-
-								</a></li>
-								<li id="line_u8_12"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4905.htm"
-									title="关于从未授权未注册团体使用我社名义宣传的声明                      "
-									class="clearfix"><span class="main-time float_right">2016年04月28日</span>关于从未授权未注册团体使用我社名义宣传的声明
-
-								</a></li>
-								<li id="line_u8_13"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4904.htm"
-									title="关于2015—2016学年第三次星级社团评比的通知                      "
-									class="clearfix"><span class="main-time float_right">2016年04月27日</span>关于2015—2016学年第三次星级社团评比的通知
-
-								</a></li>
-								<li id="line_u8_14"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4903.htm"
-									title="关于评选山东大学百团大战暨社团总动员先进个人的通知                      "
-									class="clearfix"><span class="main-time float_right">2016年04月25日</span>关于评选山东大学百团大战暨社团总动员先进个人的通知
-
-								</a></li>
-								<li id="line_u8_15"><a
-									href="http://www.club.sdu.edu.cn/info/1071/4902.htm"
-									title="关于举办“时光绘T恤创意大赛”的通知                      "
-									class="clearfix"><span class="main-time float_right">2016年04月22日</span>关于举办“时光绘T恤创意大赛”的通知
-
-								</a></li>
+		
+								</c:forEach>
 							</ul>
 							<div id="kkpager" style="width: 80%; height: 30px;"></div>	
 							<!--#endeditable-->

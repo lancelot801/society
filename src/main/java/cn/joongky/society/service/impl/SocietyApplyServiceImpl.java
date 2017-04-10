@@ -41,7 +41,7 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage() {
+	public Map<String, Integer> listTotalPage() {
 		Integer totalPage;
 		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
@@ -58,7 +58,7 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPageByStatus(String status) {
+	public Map<String, Integer> listTotalPageByStatus(String status) {
 		SocietyApplyExample example = new SocietyApplyExample();
 		example.or().andCheckStatusEqualTo(status);
 		Integer totalPage;
@@ -160,7 +160,7 @@ public class SocietyApplyServiceImpl implements SocietyApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPageByStudentId(String studentId) {
+	public Map<String, Integer> listTotalPageByStudentId(String studentId) {
 		SocietyApplyExample example = new SocietyApplyExample();
 		example.or().andApplyerIdEqualTo(studentId);
 		Integer totalPage;

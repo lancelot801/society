@@ -11,7 +11,7 @@ public interface SocietyTypeService {
 	  int addSocietyType(String typeName,String creater);
 	  
 	  //查找总页数和总记录数
-	  Map<String,Integer> listToltalPage(); 
+	  Map<String,Integer> listTotalPage(); 
 	  
 	  //查找所有的社团类别
 	  List<SocietyType> findAll();

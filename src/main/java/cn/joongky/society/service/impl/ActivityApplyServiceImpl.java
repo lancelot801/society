@@ -94,7 +94,7 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPage() {
+	public Map<String, Integer> listTotalPage() {
 		Integer totalPage;
 		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
@@ -111,7 +111,7 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPageBySocietyId(String societyId) {
+	public Map<String, Integer> listTotalPageBySocietyId(String societyId) {
 		Integer totalPage;
 		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
@@ -196,7 +196,7 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 	}
 
 	@Override
-	public Map<String, Integer> listToltalPageByStudentId(String studentId) {
+	public Map<String, Integer> listTotalPageByStudentId(String studentId) {
 		Integer totalPage;
 		Integer totalRecord;
 		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
@@ -233,6 +233,25 @@ public class ActivityApplyServiceImpl implements ActivityApplyService {
 		activityApply.setHoldTime(ConvertTime);
 		activityApplyMapper.updateByPrimaryKeyWithBLOBs(activityApply);
 		return activityApplyMapper.selectByPrimaryKey(activityId);
+	}
+
+	@Override
+	public Map<String, Integer> listTotalPageByStatus(String status) {
+		Integer totalPage;
+		Integer totalRecord;
+		Integer limit = Integer.parseInt(ConfigUtil.getValue("page_size"));
+		ActivityApplyExample example = new ActivityApplyExample();
+		example.or().andStatusEqualTo(status);
+		if (activityApplyMapper.countByExample(example) % limit != 0) {
+			totalPage = activityApplyMapper.countByExample(example) / limit + 1;
+		} else {
+			totalPage = activityApplyMapper.countByExample(example) / limit;
+		}
+		totalRecord = activityApplyMapper.countByExample(example);
+		Map<String, Integer> map = new HashMap<>();
+		map.put("totalPage", totalPage);
+		map.put("totalRecords", totalRecord);
+		return map;
 	}
 
 }
