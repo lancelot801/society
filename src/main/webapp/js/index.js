@@ -61,7 +61,7 @@ $(function() {
 						"<span style=\"float:right\">" + publishedTime +"</span></li></a>");
 					}	
 				} else {
-					alert("注册失败!");
+					
 				}
 			},
 			error : function(error) {
@@ -215,12 +215,16 @@ $(function() {
 			data : $('#registerForm').serialize(),
 			success : function(data) {
 				if (data.resultCode == 0) {
-					alert("注册成功!");
+					swal('注册成功', '快去登录吧!', 'success');
 				} else {
-					alert("注册失败!");
+					swal('注册失败', '非常抱歉!', 'error');
 				}
-				window.location.href = window.location.href;
-				window.location.reload;
+//				window.location.href = window.location.href;
+//				window.location.reload;
+				$('#registerModal').modal('hide');
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1000);
 			},
 			error : function(error) {
 				alert(error.responseText);

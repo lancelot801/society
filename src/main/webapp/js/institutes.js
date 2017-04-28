@@ -9,6 +9,7 @@ $(function() {
 	function isContains(str, substr) {
 	    return new RegExp(substr).test(str);
 	}
+
 	//init
 	$(function(){
 		var totalPage ;
@@ -130,42 +131,72 @@ $(function() {
 			data:  $('#addInstituteForm').serialize(),
 			success : function(data) {
 				if(data.resultCode == 0){
-					alert("添加成功!");
-					window.location.href=window.location.href; 
-					window.location.reload; 
+					swal('添加成功', '快去看看吧!', 'success');
+					$("#addInstituteModal").modal('hide');
+					//延时刷新页面
+					setTimeout(function(){
+						window.location.href=window.location.href; 
+						window.location.reload; },1000);
 				}
 			},
 			error : function(error) {
 				alert(error.responseText);
 			},
 			async : false
-		});
+		});	
+		
+		
 	});  
 	
 	$("button.deleteBtn").click(function() {
-		if (confirm('确定要删除此信息吗？')) {
-			var id = $(this).parents("tr").find("td").eq(0).html();
-			$.ajax({
-				url : "/society_server/admin/institute/deleteById?instituteId=" + id,
-				type : "post",
-				success : function(result) {
-					if (result.resultCode == 0) {
-						alert("删除成功！");
-						window.location.href=window.location.href; 
-						window.location.reload; 
-					} else {
-						alert("非常抱歉 ," + result.resultData);
-					}
-				},
-				error : function(error) {
-					alert(error.resultData);
-				},
-				async : false
+		var id = $(this).parents("tr").find("td").eq(0).html();
+		swal({
+			  title: '确认删除吗?',
+			  text: '你将要删除本条信息!',
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: '是的,删除它!',
+			  cancelButtonText: '不,保持原状',
+			}).then(function(isConfirm) {
+			  if (isConfirm === true) {
+					$.ajax({
+						url : "/society_server/admin/institute/deleteById?instituteId=" + id,
+						type : "post",
+						success : function(result) {
+							if (result.resultCode == 0) {
+								 swal(
+										'已删除!',
+										'这条记录已经被删除.',
+										'success'
+									);
+								//延时刷新页面
+									setTimeout(function(){
+										window.location.href=window.location.href; 
+										window.location.reload; },1000);
+							} else {
+								alert("非常抱歉 ," + result.resultData);
+							}
+						},
+						error : function(error) {
+							alert(error.resultData);
+						},
+						async : false
+					});
+			
+					return true;
+
+			  } else if (isConfirm === false) {
+			    swal(
+			      '已取消',
+			      '这条记录是安全的 :)',
+			      'error'
+			    );
+			  
+			  } else {
+			    // Esc, close button or outside click
+			    // isConfirm is undefined
+			  }
 			});
-			return true;
-		} else {
-			return false;
-		}
 	});
 	
 	$("button.queryBtn").click(function() {
@@ -200,9 +231,15 @@ $(function() {
 			type : "post",
 			data:  $('#updateInstitute').serialize(),
 			success : function(data) {
-				alert("修改成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				 swal(
+							'修改成功!',
+							'这条记录已修改.',
+							'success'
+						);
+					//延时刷新页面
+						setTimeout(function(){
+							window.location.href=window.location.href; 
+							window.location.reload; },1000);
 			},
 			error : function(error) {
 				alert(error.responseText);

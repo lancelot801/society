@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css" />
 		<link rel="stylesheet" href="css/normalize.css" />
 		<link rel="stylesheet" href="css/jquery.skippr.css" />
+		<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile.touchsupport.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
@@ -26,6 +27,10 @@
 		<script type="text/javascript" src="js/texiao.js"></script>
 		<script type="text/javascript" src="js/jquery.skippr.js"></script>
 		<script type="text/javascript" src="bootstrap/js/zh_CN.js"></script>
+		
+		<script type="text/javascript" src="js/sweetalert2.min.js"></script>
+		<!-- for IE support -->
+		<script type="text/javascript" src="js/promise.min.js"></script>
 		<title>徐州工程学院社团空间</title>
 	</head>
 <body>
