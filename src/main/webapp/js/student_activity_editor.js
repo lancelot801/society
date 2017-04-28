@@ -8,6 +8,25 @@ $(function() {
 			return null;
 		}
 	}
+	//时间格式化函数
+	Date.prototype.Format = function(fmt) 
+	{ 
+	  var o = { 
+	    "M+" : this.getMonth()+1,                 //月份 
+	    "d+" : this.getDate(),                    //日 
+	    "h+" : this.getHours(),                   //小时 
+	    "m+" : this.getMinutes(),                 //分 
+	    "s+" : this.getSeconds(),                 //秒 
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+	    "S"  : this.getMilliseconds()             //毫秒 
+	  }; 
+	  if(/(y+)/.test(fmt)) 
+	    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); //格式化年份
+	  for(var k in o) //循环获取上面定义的月、日、小时等，格式化对应的数据。
+	    if(new RegExp("("+ k +")").test(fmt)) 
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
+	  return fmt; 
+	}
 	
 	$(document).ready(function() {	
 		var id = getParameter('activityId');
@@ -18,7 +37,7 @@ $(function() {
 			success : function(result) {
 				 editor.$txt.html(result.resultData.content);
 				 $("#theme").val(result.resultData.theme);
-				 $("#holdTime").val(result.resultData.holdTime);
+				 $("#holdTime").val( new Date(result.resultData.holdTime).Format("yyyy-MM-dd"));
 				 societyId = result.resultData.societyId;
 					var currentBtn = document.getElementById("applyUpdateBtn");
 				    if (result.resultData.status =="待审核") {

@@ -89,13 +89,13 @@ public class AdminSocietyApplyController {
 			sInfoService.addByApply(societyId, saService.findById(societyApplyId));
 			sMemberService.joinSociety(societyId, applyerId, "社团会长");
 			//修改社团总数信息
-			int nowCount = sMemberService.getMembersCount(societyId)+ 1 ;
+			int nowCount = sMemberService.getMembersCount(societyId);
 			sInfoService.updateMemberCount(societyId, nowCount);
 			// 发送邮件通知
 			StudentInfo stu = studentInfoService.getInfo(applyerId);
 			String title = "社团申请通知";
 			String text = "<div style='font-family:Microsoft YaHei'>亲爱的同学，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
-					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "您申请的社团 " + societyName + "</i>"
+					+ stu.getStudentId() + " 姓名: " + stu.getSname() + "。 您申请的社团 " + societyName + "</i>"
 					+ "<i style='color:red;font-size:20px;'>" + "已通过审核</i></div>";
 			MailUtil.sendMail(title, text, stu.getEmail());
 		}
