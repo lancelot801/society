@@ -37,7 +37,7 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>使用指南</title>
+<title>社团月评</title>
 </head>
 <body>
 	<div class="top">
@@ -134,7 +134,7 @@
 					<div class="slide-guideline">
 						<div class="tittle margintop">
 							<!--#begineditable "栏目名称侧面" -->
-							使用指南
+							社团月评
 							<!--#endeditable-->
 						</div>
 						<div style="clear: both"></div>
@@ -147,100 +147,19 @@
 					</div>
 					<div class="slide-list">
 						<!--#begineditable "栏目名称" -->
-						<h1>使用指南</h1>
+						<h1>社团月评</h1>
 						<!--#endeditable-->
 						<hr>
 						<div class="neirong">
-							<!--#begineditable "文章内容" -->
-							<h2 style="text-align: center;">使用指南</h2>
-							<h4>
-								<b>简介:本系统主要解决的问题是社团在线管理功能。主要流程如下:<br></b>
-								<h5>
-									<b>用户注册，完善个人信息（学院、班级、学生证、邮箱等）。随后用户申请创办社团，这是系统会发送邮件给管理员。管理员审核通过后，学生可以发布社团活动信息。活动发布后，同样邮件通知管理员审核，管理员审核通过后会在系统首页展示。此外，管理员可以发布系统公告，管理系统的基本信息等。</b>
-								</h5>
-							</h4>
-							<h4>
-								<b>1.用户登录、注册</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/149179286138022942372675989575.jpg"
-									alt="login"
-									style="max-width: 100%; width: 497.7px; height: 189px;"
-									class=""><img
-									src="/idCard/editor_img/notice/149179289307941097656446347375.jpg"
-									alt="register"
-									style="max-width: 100%; width: 453.6px; height: 270px;"
-									class="">
-							</p>
-							<h4>
-								<b>2.完善个人信息</b>
-							</h4>
-							<p align="left" style="text-align: left;">
-								<img
-									src="/idCard/editor_img/notice/149179295053113271188192850003.jpg"
-									alt="user_info"
-									style="max-width: 100%; width: 613.8px; height: 185.4px;"
-									class="">
-							</p>
-							<h4 style="text-align: left;">
-								<b>3.申请创办社团及邮件通知</b>
-							</h4>
-							<p align="left" style="text-align: left;">
-								<img
-									src="/idCard/editor_img/notice/149179327341621507674295349855.jpg"
-									alt="create_society"
-									style="max-width: 100%; width: 552.6px; height: 225px;"
-									class=""><img
-									src="/idCard/editor_img/notice/14917933133828110344042100868.png"
-									alt="sendMailSociety"
-									style="max-width: 100%; width: 464.4px; height: 132.3px;"
-									class="">
-							</p>
-							<h4 style="text-align: left;">
-								<b>4.活动申请及邮件通知</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/14917933635562828892088752455.png"
-									alt="applyA"
-									style="max-width: 100%; width: 497.7px; height: 268.2px;"
-									class=""><img
-									src="/idCard/editor_img/notice/14917933762324098652529901079.png"
-									alt="activityMail"
-									style="max-width: 100%; width: 490.6px; height: 135.3px;"
-									class="">
-							</p>
-							<h4>
-								<b>5.公告信息管理</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/14917934322923553555867537139.png"
-									alt="publish_notice"
-									style="max-width: 100%; width: 757.8px; height: 324.9px;"
-									class="">
-							</p>
-							<p>
-								<br>
-							</p>
-							<div>
-								<h1 style="font-weight: bold; text-align: center;">${notice.theme}</h1>
-								<div style="text-align: center;">
-									发布时间:
-									<fmt:formatDate value="${notice.publishedTime}"
-										pattern="yyyy年MM月dd日" />
-								</div>
-								<div class="wenzi" id="vsb_content">${notice.content}</div>
-								<div id="div_vote_id"></div>
-							</div>
-							<!--#endeditable-->
+						社团月评待开发...
+
 						</div>
-						<hr>
 					</div>
+					<hr>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<div class="bottom">

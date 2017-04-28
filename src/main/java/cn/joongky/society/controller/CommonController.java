@@ -76,6 +76,41 @@ public class CommonController {
 		return "/common/guidence";
 	}
 	
+	@RequestMapping(value = "/introduction", method = RequestMethod.GET)
+	public String introduction(){
+		return "/common/introduction";
+	}
+	
+	@RequestMapping(value = "/rule", method = RequestMethod.GET)
+	public String rule(){
+		return "/common/rule";
+	}
+	
+	@RequestMapping(value = "/workflow", method = RequestMethod.GET)
+	public String workflow(){
+		return "/common/workflow";
+	}
+	
+	@RequestMapping(value = "/monthly_review", method = RequestMethod.GET)
+	public String monthlyReview(){
+		return "/common/monthly_review";
+	}
+	
+	@RequestMapping(value = "/year_review", method = RequestMethod.GET)
+	public String yearReview(){
+		return "/common/year_review";
+	}
+	
+	@RequestMapping(value = "/society_style", method = RequestMethod.GET)
+	public String societyStyle(){
+		return "/common/society_style";
+	}
+	
+	@RequestMapping(value = "/society_star", method = RequestMethod.GET)
+	public String societyStart(){
+		return "/common/society_star";
+	}
+	
 	@RequestMapping(value = "/activity_more", method = RequestMethod.GET)
 	public ModelAndView activityMore(Model model, Integer pNo) {
 		if (pNo != null) {

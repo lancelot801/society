@@ -1,12 +1,12 @@
 $("document").ready(function(){
 
-$(".nav ol:eq(3)").css({"background":"url(img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
+$(".nav ol:eq(3)").css({"background":"url(../img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
 $(".nav ol:eq(3)").width(262);
 $(".nav ol:eq(3)").height(93);
-	$(".nav ol:eq(1)").css({"background":"url(img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
+	$(".nav ol:eq(1)").css({"background":"url(../img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
 $(".nav ol:eq(1)").width(262);
 $(".nav ol:eq(1)").height(93);
-$(".nav ol:eq(2)").css({"background":"url(img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
+$(".nav ol:eq(2)").css({"background":"url(../img/xiaoxiala_03_011_02.png)","marginLeft":"-1px"})
 $(".nav ol:eq(2)").width(262);
 $(".nav ol:eq(2)").height(93);
 

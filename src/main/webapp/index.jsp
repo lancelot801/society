@@ -41,15 +41,10 @@
 					<ul>
 						<li><a href="#">社团概况</a>
 							<ol style="display:none;">
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/introduction">
 									<li>社团简介</li></a>
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/rule">
 									<li>规章制度</li></a>
-								<a href="#">
-									<li>社团简介</li></a>
-								<a href="#">
-									<li>规章制度</li>
-								</a>
 							</ol> 
 
 						</li>
@@ -58,7 +53,7 @@
 						
 							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
 
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/workflow">
 									<li>工作流程</li>
 								</a>
 
@@ -71,11 +66,11 @@
 
 						<li><a href="#">星级评定</a>
 							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/monthly_review">
 									<li>社团月评</li>
 								</a>
 
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/year_review">
 									<li>年度总评</li>
 								</a>
 							</ol>
@@ -84,31 +79,16 @@
 
 						<li><a href="#">走进社团</a>
 							
-							<ol style="display: none; margin-left: -1px; width: 262px; height: 241px; background: url(&quot;img/changxiala.png&quot;);">
+							<ol style="display: none; margin-left: -1px; width: 262px; height: 241px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
 
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/society_style">
 									<li>社团风采</li>
 								</a>
 
-								<a href="#">
+								<a href="<%=request.getContextPath()%>/common/society_star">
 									<li>社团明星</li>
 								</a>
 
-								<a href="#">
-									<li>社团风景线</li>
-								</a>
-
-								<a href="#">
-									<li>社团文化节</li>
-								</a>
-
-								<a href="#">
-									<li>社团感悟</li>
-								</a>
-
-								<a href="#">
-									<li>视展青春</li>
-								</a>
 							</ol>
 
 						</li>

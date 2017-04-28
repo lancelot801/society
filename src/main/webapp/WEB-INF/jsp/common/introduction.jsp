@@ -37,7 +37,7 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
-<title>使用指南</title>
+<title>社团简介</title>
 </head>
 <body>
 	<div class="top">
@@ -134,7 +134,7 @@
 					<div class="slide-guideline">
 						<div class="tittle margintop">
 							<!--#begineditable "栏目名称侧面" -->
-							使用指南
+							社团简介
 							<!--#endeditable-->
 						</div>
 						<div style="clear: both"></div>
@@ -147,94 +147,41 @@
 					</div>
 					<div class="slide-list">
 						<!--#begineditable "栏目名称" -->
-						<h1>使用指南</h1>
+						<h1>社团简介</h1>
 						<!--#endeditable-->
 						<hr>
 						<div class="neirong">
-							<!--#begineditable "文章内容" -->
-							<h2 style="text-align: center;">使用指南</h2>
-							<h4>
-								<b>简介:本系统主要解决的问题是社团在线管理功能。主要流程如下:<br></b>
-								<h5>
-									<b>用户注册，完善个人信息（学院、班级、学生证、邮箱等）。随后用户申请创办社团，这是系统会发送邮件给管理员。管理员审核通过后，学生可以发布社团活动信息。活动发布后，同样邮件通知管理员审核，管理员审核通过后会在系统首页展示。此外，管理员可以发布系统公告，管理系统的基本信息等。</b>
-								</h5>
-							</h4>
-							<h4>
-								<b>1.用户登录、注册</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/149179286138022942372675989575.jpg"
-									alt="login"
-									style="max-width: 100%; width: 497.7px; height: 189px;"
-									class=""><img
-									src="/idCard/editor_img/notice/149179289307941097656446347375.jpg"
-									alt="register"
-									style="max-width: 100%; width: 453.6px; height: 270px;"
-									class="">
-							</p>
-							<h4>
-								<b>2.完善个人信息</b>
-							</h4>
-							<p align="left" style="text-align: left;">
-								<img
-									src="/idCard/editor_img/notice/149179295053113271188192850003.jpg"
-									alt="user_info"
-									style="max-width: 100%; width: 613.8px; height: 185.4px;"
-									class="">
-							</p>
-							<h4 style="text-align: left;">
-								<b>3.申请创办社团及邮件通知</b>
-							</h4>
-							<p align="left" style="text-align: left;">
-								<img
-									src="/idCard/editor_img/notice/149179327341621507674295349855.jpg"
-									alt="create_society"
-									style="max-width: 100%; width: 552.6px; height: 225px;"
-									class=""><img
-									src="/idCard/editor_img/notice/14917933133828110344042100868.png"
-									alt="sendMailSociety"
-									style="max-width: 100%; width: 464.4px; height: 132.3px;"
-									class="">
-							</p>
-							<h4 style="text-align: left;">
-								<b>4.活动申请及邮件通知</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/14917933635562828892088752455.png"
-									alt="applyA"
-									style="max-width: 100%; width: 497.7px; height: 268.2px;"
-									class=""><img
-									src="/idCard/editor_img/notice/14917933762324098652529901079.png"
-									alt="activityMail"
-									style="max-width: 100%; width: 490.6px; height: 135.3px;"
-									class="">
-							</p>
-							<h4>
-								<b>5.公告信息管理</b>
-							</h4>
-							<p>
-								<img
-									src="/idCard/editor_img/notice/14917934322923553555867537139.png"
-									alt="publish_notice"
-									style="max-width: 100%; width: 757.8px; height: 324.9px;"
-									class="">
-							</p>
-							<p>
-								<br>
-							</p>
-							<div>
-								<h1 style="font-weight: bold; text-align: center;">${notice.theme}</h1>
-								<div style="text-align: center;">
-									发布时间:
-									<fmt:formatDate value="${notice.publishedTime}"
-										pattern="yyyy年MM月dd日" />
-								</div>
-								<div class="wenzi" id="vsb_content">${notice.content}</div>
-								<div id="div_vote_id"></div>
-							</div>
-							<!--#endeditable-->
+							
+    <h1 align="center">徐州工程学院社团简介</h1>
+    <div class="wenzi" id="vsb_content"><p>
+ <!--StartFragment --></p>
+<div>
+ 根据目前我校学生社团发展的现状，我校学生社团分为六大类：理论学习类社团、公益服务类社团、职业发展类社团、应用实践类社团、文艺娱乐类社团和体育锻炼类社团。
+</div>
+<div>
+ （1）理论学习类社团。理论学习类社团主要指以满足成员对知识的需求为基础，&nbsp;以提高学术水平合乎实际能力为共同目的而建立起来的，与专业学习、学术研究紧密结合的带有专业实践性质和多学科交流的社团。其活动方式主要是定期或不定期举办相关讲座、报告会和研讨会等，并通过学术交流、办刊物等方式对一些理论问题进行学术性探讨。
+</div>
+<div>
+ （2）公益服务类社团。公益服务类社团是指成员运用自己掌握的知识和技能进行社会实践和服务活动，以检验所学知识和技能，培养综合能力为主要目的的学生社团，通常以操作性较强的实践活动为主要活动方式。
+</div>
+<div>
+ （3）职业发展类社团。职业发展类社团是指基于扎实的专业知识，以提升学生就业能力和自身素质为目的，建立起的为学生就职就业提供帮助的学生社团。其活动形式主要为举办学生职业发展与就业指导讲座，开展职业发展与就业培训活动等。
+</div>
+<div>
+ （4）应用实践类社团。应用实践类社团是指成员立足专业知识从事系统专门的学问研究或科技活动，付诸实践行动，以检验所学知识，提升学术科技素养的学生社团。其活动形式多样，一般以举行实践活动和定期的研讨会为主。
+</div>
+<div>
+ （5）文艺娱乐类社团。文艺娱乐类社团是以成员的艺术特长、爱好相同为基础，为满足其成员的特长发展需要而建立的非专业化的艺术方面的学生社团，其活动形式活泼，以举办艺术技艺讲座及排演节目为主。
+</div>
+<div>
+ （6）体育锻炼类社团。体育锻炼类社团是指有相同体育爱好和兴趣的同学，为提升其在该项活动中的技术而组建的以不同体育项目为分类的学生社团。其活动较注重趣味性，一般以举办全校性比赛及定期集中训练为主。
+</div>
+<div>
+ &nbsp;
+</div></div><div id="div_vote_id"></div>
+       
+</div>
+</form><!--#endeditable-->
 						</div>
 						<hr>
 					</div>
