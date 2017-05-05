@@ -143,7 +143,57 @@ $(function() {
 	});
 	
 	$("button.membersManage").click(function() {
-		alert("社团成员");
+		alert("社团成员待开发");
+	});
+	
+	$("button.queryDetail").click(function() {
+		$("#mySocietyDetail").modal().draggable({
+			handle : ".modal-header",
+			cursor : 'move',
+			refreshPositions : false
+		});
+		var id = $(this).parents("tr").find("td").eq(0).html();
+		var societyType=document.getElementById('societyType2');  
+		$.ajax({
+			url : "/society_server/societyType/list",
+			type : "get",
+			success : function(result) {
+				//清空避免重复加载
+				societyType.innerHTML = ""; 
+				for(var i= 0; i< result.resultData.length;i++)
+				{
+						//这个兼容IE与firefox 
+						societyType.options.add(new Option(
+								result.resultData[i].typeName,
+								result.resultData[i].typeId)); 				
+				}	
+			},
+			error : function(error) {
+				alert(error.resultData);
+			},
+			async : false
+		});
+		
+		$.ajax({
+			url : "/society_server/student/societyInfo/findById?societyId="+id,
+			type : "get",
+			success : function(result) {
+				$("#societyId").val(result.resultData.societyId);
+				$("#societyName2").val(result.resultData.societyName);
+				$("#img_logo").attr("src","/idCard"+result.resultData.logoUrl);
+				$("#introduction2").val(result.resultData.introduction);
+				for(var i=0; i<societyType.options.length; i++){  
+					if(societyType.options[i].value == String (result.resultData.typeId)){  
+						societyType.options[i].selected = true;  
+				        break;  
+				    }  
+				} 
+			},
+			error : function(error) {
+				alert(error.resultData);
+			},
+			async : false
+		});
 	});
 	
 	//获取社团申请信息详情
@@ -175,6 +225,7 @@ $(function() {
 			async : false
 		}); 
 	});
+	
 	
 	//反馈审核信息
 	$("#notPassBtn").click(function() {
@@ -209,4 +260,34 @@ $(function() {
         format: 'yyyy-mm-dd',
         minView: 'month'    //日期时间选择器所能够提供的最精确的时间选择视图。
 	    });
+	 
+	 	//修改社团信息
+		$("#updateSocietyById").click(function() {
+
+			$.ajax({
+				url : "/society_server/student/societyInfo/updateById",
+				type : "post",
+				data:  new FormData($('#societyForm')[0]),
+				cache: false,
+				processData: false,
+				contentType: false,
+				success : function(data) {
+					if(data.resultCode == 0){
+						swal('恭喜', '修改信息成功!', 'success');
+						//延时刷新页面
+						setTimeout(function(){
+							window.location.href=window.location.href; 
+							window.location.reload; },1500);
+					}
+				},
+				error : function(error) {
+					swal('抱歉', '修改失败!', 'error');
+//					//延时刷新页面
+//					setTimeout(function(){
+//						window.location.href=window.location.href; 
+//						window.location.reload; },1500);
+				},
+				async : false
+			});
+		});
 });

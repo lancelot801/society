@@ -34,8 +34,13 @@
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+		<!-- for IE support -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/promise.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" type="text/css" 
+	href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/society.css">
 <script type="text/javascript"
@@ -60,11 +65,7 @@
 							<div class="form-group">
 								<label for="societyName" style="padding-left: 10px"
 									class="col-sm-2 control-label mylabStyle">社团名称</label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="societyName"
-										style="width: 90%" value="${societyInfo.societyName}"
-										name="societyName" readonly="readonly" />
-								</div>
+									<p style="font-size: 24px;margin-left: auto;margin-right: auto;">${societyInfo.societyName}</p>
 							</div>
 
 							<div class="form-group">

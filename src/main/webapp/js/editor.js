@@ -25,15 +25,19 @@ $(function() {
 			data :params,
 			success : function(data) {
 				if(data.resultCode == 0){	
-					alert("活动申请成功,等待管理员审核");
-				}else{
-					alert("对不起,添加活动申请失败");
-					//返回上一个页面
-					window.history.back(-1); 
+					swal('活动申请成功', '等待管理员审核!', 'success');
+					//延时刷新页面
+					setTimeout(function(){
+						window.location.href=window.location.href; 
+						window.location.reload; },1500);
 				}
 			},
 			error : function(error) {
-				alert(error.responseText);
+				swal('活动申请失败', '网络连接异常!', 'error');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },3000);
 			},
 			async : false
 		});
@@ -79,13 +83,16 @@ $(function() {
 			data :params,
 			success : function(data) {
 				if(data.resultCode == 0){	
-					alert("公告发布成功");
-					window.location.href=window.location.href; 
-					window.location.reload; 
+					swal('公告发布成功', '快去首页看看吧!', 'success');
+					//延时刷新页面
+					setTimeout(function(){
+						window.location.href=window.location.href; 
+						window.location.reload; },1500);
 				}else{
-					alert("对不起,发布活动失败");
-					//返回上一个页面
-					window.history.back(-1); 
+					swal('抱歉', '公告发布失败!', 'error');
+					//延时刷新页面
+					setTimeout(function(){
+						window.history.back(-1); },1500);
 				}
 			},
 			error : function(error) {

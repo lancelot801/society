@@ -34,12 +34,17 @@
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+		<!-- for IE support -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/promise.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/society.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
+<link rel="stylesheet" type="text/css" 
+	href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
 <title>社团公告</title>
 </head>
 <body>

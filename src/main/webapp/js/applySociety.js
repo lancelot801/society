@@ -90,13 +90,19 @@ $(function() {
 			contentType: false,
 			success : function(data) {
 				if(data.resultCode == 0){
-					alert("申请成功!");
-					window.location.href=window.location.href; 
-					window.location.reload; 
+					swal('社团申请成功', '等待管理员审核!', 'success');
+					//延时刷新页面
+					setTimeout(function(){
+						window.location.href=window.location.href; 
+						window.location.reload; },1500);
 				}
 			},
 			error : function(error) {
-				alert(error.responseText);
+				swal('社团申请失败', '网络异常,无法发送邮件通知!', 'error');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1500);
 			},
 			async : false
 		});

@@ -18,7 +18,7 @@
 			<c:if test="${(userLogin.role eq 'admin')}">
 				<li><a href="#systemSetting" class="nav-header collapsed"
 					data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
-						系统管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+						基础信息 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
 				</a>
 					<ul id="systemSetting" class="nav nav-list collapse secondmenu"
 						style="height: 0px;">
@@ -27,14 +27,11 @@
 								class="glyphicon glyphicon-education"></i> 学院管理</a></li>
 						<!-- <li><a href="#"><i class="glyphicon glyphicon-book"></i> 班级管理</a></li>
 					<li><a href="#"><i class="glyphicon glyphicon-user"></i> 用户管理</a></li>  -->
-						<li><a
-							href="<%=request.getContextPath()%>/admin/society_apply/manage"><i
-								class="glyphicon glyphicon-th-list"></i> 社团审核</a></li>
+					
 						<li><a
 							href="<%=request.getContextPath()%>/admin/societyType/manage"><i
 								class="glyphicon glyphicon-asterisk"></i> 社团类别</a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/activity_apply/manage"><i class="glyphicon glyphicon-ok"></i>
-								活动审核</a></li>
+					
 					</ul></li>
 					<li><a href="#systemSetting2" class="nav-header collapsed"
 					data-toggle="collapse"> <i class="glyphicon glyphicon-fire"></i>
@@ -47,6 +44,21 @@
 						</a></li>
 					<li><a href="<%=request.getContextPath()%>/admin/notice/noticeManage"><i class="glyphicon glyphicon-envelope"></i> 查看公告</a></li>  
 					</ul></li>
+					
+					<li><a href="#systemSetting6" class="nav-header collapsed"
+					data-toggle="collapse"> <i class="glyphicon glyphicon-tag"></i>
+						审核管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+				</a>
+				
+					<ul id="systemSetting6" class="nav nav-list collapse secondmenu"
+						style="height: 0px;">
+							<li><a href="<%=request.getContextPath()%>/admin/activity_apply/manage"><i class="glyphicon glyphicon-ok"></i>
+								活动审核</a></li>
+					<li><a
+							href="<%=request.getContextPath()%>/admin/society_apply/manage"><i
+								class="glyphicon glyphicon-tint"></i> 社团审核</a></li>
+					</ul></li>
+					
 			</c:if>
 			<li><a href="#systemSetting3" class="nav-header collapsed"
 				data-toggle="collapse"> <i class="glyphicon glyphicon-th-list"></i>
@@ -60,14 +72,6 @@
 							class="glyphicon glyphicon-edit"></i> 个人信息</a></li>
 					<li><a href="<%=request.getContextPath()%>/student/resetPassword"><i class="glyphicon glyphicon-edit"></i>
 							修改密码</a></li>
-					<c:if test="${(userLogin.role != 'admin')}">		
-					<li><a
-						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
-							class="glyphicon glyphicon-heart"></i> 创办社团</a></li>
-					<li><a
-						href="<%=request.getContextPath()%>/student/societyInfo/manage?studentId=${userLogin.studentId}"><i
-							class="glyphicon glyphicon-eye-open"></i> 我的社团</a></li>
-					</c:if>
 				</ul></li>
 				<c:if test="${(userLogin.role != 'admin')}">
 			<li><a href="#systemSetting4" class="nav-header collapsed"
@@ -83,7 +87,24 @@
 						href="<%=request.getContextPath()%>/societyApply/listMySocietyApply?studentId=${userLogin.studentId}&pNo=0"><i
 							class="glyphicon glyphicon-link"></i> 社团申请</a></li>
 				</ul></li>
+				
+					<li><a href="#systemSetting5" class="nav-header collapsed"
+				data-toggle="collapse"> <i class="glyphicon glyphicon-music"></i>
+					社团管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+			</a>
+				<ul id="systemSetting5" class="nav nav-list collapse secondmenu"
+					style="height: 0px;">
+						<li><a
+						href="<%=request.getContextPath()%>/societyApply/manage?studentId=${userLogin.studentId}"><i
+							class="glyphicon glyphicon-heart"></i> 创办社团</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/student/societyInfo/manage?studentId=${userLogin.studentId}"><i
+							class="glyphicon glyphicon-eye-open"></i> 我的社团</a></li>
+				</ul></li>
+				
 				</c:if>
+				
+			<!--  
 			<li><a href="./grid.html"> <i
 					class="glyphicon glyphicon-globe"></i> 我的申请 <span
 					class="label label-warning pull-right">5</span>
@@ -95,7 +116,7 @@
 			<li><a href="./charts.html"> <i
 					class="glyphicon glyphicon-calendar"></i> 图表统计
 			</a></li>
-			
+			-->
 
 		</ul>
 	</div>

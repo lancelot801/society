@@ -45,15 +45,6 @@
 			<%@ include file="/jsp/left.jsp"%>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">审核社团申请</h1>
-				<div>
-					<select class="form-control " id="checkStatus"
-						style="width: 15%; display: inline;" name="checkStatus">
-						<option value="">-请选择审核状态-</option>
-						<option value="待审核">待审核</option>
-						<option value="已通过">已通过</option>
-						<option value="不通过">不通过</option>
-					</select>
-				</div>
 				<div id="contain" class="row placeholders">
 					<table class='table table-responsive table-striped col-xs-12'>
 						<thead>

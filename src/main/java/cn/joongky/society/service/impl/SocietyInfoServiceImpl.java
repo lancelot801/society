@@ -41,4 +41,27 @@ public class SocietyInfoServiceImpl implements SocietyInfoService{
 		sInfoMapper.updateByPrimaryKeySelective(si);
 		return sInfoMapper.selectByPrimaryKey(societyId);
 	}
+
+	@Override
+	public SocietyInfo updateById(String societyId,String societyName, String ImageUrl, String introduction, String typeId) {
+		SocietyInfo si = sInfoMapper.selectByPrimaryKey(societyId);
+		si.setSocietyName(societyName);
+		si.setIntroduction(introduction);
+		si.setLogoUrl(ImageUrl);
+		System.out.println("typeId:" + typeId);
+		si.setTypeId(typeId);
+		sInfoMapper.updateByPrimaryKeySelective(si);
+		return sInfoMapper.selectByPrimaryKey(societyId);
+	}
+
+	@Override
+	public SocietyInfo updateByIdWithOutlogo(String societyId, String societyName, String introduction, String typeId) {
+		SocietyInfo si = sInfoMapper.selectByPrimaryKey(societyId);
+		si.setSocietyName(societyName);
+		si.setIntroduction(introduction);
+		si.setTypeId(typeId);
+		System.out.println("typeId2:" + typeId);
+		sInfoMapper.updateByPrimaryKeySelective(si);
+		return sInfoMapper.selectByPrimaryKey(societyId);
+	}
 }

@@ -20,7 +20,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/notice_detail_texiao.js"></script>
+	src="<%=request.getContextPath()%>/js/texiao2.js"></script>
 <script
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
@@ -43,103 +43,82 @@
 </head>
 <body>
 	<div class="top">
-		<div class="top-inner">
-			<div class="logo">
-				<!-- 网站logo图片地址请在本组件"内容配置-网站logo"处填写 -->
-				<a href="../index.jsp"><img
-					src="<%=request.getContextPath()%>/img/logo.png" width="321"
-					height="71" alt="logo"></a>
-				<!--#endeditable-->
+			<div class="top-inner">
+				<div class="logo">
+					<!-- 网站logo图片地址请在本组件"内容配置-网站logo"处填写 -->
+					<a href="../index.jsp"><img src="<%=request.getContextPath()%>/img/logo.png" width="321" height="71" alt="logo"></a>
+					<!--#endeditable-->
+
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="#">社团概况</a>
+							<ol style="display:none;">
+								<a href="<%=request.getContextPath()%>/common/introduction">
+									<li>社团简介</li></a>
+								<a href="<%=request.getContextPath()%>/common/rule">
+									<li>规章制度</li></a>
+							</ol> 
+
+						</li>
+
+						<li><a href="#">工作指南</a>
+						
+							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
+
+								<a href="<%=request.getContextPath()%>/common/workflow">
+									<li>工作流程</li>
+								</a>
+
+								<a href="<%=request.getContextPath()%>/common/guidence">
+									<li>使用指南</li>
+								</a>
+							</ol>
+
+						</li>
+
+						<li><a href="#">星级评定</a>
+							<ol style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
+								<a href="<%=request.getContextPath()%>/common/monthly_review">
+									<li>社团月评</li>
+								</a>
+
+								<a href="<%=request.getContextPath()%>/common/year_review">
+									<li>年度总评</li>
+								</a>
+							</ol>
+
+						</li>
+
+						<li><a href="#">走进社团</a>
+							
+							<ol style="display: none; margin-left: -1px; width: 262px; height: 241px; background: url(&quot;img/xiaoxiala_03_011_02.png&quot;);">
+
+								<a href="<%=request.getContextPath()%>/common/society_style">
+									<li>社团风采</li>
+								</a>
+
+								<a href="<%=request.getContextPath()%>/common/society_star">
+									<li>社团明星</li>
+								</a>
+
+							</ol>
+
+						</li>
+
+						<li><a href="#">在线留言</a>
+
+						</li>
+
+						<li>
+							<button style="background-color: #9a0e14;border-color: #9a0e14;" class="btn btn-danger" id="userlogin"><span class="glyphicon glyphicon-user"></span>&nbsp;立即登录</button>
+						</li>
+					</ul>
+
+				</div>
 
 			</div>
-			<div class="nav">
-				<ul>
-					<li><a href="#">社团概况</a>
-						<ol style="display: none;">
-							<a href="#">
-								<li>社团简介</li>
-							</a>
-							<a href="#">
-								<li>规章制度</li>
-							</a>
-							<a href="#">
-								<li>社团简介</li>
-							</a>
-							<a href="#">
-								<li>规章制度</li>
-							</a>
-						</ol></li>
-
-					<li><a href="#">工作指南</a>
-
-						<ol
-							style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;<%=request.getContextPath()%>/img/xiaoxiala_03_011_02.png&quot;);">
-
-							<a href="#">
-								<li>工作流程</li>
-							</a>
-
-							<a href="<%=request.getContextPath()%>/common/guidence">
-								<li>使用指南</li>
-							</a>
-						</ol></li>
-
-					<li><a href="#">星级评定</a>
-						<ol
-							style="display: none; margin-left: -1px; width: 262px; height: 93px; background: url(&quot;<%=request.getContextPath()%>/img/xiaoxiala_03_011_02.png&quot;);">
-							<a href="#">
-								<li>社团月评</li>
-							</a>
-
-							<a href="#">
-								<li>年度总评</li>
-							</a>
-						</ol></li>
-
-					<li><a href="#">走进社团</a>
-
-						<ol
-							style="display: none; margin-left: -1px; width: 262px; height: 241px; background: url(&quot;<%=request.getContextPath()%>/img/changxiala.png&quot;);">
-
-							<a href="#">
-								<li>社团风采</li>
-							</a>
-
-							<a href="#">
-								<li>社团明星</li>
-							</a>
-
-							<a href="#">
-								<li>社团风景线</li>
-							</a>
-
-							<a href="#">
-								<li>社团文化节</li>
-							</a>
-
-							<a href="#">
-								<li>社团感悟</li>
-							</a>
-
-							<a href="#">
-								<li>视展青春</li>
-							</a>
-						</ol></li>
-
-					<li><a href="#">在线留言</a></li>
-
-					<li>
-						<button style="background-color: #9a0e14; border-color: #9a0e14;"
-							class="btn btn-danger" id="userlogin">
-							<span class="glyphicon glyphicon-user"></span>&nbsp;立即登录
-						</button>
-					</li>
-				</ul>
-
-			</div>
-
 		</div>
-	</div>
 	<!-- 首部 -->
 	<!-- 
 		<div class="weizhi">

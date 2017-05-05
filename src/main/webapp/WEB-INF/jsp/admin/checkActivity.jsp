@@ -24,6 +24,9 @@
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/check_activity.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+		<!-- for IE support -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/promise.min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript"
@@ -38,6 +41,8 @@
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
+<link rel="stylesheet" type="text/css" 
+	href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
 <title>社团活动审核</title>
 </head>
 <body>

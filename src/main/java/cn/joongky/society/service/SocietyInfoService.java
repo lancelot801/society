@@ -10,5 +10,8 @@ public interface SocietyInfoService {
 	SocietyInfo findBySocietyId(String societyId);
 	//更新社团人数
 	SocietyInfo updateMemberCount(String societyId,int membersCount);
-	
+	//更新社团信息
+	SocietyInfo updateById(String societyId,String societyName, String ImageUrl, String introduction, String typeId);
+	//除logo更新
+	SocietyInfo updateByIdWithOutlogo(String societyId, String societyName, String introduction, String typeId);
 }    

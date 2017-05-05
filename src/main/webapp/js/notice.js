@@ -160,8 +160,10 @@ $(function() {
 			type : "post",
 			data:  params,
 			success : function(data) {
-				alert("修改成功!");
-				window.location.href="/society_server/admin//notice/noticeManage"; 
+				swal('公告修改', '快去首页看看吧!', 'success');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href="/society_server/admin/notice/noticeManage"; },1500);	
 			},
 			error : function(error) {
 				alert(error.responseText);

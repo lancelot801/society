@@ -48,17 +48,19 @@ public class ActivityApplyController {
 	public JsonResult editor(@RequestParam String societyId, @RequestParam String applyerId, @RequestParam String theme,
 			@RequestParam String content, @RequestParam String holdTime) throws Exception {
 		JsonResult jr = new JsonResult();
-		activityApplyService.addApply(societyId, theme, applyerId, content, holdTime);
-		// 发送邮件通知
-		StudentInfo stu = studentInfoService.getInfo(applyerId);
-		String userEmail = ConfigUtil.getValue("admin_mail");
-		String title = "活动申请通知";
-		String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
-				+ stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i style='color:red;font-size:20px;'>"
-				+ theme + "社团活动申请,请尽快审核!</i></div>";
-		MailUtil.sendMail(title, text, userEmail);
-		jr.setResultCode(0);
-		jr.setResultData(content);
+		synchronized (this) {
+			// 发送邮件通知
+			StudentInfo stu = studentInfoService.getInfo(applyerId);
+			String userEmail = ConfigUtil.getValue("admin_mail");
+			String title = "活动申请通知";
+			String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
+					+ stu.getStudentId() + " 姓名: " + stu.getSname() + " 提交了主题为</i>"
+					+ "<i style='color:red;font-size:20px;'>" + theme + "社团活动申请,请尽快审核!</i></div>";
+			MailUtil.sendMail(title, text, userEmail);
+			activityApplyService.addApply(societyId, theme, applyerId, content, holdTime);
+			jr.setResultCode(0);
+			jr.setResultData(content);
+		}
 		return jr;
 	}
 
@@ -76,15 +78,15 @@ public class ActivityApplyController {
 		}
 		return jr;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = "/uploadImg",method = RequestMethod.POST)
-	public void uploadImg(MultipartFile myFileName,HttpServletResponse response) throws IOException{
+	@RequestMapping(value = "/uploadImg", method = RequestMethod.POST)
+	public void uploadImg(MultipartFile myFileName, HttpServletResponse response) throws IOException {
 		String realName = myFileName.getOriginalFilename();
 		long timeStamp = System.currentTimeMillis();
-		if (myFileName != null && myFileName.getOriginalFilename()!="") {
+		if (myFileName != null && myFileName.getOriginalFilename() != "") {
 			// 图片存储路径
-			String filePath = ConfigUtil.getValue("img_url")+ ConfigUtil.getValue("activity_img");
+			String filePath = ConfigUtil.getValue("img_url") + ConfigUtil.getValue("activity_img");
 			File file = new File(filePath);
 			// 如果文件夹不存在创建文件夹
 			if (!file.exists()) {
@@ -92,18 +94,17 @@ public class ActivityApplyController {
 			}
 			try {
 				// 存入文件
-				myFileName.transferTo(new File(filePath + "/"+ timeStamp + myFileName.getOriginalFilename()));
+				myFileName.transferTo(new File(filePath + "/" + timeStamp + myFileName.getOriginalFilename()));
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
 		}
-		 // 返回图片的URL地址
-        response.getWriter().write("/idCard" + ConfigUtil.getValue("activity_img")+"/" + timeStamp+ realName);
+		// 返回图片的URL地址
+		response.getWriter().write("/idCard" + ConfigUtil.getValue("activity_img") + "/" + timeStamp + realName);
 	}
-	
-		
+
 	@RequestMapping(value = "/listMyApply", method = RequestMethod.GET)
-	public ModelAndView applyCreateSociety(Model model,Integer pNo, @RequestParam String studentId) {
+	public ModelAndView applyCreateSociety(Model model, Integer pNo, @RequestParam String studentId) {
 		List<ActivityApply> aaList;
 		if (pNo != null) {
 			pNo = pNo - 1;
@@ -111,7 +112,7 @@ public class ActivityApplyController {
 				pNo = 0;
 			aaList = activityApplyService.findByStudentIdWithRowBound(pNo, studentId);
 		} else {
-			aaList = activityApplyService.findByStudentIdWithRowBound(0,studentId);
+			aaList = activityApplyService.findByStudentIdWithRowBound(0, studentId);
 		}
 		model.addAttribute("activities", aaList);
 		List<SocietyInfo> sInfoList = new ArrayList<>();
@@ -121,7 +122,7 @@ public class ActivityApplyController {
 		model.addAttribute("sInfoList", sInfoList);
 		return new ModelAndView("/student/my_activity_apply");
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/listTotalPage", method = RequestMethod.GET)
 	public JsonResult listTotalPage() {
@@ -130,7 +131,7 @@ public class ActivityApplyController {
 		jr.setResultData(activityApplyService.listTotalPage());
 		return jr;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/listTotalPageByStudentId", method = RequestMethod.GET)
 	public JsonResult listTotalPageByStudentId(@RequestParam String studentId) {
@@ -139,26 +140,28 @@ public class ActivityApplyController {
 		jr.setResultData(activityApplyService.listTotalPageByStudentId(studentId));
 		return jr;
 	}
-	
+
 	@RequestMapping(value = "/getDetail", method = RequestMethod.GET)
 	public String getActivityDetail() {
 		return "/student/activityDetail";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/updateApply", method = RequestMethod.POST)
-	public JsonResult updateApply(@RequestParam String activityId, String theme,
-			 String content,  String holdTime) throws Exception {
+	public JsonResult updateApply(@RequestParam String activityId, String theme, String content, String holdTime)
+			throws Exception {
 		JsonResult jr = new JsonResult();
 		activityApplyService.updateByActivityId(activityId, theme, content, holdTime);
 		// 发送邮件通知
-//		StudentInfo stu = studentInfoService.getInfo(applyerId);
-//		String userEmail = ConfigUtil.getValue("admin_mail");
-//		String title = "社团申请通知";
-//		String text = "<div style='font-family:Microsoft YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
-//				+ stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i style='color:red;font-size:20px;'>"
-//				+ theme + "社团活动申请,请尽快审核!</i></div>";
-//		MailUtil.sendMail(title, text, userEmail);
+		// StudentInfo stu = studentInfoService.getInfo(applyerId);
+		// String userEmail = ConfigUtil.getValue("admin_mail");
+		// String title = "社团申请通知";
+		// String text = "<div style='font-family:Microsoft
+		// YaHei'>亲爱的管理员，您好！<br/>欢迎使用校园社团管理系统,<i style='font-size:20px;'>学号: "
+		// + stu.getStudentId() + " 姓名: " + stu.getSname() + "提交了主题为</i>" + "<i
+		// style='color:red;font-size:20px;'>"
+		// + theme + "社团活动申请,请尽快审核!</i></div>";
+		// MailUtil.sendMail(title, text, userEmail);
 		jr.setResultCode(0);
 		jr.setResultData(content);
 		return jr;

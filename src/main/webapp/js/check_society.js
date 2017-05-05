@@ -283,9 +283,11 @@ $(function() {
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("审核成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				swal('审核通过', '已邮件通知申请者!', 'success');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1500);
 			},
 			error : function(error) {
 				alert(error.responseText);
@@ -306,9 +308,11 @@ $(function() {
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("审核成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				swal('审核不通过', '已邮件通知申请者!', 'success');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1500);
 			},
 			error : function(error) {
 				alert(error.responseText);

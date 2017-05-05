@@ -34,10 +34,15 @@
 	href="<%=request.getContextPath()%>/css/society.css">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/kkpager.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+		<!-- for IE support -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/promise.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/kkpager_blue.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap/css/bootstrapValidator.min.css" />
+<link rel="stylesheet" type="text/css" 
+	href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
 <title>我的社团</title>
 </head>
 <body>
@@ -67,7 +72,7 @@
 									<td style="text-align: center;">${societyTypes[loop.count-1].typeName}</td>
 									<td style="text-align: center;"><img
 										style="width: 30px; height: 30px;"
-										src="/idCard/${societyInfo.logoUrl}" /></td>
+										src="/idCard${societyInfo.logoUrl}" /></td>
 									<td style="text-align: center;">${societyInfo.membersCount}</td>
 									<td style="text-align: center;">${societyMembers[loop.count-1].position}</td>
 									<td style="text-align: center;"><label>
@@ -76,6 +81,9 @@
 									</label> &nbsp;&nbsp;&nbsp; <span>
 											<button
 												class="btn btn-info btn-sm glyphicon glyphicon-user membersManage">成员管理</button>
+									</span>&nbsp;&nbsp;&nbsp; <span>
+											<button
+												class="btn btn-info btn-sm glyphicon glyphicon-search queryDetail">社团详情</button>
 									</span></td>
 								</tr>
 							</c:forEach>
@@ -216,40 +224,72 @@
 	</div>
 
 
-	<!-- 添加模态框 -->
-	<div class="modal  fade" id="addsocietyTypeModal">
+	<!-- 修改模态框 -->
+	<div class="modal  fade" id="mySocietyDetail">
 		<div class="modal-dialog">
-			<form id="addsocietyTypeForm" action="" >
+			<form id="societyForm" action=""  enctype="multipart/form-data" >
 				<div class="modal-content">
 					<div class="modal-header">
 						<button class="close" data-dismiss="modal" type="button">&times;</button>
 						<h4 class="modal-title">
-							<span class="glyphicon glyphicon-leaf"></span>&nbsp;添加社团类别
+							<span class="glyphicon glyphicon-leaf"></span>&nbsp;社团详情
 						</h4>
 					</div>
 					<div class="modal-body">
 						<div class="panel panel-default">
 							<div class="panel-body">
-
+							<input type="text" id="societyId" name="societyId" style="display: none;"/>
+							<input type="text" id="applyerId2" name="applyerId" style="display: none;"/>
+							
 								<div class="form-group">
-									<label for="societyTypeName"
-										class="col-sm-2 control-label mylabStyle">类别名称</label> <input
-										type="text" id="studentId" name="studentId"
-										value="${userLogin.studentId}" style="display: none" />
+									<label for="societyType2"
+										class="col-sm-2 control-label mylabStyle">社团类别</label>
 									<div class="col-sm-10">
-										<input type="text" id="societyTypeName" name="societyTypeName"
-											style="width: 90%" class="form-control" placeholder="请输入社团类别" />
+										<select class="form-control " id="societyType2"
+											name="typeId">
+										</select>
 									</div>
 								</div>
+								<br /> <br />
+
+								<div class="form-group">
+									<label for="societyName2" class="col-sm-2 control-label mylabStyle">社团名称</label>
+									<div class="col-sm-10">
+										<input type="text" id="societyName2" name="societyName"
+											class="form-control" placeholder="请输入社团名称" />
+									</div>
+								</div>
+								<br /> <br />
+
+								<div class="form-group">
+									<label for="logo"
+										class="col-sm-2 control-label mylabStyle">社团logo</label>
+									<div class="col-sm-10">
+										<img  id="img_logo" style="display: inline;height: 40px;width: 40px;" src=""/>
+										<input  style="display: inline;" type="file" class="file" name="logo">
+									</div>
+								</div>
+								<br /> <br />
+
+								<div class="form-group">
+										<label for="introduction2" style="padding-left: 10px"
+											class="col-sm-2 control-label mylabStyle">社团简介</label>
+										<div class="col-sm-10">
+											<textarea autofocus="autofocus" 
+												class="form-control" id="introduction2" rows="10"
+												style="width: 90%; height: 120px;" name="introduction"
+												placeholder="请输入社团简介">
+												</textarea>
+										</div>
+									</div>
 
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
+					<input type="button" id="updateSocietyById" class="btn btn-primary" value="修改">
 						<button type="button" id="btnClose" class="btn btn-default"
 							data-dismiss="modal">关闭</button>
-						<button id="addsocietyTypeBtn" type="submit"
-							class="btn btn-primary">提交</button>
 					</div>
 				</div>
 			</form>

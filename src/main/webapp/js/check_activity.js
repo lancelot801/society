@@ -189,9 +189,11 @@ $(function() {
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("审核成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				swal('审核通过', '快去首页看看吧!', 'success');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1500);
 			},
 			error : function(error) {
 				alert(error.responseText);
@@ -212,9 +214,11 @@ $(function() {
 			type : "post",
 			data:  $('#societyApplyFrom').serialize(),
 			success : function(data) {
-				alert("审核成功!");
-				window.location.href=window.location.href; 
-				window.location.reload; 
+				swal('审核不通过', '已将反馈信息通知申请者!', 'error');
+				//延时刷新页面
+				setTimeout(function(){
+					window.location.href=window.location.href; 
+					window.location.reload; },1500);
 			},
 			error : function(error) {
 				alert(error.responseText);
